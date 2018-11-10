@@ -1,0 +1,59 @@
+GraspPlanningParameter [
+    grasp_posture [ 0 1 2 3 4 5 6 7 ]
+    gain_values [ 5.0 100.0 ]
+    approach_length [ 0.08 ]
+    approach_height [ 0.04 ]
+    lift_height [ 0.2 ]
+    release_height [ 0.23 ]
+    motion_time [ 2.0 1.5 0.5 ]
+]
+
+Gripper [
+    area [
+      0.0015
+    ]
+    outer_normal [
+      0.0 1.0 0.0
+    ]
+    tangent_vector [
+      0.0 0.0 1.0
+    ]
+    control_points [
+      0.0 0.0 0.155
+      0.0 0.0 0.165
+    ]
+    edge_vector [
+      0.01 0.0 0.11
+      0.01 0.0 0.175
+     -0.01 0.0 0.175
+     -0.01 0.0 0.11
+    ]
+    approach_vector [
+     0 0 1
+    ]
+]
+
+Gripper [
+    area [
+      0.0015
+    ]
+    outer_normal [
+      0.0 -1.0 0.0
+    ]
+    tangent_vector [
+      0.0 0.0 1.0
+    ]
+    control_points [
+      0.0 0.0 0.145
+      0.0 0.0 0.165
+    ]
+    edge_vector [
+      0.015 0.0 0.11
+      0.015 0.0 0.175
+     -0.015 0.0 0.175
+     -0.015 0.0 0.11
+    ]
+    approach_vector [
+      0 0 1
+    ]
+]

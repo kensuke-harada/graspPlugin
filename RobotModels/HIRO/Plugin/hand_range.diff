@@ -1,0 +1,98 @@
+*** hironx-distribution-vrml/main.wrl	2012-01-13 18:20:02.000000000 +0900
+--- hironx-distribution-vrml/main_new.wrl	2012-07-23 14:50:29.501189715 +0900
+***************
+*** 542,548 ****
+  						       jointType "rotate"
+  						       jointId 15
+  						       jointAxis 0.0 0.0 1.0 
+! 						       translation -0.0299 -0.033 0 
+  						       rotorInertia 0.01
+  						       children[
+  							  DEF RHAND_JOINT0_Link Segment{
+--- 542,550 ----
+  						       jointType "rotate"
+  						       jointId 15
+  						       jointAxis 0.0 0.0 1.0 
+! 						       translation -0.0299 -0.033 0
+!                                                                                                 ulimit [ 1.5708 ]
+!                                                                                                 llimit [-0.7854 ]
+  						       rotorInertia 0.01
+  						       children[
+  							  DEF RHAND_JOINT0_Link Segment{
+***************
+*** 560,565 ****
+--- 562,569 ----
+  							     jointId 16
+  							     jointAxis 0.0 0.0 1.0 
+  							     translation -0.0419 0 0 
++ 							     ulimit [ 0.7854 ]
++                                                                                                              llimit [-1.5708 ]
+  							     rotorInertia 0.01
+  							     children[
+  								DEF RHAND_JOINT1_Link Segment{
+***************
+*** 581,586 ****
+--- 585,592 ----
+  						       jointId 17
+  						       jointAxis 0.0 0.0 1.0 
+  						       translation -0.0299 0.033 0 
++ 						       ulimit [ 0.7854 ]
++                                                                                                 llimit [-1.5708 ]
+  						       rotorInertia 0.01
+  						       children[
+  							  DEF RHAND_JOINT2_Link Segment{
+***************
+*** 598,603 ****
+--- 604,611 ----
+  							     jointId 18
+  							     jointAxis 0.0 0.0 1.0 
+  							     translation -0.0419 0 0 
++ 							     ulimit [ 1.5708 ]
++                                                                                                              llimit [-0.7854 ]
+  							     rotorInertia 0.01
+  							     children[
+  								DEF RHAND_JOINT3_Link Segment{
+***************
+*** 771,776 ****
+--- 779,786 ----
+  						       jointId 19
+  						       jointAxis 0.0 0.0 1.0 
+  						       translation -0.0299 -0.033 0 
++ 						       ulimit [  1.5708 ]
++                                                                                                 llimit [ -0.7854 ]
+  						       rotorInertia 0.01
+  						       children[
+  							  DEF LHAND_JOINT0_Link Segment{
+***************
+*** 788,793 ****
+--- 798,805 ----
+  							     jointId 20
+  							     jointAxis 0.0 0.0 1.0 
+  							     translation -0.0419 0 0 
++ 							     ulimit [ 0.7854 ]
++                                                                                                              llimit [-1.5708 ]
+  							     rotorInertia 0.01
+  							     children[
+  								DEF LHAND_JOINT1_Link Segment{
+***************
+*** 809,814 ****
+--- 821,828 ----
+  						       jointId 21
+  						       jointAxis 0.0 0.0 1.0 
+  						       translation -0.0299 0.033 0 
++ 						       ulimit [ 0.7854 ]
++                                                                                                 llimit [-1.5708 ]
+  						       rotorInertia 0.01
+  						       children[
+  							  DEF LHAND_JOINT2_Link Segment{
+***************
+*** 826,831 ****
+--- 840,847 ----
+  							     jointId 22
+  							     jointAxis 0.0 0.0 1.0 
+  							     translation -0.0419 0 0 
++ 							     ulimit [ 1.5708 ]
++                                                                                                              llimit [-0.7854 ]
+  							     rotorInertia 0.01
+  							     children[
+  								DEF LHAND_JOINT3_Link Segment{

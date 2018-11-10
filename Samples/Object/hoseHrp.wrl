@@ -1,0 +1,1924 @@
+#VRML V2.0 utf8
+
+PROTO Joint [
+ exposedField     SFVec3f      center              0 0 0
+ exposedField     MFNode       children            []
+ exposedField     MFFloat      llimit              []
+ exposedField     MFFloat      lvlimit             []
+ exposedField     SFRotation   limitOrientation    0 0 1 0
+ exposedField     SFString     name                ""
+ exposedField     SFRotation   rotation            0 0 1 0
+ exposedField     SFVec3f      scale               1 1 1
+ exposedField     SFRotation   scaleOrientation    0 0 1 0
+ exposedField     MFFloat      stiffness           [ 0 0 0 ]
+ exposedField     SFVec3f      translation         0 0 0
+ exposedField     MFFloat      ulimit              []
+ exposedField     MFFloat      uvlimit             []
+ exposedField     SFString     jointType           ""
+ exposedField     SFInt32      jointId             -1
+ exposedField     SFVec3f      jointAxis           0 0 1
+
+ exposedField     SFFloat      gearRatio           1
+ exposedField     SFFloat      rotorInertia        0
+ exposedField     SFFloat      rotorResistor       0
+ exposedField     SFFloat      torqueConst         1
+ exposedField     SFFloat      encoderPulse        1
+]
+{
+   Transform {
+      center           IS center
+      children         IS children
+      rotation         IS rotation
+      scale            IS scale
+      scaleOrientation IS scaleOrientation
+      translation      IS translation
+   }
+}
+
+PROTO Segment [
+ field           SFVec3f     bboxCenter        0 0 0
+ field           SFVec3f     bboxSize          -1 -1 -1
+ exposedField    SFVec3f     centerOfMass      0 0 0
+ exposedField    MFNode      children          [ ]
+ exposedField    SFNode      coord             NULL
+ exposedField    MFNode      displacers        [ ]
+ exposedField    SFFloat     mass              0 
+ exposedField    MFFloat     momentsOfInertia  [ 0 0 0 0 0 0 0 0 0 ]
+ exposedField    SFString    name              ""
+ eventIn         MFNode      addChildren
+ eventIn         MFNode      removeChildren
+]
+{
+   Group {
+      addChildren    IS addChildren
+      bboxCenter     IS bboxCenter
+      bboxSize       IS bboxSize
+      children       IS children
+      removeChildren IS removeChildren
+   }
+}
+
+PROTO Humanoid [
+ field           SFVec3f    bboxCenter            0 0 0
+ field           SFVec3f    bboxSize              -1 -1 -1
+ exposedField    SFVec3f    center                0 0 0
+ exposedField    MFNode     humanoidBody          [ ]
+ exposedField    MFString   info                  [ ]
+ exposedField    MFNode     joints                [ ]
+ exposedField    SFString   name                  ""
+ exposedField    SFRotation rotation              0 0 1 0
+ exposedField    SFVec3f    scale                 1 1 1
+ exposedField    SFRotation scaleOrientation      0 0 1 0
+ exposedField    MFNode     segments              [ ]
+ exposedField    MFNode     sites                 [ ]
+ exposedField    SFVec3f    translation           0 0 0
+ exposedField    SFString   version               "1.1"
+ exposedField    MFNode     viewpoints            [ ]
+]
+{
+   Transform {
+      bboxCenter       IS bboxCenter
+      bboxSize         IS bboxSize
+      center           IS center
+      rotation         IS rotation
+      scale            IS scale
+      scaleOrientation IS scaleOrientation
+      translation      IS translation
+      children [
+	 Group {
+	    children IS viewpoints
+	 }
+	 Group {
+	    children IS humanoidBody 
+	 }
+      ]
+   }
+}
+
+PROTO VisionSensor [
+ exposedField SFVec3f    translation       0 0 0
+ exposedField SFRotation rotation          0 0 1 0
+ exposedField MFNode     children          [ ]
+ exposedField SFFloat    fieldOfView       0.785398
+ exposedField SFString   name              ""
+ exposedField SFFloat    frontClipDistance 0.01
+ exposedField SFFloat    backClipDistance  10.0
+ exposedField SFString   type              "NONE"
+ exposedField SFInt32    sensorId          -1
+ exposedField SFInt32    width             320
+ exposedField SFInt32    height            240
+ exposedField SFFloat    frameRate         30
+]
+{
+   Transform {
+      rotation         IS rotation
+      translation      IS translation
+      children         IS children
+   }
+}
+
+
+PROTO ForceSensor [  
+ exposedField SFVec3f    maxForce    -1 -1 -1
+ exposedField SFVec3f    maxTorque   -1 -1 -1
+ exposedField SFVec3f    translation 0 0 0
+ exposedField SFRotation rotation    0 0 1 0
+ exposedField SFInt32    sensorId    -1
+]
+{
+   Transform {
+      translation IS translation
+      rotation    IS rotation
+   }
+}
+
+PROTO Gyro [
+ exposedField SFVec3f    maxAngularVelocity -1 -1 -1
+ exposedField SFVec3f    translation        0 0 0
+ exposedField SFRotation rotation           0 0 1 0
+ exposedField SFInt32    sensorId           -1
+]
+{
+   Transform {
+      translation IS translation
+      rotation    IS rotation
+   }
+}
+
+PROTO AccelerationSensor [
+ exposedField SFVec3f    maxAcceleration -1 -1 -1
+ exposedField SFVec3f    translation     0 0 0
+ exposedField SFRotation rotation        0 0 1 0
+ exposedField SFInt32    sensorId        -1
+]
+{
+   Transform {
+      translation IS translation
+      rotation    IS rotation
+   }
+}
+
+PROTO PressureSensor [
+  exposedField SFFloat    maxPressure -1
+  exposedField SFVec3f    translation 0 0 0
+  exposedField SFRotation rotation    0 0 1 0
+  exposedField SFInt32    sensorId    -1
+]
+{
+  Transform {
+    translation IS translation
+    rotation    IS rotation
+  }
+}
+
+PROTO PhotoInterrupter [
+  exposedField SFVec3f transmitter 0 0 0
+  exposedField SFVec3f receiver    0 0 0
+  exposedField SFInt32 sensorId    -1
+]
+{
+  Transform{
+    children [
+      Transform{
+        translation IS transmitter
+      }
+      Transform{
+        translation IS receiver
+      }
+    ]
+  }
+}
+
+PROTO CylinderSensorZ [
+    exposedField    SFFloat    maxAngle       -1
+    exposedField    SFFloat    minAngle        0
+    exposedField    MFNode     children        [ ]
+]
+{
+  Transform{
+    rotation 1 0 0 1.5708
+    children [
+      DEF SensorY CylinderSensor{
+        maxAngle IS maxAngle
+        minAngle IS minAngle
+      }
+      DEF AxisY Transform{
+        children [
+          Transform{
+            rotation 1 0 0 -1.5708
+            children IS children
+          }
+        ]
+      }
+    ]
+  }
+  ROUTE SensorY.rotation_changed TO AxisY.set_rotation
+}
+
+PROTO CylinderSensorY [
+    exposedField    SFFloat    maxAngle       -1
+    exposedField    SFFloat    minAngle        0
+    exposedField    MFNode     children        [ ]
+]
+{
+  Transform{
+    rotation 0 1 0 1.5708
+    children [
+      DEF SensorX CylinderSensor{
+        maxAngle IS maxAngle
+        minAngle IS minAngle
+      }
+      DEF AxisX Transform{
+        children [
+          Transform{
+            rotation 0 1 0 -1.5708
+            children IS children
+          }
+        ]
+      }
+    ]
+  }
+  ROUTE SensorX.rotation_changed TO AxisX.set_rotation
+}
+
+PROTO CylinderSensorX [
+    exposedField    SFFloat    maxAngle       -1
+    exposedField    SFFloat    minAngle        0
+    exposedField    MFNode     children        [ ]
+]
+{
+  Transform{
+    rotation 0 0 1 -1.5708
+    children [
+      DEF SensorZ CylinderSensor{
+        maxAngle IS maxAngle
+        minAngle IS minAngle
+      }
+      DEF AxisZ Transform{
+        children [
+          Transform{
+            rotation 0 0 1 1.5708
+            children IS children
+          }
+        ]
+      }
+    ]
+  }
+  ROUTE SensorZ.rotation_changed TO AxisZ.set_rotation
+}
+
+NavigationInfo {
+   avatarSize    0.5
+   headlight     TRUE
+   type  ["EXAMINE", "ANY"]
+}
+
+Background {
+   skyColor 0.4 0.6 0.4
+}
+
+Viewpoint {
+   position    3 0 0.835
+   orientation 0.5770 0.5775 0.5775 2.0935
+}
+
+DEF fire_hose Humanoid{
+  humanoidBody [
+    DEF nozzle Joint {
+      jointType "free"
+      translation 0 0 0
+      rotation 0 1 0 0
+      children [
+        DEF nozzle_Link Segment{
+          centerOfMass 0 0 0 
+          mass 0.1
+          momentsOfInertia [ 0.01 0.0 0.0  0.0 0.01 0.0  0.0 0.0 0.01 ]
+          children[
+            Transform {
+              rotation 0 1 0 0 
+              scale 0.00254 0.00254 0.00254
+              children[
+                Inline { url "nozzle.wrl" }
+              ]
+            }
+          ]
+        }
+
+        DEF sphere_01 Joint {
+	     jointType "rotate"
+	     jointId 0
+	     jointAxis 0.0 0.0 1.0
+             translation 0.1 0 0
+	     rotorInertia 0.5
+	     ulimit [  0.7 ] #  40 deg
+	     llimit [ -0.7 ] # -163 deg
+	     uvlimit [  2.0 ] #  130 deg/s
+	     lvlimit [ -2.0 ] # -130 deg/s
+	     children [
+               DEF sphere_01_Link Segment{
+                 centerOfMass 0.1 0 0 
+                 mass 0.1
+                 momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                 children[
+                   Transform {
+                     translation 0 0 0 
+                     rotation 0 1 0 0 
+                     children[
+                       Shape{
+                         geometry Sphere{
+                           radius 0.025
+                         }
+                         appearance Appearance{
+                           material Material{
+                             diffuseColor 0.0 2.0 2.0
+                           }
+                         }
+                       }
+                     ]
+                   }
+                 ]
+               }
+
+               DEF link_01 Joint {
+                 jointType "rotate"
+                 jointId 1
+                 jointAxis 0.0 1.0 0.0 
+                 translation 0.0 0 0
+                 rotation 0 1 0 0
+                 ulimit  [ 0.7 ]   # 70 deg
+                 llimit  [-0.7 ]  # -70 deg
+                 uvlimit [ 2.0 ] #  150 deg/s
+                 lvlimit [-2.0 ] # -150 deg/s
+                 rotorInertia 0.5
+                 children[
+                   DEF link_01_Link Segment{
+                     centerOfMass 0.1 0 0 
+                     mass 0.1
+                     momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                     children[
+                       Transform {
+                         translation 0.1 0 0 
+                         rotation 0 0 1 1.570790 
+                         children[
+                           Shape{
+                             geometry Cylinder{
+                               radius 0.025
+                               height 0.2
+                             }
+                             appearance Appearance{
+                               material Material{
+                                 diffuseColor 0.0 2.0 2.0
+                               }
+                             }
+                           }
+                         ]
+                       }
+                     ]
+                   }
+
+                   DEF sphere_02 Joint {
+                     jointType "rotate"
+                     jointId 2
+                     jointAxis 0.0 0.0 1.0 
+                     translation 0.2 0 0
+                     rotation 0 1 0 0 
+                     ulimit  [ 0.7 ]   # 70 deg
+                     llimit  [-0.7 ]  # -70 deg
+                     uvlimit [ 2.0 ] #  150 deg/s
+                     lvlimit [-2.0 ] # -150 deg/s
+                     rotorInertia 0.5
+                     children[
+                       DEF sphere_02_Link Segment{
+                         centerOfMass 0 0 0 
+                         mass 0.1
+                         momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                         children[
+                           Transform {
+                             translation 0 0 0 
+                             rotation 0 1 0 0 
+                             children[
+                               Shape{
+                                 geometry Sphere{
+                                   radius 0.025
+                                 }
+                                 appearance Appearance{
+                                   material Material{
+                                     diffuseColor 0.0 2.0 2.0
+                                   }
+                                 }
+                               }
+                             ]
+                           }
+                         ]
+                       }
+
+                       DEF link_02 Joint {
+                         jointType "rotate"
+                         jointId 3
+                         jointAxis 0.0 1.0 0.0 
+                         translation 0.0 0 0
+                         rotation 0 1 0 0
+                         ulimit  [ 0.7 ]   # 70 deg
+                         llimit  [-0.7 ]  # -70 deg
+                         uvlimit [ 2.0 ] #  150 deg/s
+                         lvlimit [-2.0 ] # -150 deg/s
+                         rotorInertia 0.5
+                         children[
+                           DEF link_02_Link Segment{
+                             centerOfMass 0.1 0 0 
+                             mass 0.1
+                             momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                             children[
+                               Transform {
+                                 translation 0.1 0 0 
+                                 rotation 0 0 1 1.570790 
+                                 children[
+                                   Shape{
+                                     geometry Cylinder{
+                                       radius 0.025
+                                       height 0.2
+                                     }
+                                     appearance Appearance{
+                                       material Material{
+                                         diffuseColor 0.0 2.0 2.0
+                                       }
+                                     }
+                                   }
+                                 ]
+                               }
+                             ]
+                           } 
+
+                           DEF sphere_03 Joint {
+                             jointType "rotate"
+                             jointId 4
+                             jointAxis 0.0 0.0 1.0 
+                             translation 0.2 0 0
+                             rotation 0 1 0 0 
+                             ulimit  [ 0.7 ]   # 70 deg
+                             llimit  [-0.7 ]  # -70 deg
+                             uvlimit [ 2.0 ] #  150 deg/s
+                             lvlimit [-2.0 ] # -150 deg/s
+                             rotorInertia 0.5
+                             children[
+                               DEF sphere_03_Link Segment{
+                                 centerOfMass 0 0 0 
+                                 mass 0.1
+                                 momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                 children[
+                                   Transform {
+                                     translation 0 0 0 
+                                     rotation 0 1 0 0 
+                                     children[
+                                       Shape{
+                                         geometry Sphere{
+                                           radius 0.025
+                                         }
+                                         appearance Appearance{
+                                           material Material{
+                                             diffuseColor 0.0 2.0 2.0
+                                           }
+                                         }
+                                       }
+                                     ]
+                                   }
+                                 ]
+                               }
+
+                               DEF link_03 Joint {
+                                 jointType "rotate"
+                                 jointId 5
+                                 jointAxis 0.0 1.0 0.0 
+                                 translation 0.0 0 0
+                                 rotation 0 1 0 0
+                                 ulimit  [ 0.7 ]   # 70 deg
+                                 llimit  [-0.7 ]  # -70 deg
+                                 uvlimit [ 2.0 ] #  150 deg/s
+                                 lvlimit [-2.0 ] # -150 deg/s
+                                 rotorInertia 0.5
+                                 children[
+                                   DEF link_03_Link Segment{
+                                     centerOfMass 0.1 0 0 
+                                     mass 0.1
+                                     momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                     children[
+                                       Transform {
+                                         translation 0.1 0 0 
+                                         rotation 0 0 1 1.570790 
+                                         children[
+                                           Shape{
+                                             geometry Cylinder{
+                                               radius 0.025
+                                               height 0.2
+                                             }
+                                             appearance Appearance{
+                                               material Material{
+                                                 diffuseColor 0.0 2.0 2.0
+                                               }
+                                             }
+                                           }
+                                         ]
+                                       }
+                                     ]
+                                   }  
+
+                                   DEF sphere_04 Joint {
+                                     jointType "rotate"
+                                     jointId 6
+                                     jointAxis 0.0 0.0 1.0 
+                                     translation 0.2 0 0
+                                     rotation 0 1 0 0 
+                                     ulimit  [ 0.7 ]   # 70 deg
+                                     llimit  [-0.7 ]  # -70 deg
+                                     uvlimit [ 2.0 ] #  150 deg/s
+                                     lvlimit [-2.0 ] # -150 deg/s
+                                     rotorInertia 0.5
+                                     children[
+                                       DEF sphere_04_Link Segment{
+                                         centerOfMass 0 0 0 
+                                         mass 0.1
+                                         momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                         children[
+                                           Transform {
+                                             translation 0 0 0 
+                                             rotation 0 1 0 0 
+                                             children[
+                                               Shape{
+                                                 geometry Sphere{
+                                                   radius 0.025
+                                                 }
+                                                 appearance Appearance{
+                                                   material Material{
+                                                     diffuseColor 0.0 2.0 2.0
+                                                   }
+                                                 }
+                                               }
+                                             ]
+                                           }
+                                         ]
+                                       }
+
+                                       DEF link_04 Joint {
+                                         jointType "rotate"
+                                         jointId 7
+                                         jointAxis 0.0 1.0 0.0 
+                                         translation 0.0 0 0
+                                         rotation 0 1 0 0
+                                         ulimit  [ 0.7 ]   # 70 deg
+                                         llimit  [-0.7 ]  # -70 deg
+                                         uvlimit [ 2.0 ] #  150 deg/s
+                                         lvlimit [-2.0 ] # -150 deg/s
+                                         rotorInertia 0.5
+                                         children[
+                                           DEF link_04_Link Segment{
+                                             centerOfMass 0.1 0 0 
+                                             mass 0.1
+                                             momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                             children[
+                                               Transform {
+                                                 translation 0.1 0 0 
+                                                 rotation 0 0 1 1.570790 
+                                                 children[
+                                                   Shape{
+                                                     geometry Cylinder{
+                                                       radius 0.025
+                                                       height 0.2
+                                                     }
+                                                     appearance Appearance{
+                                                       material Material{
+                                                         diffuseColor 0.0 2.0 2.0
+                                                       }
+                                                     }
+                                                   }
+                                                 ]
+                                               }
+                                             ]
+                                           }  
+
+                                           DEF sphere_05 Joint {
+                                             jointType "rotate"
+                                             jointId 8
+                                             jointAxis 0.0 0.0 1.0 
+                                             translation 0.2 0 0
+                                             rotation 0 1 0 0 
+                                             ulimit  [ 0.7 ]   # 70 deg
+                                             llimit  [-0.7 ]  # -70 deg
+                                             uvlimit [ 2.0 ] #  150 deg/s
+                                             lvlimit [-2.0 ] # -150 deg/s
+                                             rotorInertia 0.5
+                                             children[
+                                               DEF sphere_05_Link Segment{
+                                                 centerOfMass 0 0 0 
+                                                 mass 0.1
+                                                 momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                 children[
+                                                   Transform {
+                                                     translation 0 0 0 
+                                                     rotation 0 1 0 0 
+                                                     children[
+                                                       Shape{
+                                                         geometry Sphere{
+                                                           radius 0.025
+                                                         }
+                                                         appearance Appearance{
+                                                           material Material{
+                                                             diffuseColor 0.0 2.0 2.0
+                                                           }
+                                                         }
+                                                       }
+                                                     ]
+                                                   }
+                                                 ]
+                                               }
+ 		
+                                               DEF link_05 Joint {
+                                                 jointType "rotate"
+                                                 jointId 9
+                                                 jointAxis 0.0 1.0 0.0 
+                                                 translation 0.0 0 0
+                                                 rotation 0 1 0 0
+                                                 ulimit  [ 0.7 ]   # 70 deg
+                                                 llimit  [-0.7 ]  # -70 deg
+                                                 uvlimit [ 2.0 ] #  150 deg/s
+                                                 lvlimit [-2.0 ] # -150 deg/s
+                                                 rotorInertia 0.5
+                                                 children[
+                                                   DEF link_05_Link Segment{
+                                                     centerOfMass 0.1 0 0 
+                                                     mass 0.1
+                                                     momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                     children[
+                                                       Transform {
+                                                         translation 0.1 0 0 
+                                                         rotation 0 0 1 1.570790 
+                                                         children[
+                                                           Shape{
+                                                             geometry Cylinder{
+                                                               radius 0.025
+                                                               height 0.2
+                                                             }
+                                                             appearance Appearance{
+                                                               material Material{
+                                                                 diffuseColor 0.0 2.0 2.0
+                                                               }
+                                                             }
+                                                           }
+                                                         ]
+                                                       }
+                                                     ]
+                                                   }  
+
+                                           DEF sphere_06 Joint {
+                                             jointType "rotate"
+                                             jointId 10
+                                             jointAxis 0.0 0.0 1.0 
+                                             translation 0.2 0 0
+                                             rotation 0 1 0 0 
+                                             ulimit  [ 0.7 ]   # 70 deg
+                                             llimit  [-0.7 ]  # -70 deg
+                                             uvlimit [ 2.0 ] #  150 deg/s
+                                             lvlimit [-2.0 ] # -150 deg/s
+                                             rotorInertia 0.5
+                                             children[
+                                               DEF sphere_06_Link Segment{
+                                                 centerOfMass 0 0 0 
+                                                 mass 0.1
+                                                 momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                 children[
+                                                   Transform {
+                                                     translation 0 0 0 
+                                                     rotation 0 1 0 0 
+                                                     children[
+                                                       Shape{
+                                                         geometry Sphere{
+                                                           radius 0.025
+                                                         }
+                                                         appearance Appearance{
+                                                           material Material{
+                                                             diffuseColor 0.0 2.0 2.0
+                                                           }
+                                                         }
+                                                       }
+                                                     ]
+                                                   }
+                                                 ]
+                                               }
+ 		
+                                               DEF link_06 Joint {
+                                                 jointType "rotate"
+                                                 jointId 11
+                                                 jointAxis 0.0 1.0 0.0 
+                                                 translation 0.0 0 0
+                                                 rotation 0 1 0 0
+                                                 ulimit  [ 0.7 ]   # 70 deg
+                                                 llimit  [-0.7 ]  # -70 deg
+                                                 uvlimit [ 2.0 ] #  150 deg/s
+                                                 lvlimit [-2.0 ] # -150 deg/s
+                                                 rotorInertia 0.5
+                                                 children[
+                                                   DEF link_06_Link Segment{
+                                                     centerOfMass 0.1 0 0 
+                                                     mass 0.1
+                                                     momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                     children[
+                                                       Transform {
+                                                         translation 0.1 0 0 
+                                                         rotation 0 0 1 1.570790 
+                                                         children[
+                                                           Shape{
+                                                             geometry Cylinder{
+                                                               radius 0.025
+                                                               height 0.2
+                                                             }
+                                                             appearance Appearance{
+                                                               material Material{
+                                                                 diffuseColor 0.0 2.0 2.0
+                                                               }
+                                                             }
+                                                           }
+                                                         ]
+                                                       }
+                                                     ]
+                                                   }  
+        
+                                                   DEF sphere_07 Joint {
+                                                     jointType "rotate"
+                                                     jointId 12
+                                                     jointAxis 0.0 0.0 1.0 
+                                                     translation 0.2 0 0
+                                                     rotation 0 1 0 0 
+                                                     ulimit  [ 0.7 ]   # 70 deg
+                                                     llimit  [-0.7 ]  # -70 deg
+                                                     uvlimit [ 2.0 ] #  150 deg/s
+                                                     lvlimit [-2.0 ] # -150 deg/s
+                                                     rotorInertia 0.5
+                                                     children[
+                                                       DEF sphere_07_Link Segment{
+                                                         centerOfMass 0 0 0 
+                                                         mass 0.1
+                                                         momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                         children[
+                                                           Transform {
+                                                             translation 0 0 0 
+                                                             rotation 0 1 0 0 
+                                                             children[
+                                                               Shape{
+                                                                 geometry Sphere{
+                                                                   radius 0.025
+                                                                 }
+                                                                 appearance Appearance{
+                                                                   material Material{
+                                                                     diffuseColor 0.0 2.0 2.0
+                                                                   }
+                                                                 }
+                                                               }
+                                                             ]
+                                                           }
+                                                         ]
+ 	                                               }
+         		
+                                                       DEF link_07 Joint {
+                                                         jointType "rotate"
+                                                         jointId 13
+                                                         jointAxis 0.0 1.0 0.0 
+                                                         translation 0.0 0 0
+                                                         rotation 0 1 0 0
+                                                         ulimit  [ 0.7 ]   # 70 deg
+                                                         llimit  [-0.7 ]  # -70 deg
+                                                         uvlimit [ 2.0 ] #  150 deg/s
+                                                         lvlimit [-2.0 ] # -150 deg/s
+                                                         rotorInertia 0.5
+                                                         children[
+                                                           DEF link_07_Link Segment{
+                                                             centerOfMass 0.1 0 0 
+                                                             mass 0.1
+                                                             momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                             children[
+                                                               Transform {
+                                                                 translation 0.1 0 0 
+                                                                 rotation 0 0 1 1.570790 
+                                                                 children[
+                                                                   Shape{
+                                                                     geometry Cylinder{
+                                                                       radius 0.025
+                                                                       height 0.2
+                                                                     }
+                                                                     appearance Appearance{
+                                                                       material Material{
+                                                                         diffuseColor 0.0 2.0 2.0
+                                                                       }
+                                                                     }
+                                                                   }
+                                                                 ]
+                                                               }
+                                                             ]
+                                                           }  
+
+                                                           DEF sphere_08 Joint {
+                                                             jointType "rotate"
+                                                             jointId 14
+                                                             jointAxis 0.0 0.0 1.0 
+                                                             translation 0.2 0 0
+                                                             rotation 0 1 0 0 
+                                                             ulimit  [ 0.7 ]   # 70 deg
+                                                             llimit  [-0.7 ]  # -70 deg
+                                                             uvlimit [ 2.0 ] #  150 deg/s
+                                                             lvlimit [-2.0 ] # -150 deg/s
+                                                             rotorInertia 0.5
+                                                             children[
+                                                               DEF sphere_08_Link Segment{
+                                                                 centerOfMass 0 0 0 
+                                                                 mass 0.1
+                                                                 momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                 children[
+                                                                   Transform {
+                                                                     translation 0 0 0 
+                                                                     rotation 0 1 0 0 
+                                                                     children[
+                                                                       Shape{
+                                                                         geometry Sphere{
+                                                                           radius 0.025
+                                                                         }
+                                                                         appearance Appearance{
+                                                                           material Material{
+                                                                             diffuseColor 0.0 2.0 2.0
+                                                                           }
+                                                                         }
+                                                                       }
+                                                                     ]
+                                                                   }
+                                                                 ]
+                                                               }
+ 	 	 		
+                                                               DEF link_08 Joint {
+                                                                 jointType "rotate"
+                                                                 jointId 15
+                                                                 jointAxis 0.0 1.0 0.0 
+                                                                 translation 0.0 0 0
+                                                                 rotation 0 1 0 0
+                                                                 ulimit  [ 0.7 ]   # 70 deg
+                                                                 llimit  [-0.7 ]  # -70 deg
+                                                                 uvlimit [ 2.0 ] #  150 deg/s
+                                                                 lvlimit [-2.0 ] # -150 deg/s
+                                                                 rotorInertia 0.5
+                                                                 children[
+                                                                   DEF link_08_Link Segment{
+                                                                     centerOfMass 0.1 0 0 
+                                                                     mass 0.1
+                                                                     momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                     children[
+                                                                       Transform {
+                                                                         translation 0.1 0 0 
+                                                                         rotation 0 0 1 1.570790 
+                                                                         children[
+                                                                           Shape{
+                                                                             geometry Cylinder{
+                                                                               radius 0.025
+                                                                               height 0.2
+                                                                             }
+                                                                             appearance Appearance{
+                                                                               material Material{
+                                                                                 diffuseColor 0.0 2.0 2.0
+                                                                               }
+                                                                             }
+                                                                           }
+                                                                         ]
+                                                                       }
+                                                                     ]
+                                                                   }  
+
+                                                                   DEF sphere_09 Joint {
+                                                                     jointType "rotate"
+                                                                     jointId 16
+                                                                     jointAxis 0.0 0.0 1.0 
+                                                                     translation 0.2 0 0
+                                                                     rotation 0 1 0 0 
+                                                                     ulimit  [ 0.7 ]   # 70 deg
+                                                                     llimit  [-0.7 ]  # -70 deg
+                                                                     uvlimit [ 2.0 ] #  150 deg/s
+                                                                     lvlimit [-2.0 ] # -150 deg/s
+                                                                     rotorInertia 0.5
+                                                                     children[
+                                                                       DEF sphere_09_Link Segment{
+                                                                         centerOfMass 0 0 0 
+                                                                         mass 0.1
+                                                                         momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                         children[
+                                                                           Transform {
+                                                                             translation 0 0 0 
+                                                                             rotation 0 1 0 0 
+                                                                             children[
+                                                                               Shape{
+                                                                                 geometry Sphere{
+                                                                                   radius 0.025
+                                                                                 }
+                                                                                 appearance Appearance{
+                                                                                   material Material{
+                                                                                     diffuseColor 0.0 2.0 2.0
+                                                                                   }
+                                                                                 }
+                                                                               }
+                                                                             ]
+                                                                           }
+                                                                         ]
+                                                                       }
+ 	 	 	 		
+                                                                       DEF link_09 Joint {
+                                                                         jointType "rotate"
+                                                                         jointId 17
+                                                                         jointAxis 0.0 1.0 0.0 
+                                                                         translation 0.0 0 0
+                                                                         rotation 0 1 0 0
+                                                                         ulimit  [ 0.7 ]   # 70 deg
+                                                                         llimit  [-0.7 ]  # -70 deg
+                                                                         uvlimit [ 2.0 ] #  150 deg/s
+                                                                         lvlimit [-2.0 ] # -150 deg/s
+                                                                         rotorInertia 0.5
+                                                                         children[
+                                                                           DEF link_09_Link Segment{
+                                                                             centerOfMass 0.1 0 0 
+                                                                             mass 0.1
+                                                                             momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                             children[
+                                                                               Transform {
+                                                                                 translation 0.1 0 0 
+                                                                                 rotation 0 0 1 1.570790 
+                                                                                 children[
+                                                                                   Shape{
+                                                                                     geometry Cylinder{
+                                                                                       radius 0.025
+                                                                                       height 0.2
+                                                                                     }
+                                                                                     appearance Appearance{
+                                                                                       material Material{
+                                                                                         diffuseColor 0.0 2.0 2.0
+                                                                                       }
+                                                                                     }
+                                                                                   }
+                                                                                 ]
+                                                                               }
+                                                                             ]
+                                                                           }  
+
+                                                                           DEF sphere_10 Joint {
+                                                                             jointType "rotate"
+                                                                             jointId 18
+                                                                             jointAxis 0.0 0.0 1.0 
+                                                                             translation 0.2 0 0
+                                                                             rotation 0 1 0 0 
+                                                                             ulimit  [ 0.7 ]   # 70 deg
+                                                                             llimit  [-0.7 ]  # -70 deg
+                                                                             uvlimit [ 2.0 ] #  150 deg/s
+                                                                             lvlimit [-2.0 ] # -150 deg/s
+                                                                             rotorInertia 0.5
+                                                                             children[
+                                                                               DEF sphere_10_Link Segment{
+                                                                                 centerOfMass 0 0 0 
+                                                                                 mass 0.1
+                                                                                 momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                 children[
+                                                                                   Transform {
+                                                                                     translation 0 0 0 
+                                                                                     rotation 0 1 0 0 
+                                                                                     children[
+                                                                                       Shape{
+                                                                                         geometry Sphere{
+                                                                                           radius 0.025
+                                                                                         }
+                                                                                         appearance Appearance{
+                                                                                           material Material{
+                                                                                             diffuseColor 0.0 2.0 2.0
+                                                                                           }
+                                                                                         }
+                                                                                       }
+                                                                                     ]
+                                                                                   }
+                                                                                 ]
+                                                                               }
+ 	 	 	 	 		
+                                                                               DEF link_10 Joint {
+                                                                                 jointType "rotate"
+                                                                                 jointId 19
+                                                                                 jointAxis 0.0 1.0 0.0 
+                                                                                 translation 0.0 0 0
+                                                                                 rotation 0 1 0 0
+                                                                                 ulimit  [ 0.7 ]   # 70 deg
+                                                                                 llimit  [-0.7 ]  # -70 deg
+                                                                                 uvlimit [ 2.0 ] #  150 deg/s
+                                                                                 lvlimit [-2.0 ] # -150 deg/s
+                                                                                 rotorInertia 0.5
+                                                                                 children[
+                                                                                   DEF link_10_Link Segment{
+                                                                                     centerOfMass 0.1 0 0 
+                                                                                     mass 0.1
+                                                                                     momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                     children[
+                                                                                       Transform {
+                                                                                         translation 0.1 0 0 
+                                                                                         rotation 0 0 1 1.570790 
+                                                                                         children[
+                                                                                           Shape{
+                                                                                             geometry Cylinder{
+                                                                                               radius 0.025
+                                                                                               height 0.2
+                                                                                             }
+                                                                                             appearance Appearance{
+                                                                                               material Material{
+                                                                                                 diffuseColor 0.0 2.0 2.0
+                                                                                               }
+                                                                                             }
+                                                                                           }
+                                                                                         ]
+                                                                                       }
+                                                                                     ]
+                                                                                   }  
+
+                                                                                   DEF sphere_11 Joint {
+                                                                                     jointType "rotate"
+                                                                                     jointId 20
+                                                                                     jointAxis 0.0 0.0 1.0 
+                                                                                     translation 0.2 0 0
+                                                                                     rotation 0 1 0 0 
+                                                                                     ulimit  [ 0.7 ]   # 70 deg
+                                                                                     llimit  [-0.7 ]  # -70 deg
+                                                                                     uvlimit [ 2.0 ] #  150 deg/s
+                                                                                     lvlimit [-2.0 ] # -150 deg/s
+                                                                                     rotorInertia 0.5
+                                                                                     children[
+                                                                                       DEF sphere_11_Link Segment{
+                                                                                         centerOfMass 0 0 0 
+                                                                                         mass 0.1
+                                                                                         momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                         children[
+                                                                                           Transform {
+                                                                                             translation 0 0 0 
+                                                                                             rotation 0 1 0 0 
+                                                                                             children[
+                                                                                               Shape{
+                                                                                                 geometry Sphere{
+                                                                                                   radius 0.025
+                                                                                                 }
+                                                                                                 appearance Appearance{
+                                                                                                   material Material{
+                                                                                                     diffuseColor 0.0 2.0 2.0
+                                                                                                   }
+                                                                                                 }
+                                                                                               }
+                                                                                             ]
+                                                                                           }
+                                                                                         ]
+                                                                                       }
+ 	 	 	 	 	 		
+                                                                                       DEF link_11 Joint {
+                                                                                         jointType "rotate"
+                                                                                         jointId 21
+                                                                                         jointAxis 0.0 1.0 0.0 
+                                                                                         translation 0.0 0 0
+                                                                                         rotation 0 1 0 0
+                                                                                         ulimit  [ 0.7 ]   # 70 deg
+                                                                                         llimit  [-0.7 ]  # -70 deg
+                                                                                         uvlimit [ 2.0 ] #  150 deg/s
+                                                                                         lvlimit [-2.0 ] # -150 deg/s
+                                                                                         rotorInertia 0.5
+                                                                                         children[
+                                                                                           DEF link_11_Link Segment{
+                                                                                             centerOfMass 0.1 0 0 
+                                                                                             mass 0.1
+                                                                                             momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                             children[
+                                                                                               Transform {
+                                                                                                 translation 0.1 0 0 
+                                                                                                 rotation 0 0 1 1.570790 
+                                                                                                 children[
+                                                                                                   Shape{
+                                                                                                     geometry Cylinder{
+                                                                                                       radius 0.025
+                                                                                                       height 0.2
+                                                                                                     }
+                                                                                                     appearance Appearance{
+                                                                                                       material Material{
+                                                                                                         diffuseColor 0.0 2.0 2.0
+                                                                                                       }
+                                                                                                     }
+                                                                                                   }
+                                                                                                 ]
+                                                                                               }
+                                                                                             ]
+                                                                                           }  
+
+                                                                                           DEF sphere_12 Joint {
+                                                                                             jointType "rotate"
+                                                                                             jointId 22
+                                                                                             jointAxis 0.0 0.0 1.0 
+                                                                                             translation 0.2 0 0
+                                                                                             rotation 0 1 0 0 
+                                                                                             ulimit  [ 0.7 ]   # 70 deg
+                                                                                             llimit  [-0.7 ]  # -70 deg
+                                                                                             uvlimit [ 2.0 ] #  150 deg/s
+                                                                                             lvlimit [-2.0 ] # -150 deg/s
+                                                                                             rotorInertia 0.5
+                                                                                             children[
+                                                                                               DEF sphere_12_Link Segment{
+                                                                                                 centerOfMass 0 0 0 
+                                                                                                 mass 0.1
+                                                                                                 momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                 children[
+                                                                                                   Transform {
+                                                                                                     translation 0 0 0 
+                                                                                                     rotation 0 1 0 0 
+                                                                                                     children[
+                                                                                                       Shape{
+                                                                                                         geometry Sphere{
+                                                                                                           radius 0.025
+                                                                                                         }
+                                                                                                         appearance Appearance{
+                                                                                                           material Material{
+                                                                                                             diffuseColor 0.0 2.0 2.0
+                                                                                                           }
+                                                                                                         }
+                                                                                                       }
+                                                                                                     ]
+                                                                                                   }
+                                                                                                 ]
+                                                                                               }
+ 	 	 	 	 	 	 		
+                                                                                               DEF link_12 Joint {
+                                                                                                 jointType "rotate"
+                                                                                                 jointId 23
+                                                                                                 jointAxis 0.0 1.0 0.0 
+                                                                                                 translation 0.0 0 0
+                                                                                                 rotation 0 1 0 0
+                                                                                                 ulimit  [ 0.7 ]   # 70 deg
+                                                                                                 llimit  [-0.7 ]  # -70 deg
+                                                                                                 uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                 lvlimit [-2.0 ] # -150 deg/s
+                                                                                                 rotorInertia 0.5
+                                                                                                 children[
+                                                                                                   DEF link_12_Link Segment{
+                                                                                                     centerOfMass 0.1 0 0 
+                                                                                                     mass 0.1
+                                                                                                     momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                     children[
+                                                                                                       Transform {
+                                                                                                         translation 0.1 0 0 
+                                                                                                         rotation 0 0 1 1.570790 
+                                                                                                         children[
+                                                                                                           Shape{
+                                                                                                             geometry Cylinder{
+                                                                                                               radius 0.025
+                                                                                                               height 0.2
+                                                                                                             }
+                                                                                                             appearance Appearance{
+                                                                                                               material Material{
+                                                                                                                 diffuseColor 0.0 2.0 2.0
+                                                                                                               }
+                                                                                                             }
+                                                                                                           }
+                                                                                                         ]
+                                                                                                       }
+                                                                                                     ]
+                                                                                                   }  
+
+                                                                                                   DEF sphere_13 Joint {
+                                                                                                     jointType "rotate"
+                                                                                                     jointId 24
+                                                                                                     jointAxis 0.0 0.0 1.0 
+                                                                                                     translation 0.2 0 0
+                                                                                                     rotation 0 1 0 0 
+                                                                                                     ulimit  [ 0.7 ]   # 70 deg
+                                                                                                     llimit  [-0.7 ]  # -70 deg
+                                                                                                     uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                     lvlimit [-2.0 ] # -150 deg/s
+                                                                                                     rotorInertia 0.5
+                                                                                                     children[
+                                                                                                       DEF sphere_13_Link Segment{
+                                                                                                         centerOfMass 0 0 0 
+                                                                                                         mass 0.1
+                                                                                                         momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                         children[
+                                                                                                           Transform {
+                                                                                                             translation 0 0 0 
+                                                                                                             rotation 0 1 0 0 
+                                                                                                             children[
+                                                                                                               Shape{
+                                                                                                                 geometry Sphere{
+                                                                                                                   radius 0.025
+                                                                                                                 }
+                                                                                                                 appearance Appearance{
+                                                                                                                   material Material{
+                                                                                                                     diffuseColor 0.0 2.0 2.0
+                                                                                                                   }
+                                                                                                                 }
+                                                                                                               }
+                                                                                                             ]
+                                                                                                           }
+                                                                                                         ]
+                                                                                                       }
+ 	 	 	 	 	 	 	 		
+                                                                                                       DEF link_13 Joint {
+                                                                                                         jointType "rotate"
+                                                                                                         jointId 25
+                                                                                                         jointAxis 0.0 1.0 0.0 
+                                                                                                         translation 0.0 0 0
+                                                                                                         rotation 0 1 0 0
+                                                                                                         ulimit  [ 0.7 ]   # 70 deg
+                                                                                                         llimit  [-0.7 ]  # -70 deg
+                                                                                                         uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                         lvlimit [-2.0 ] # -150 deg/s
+                                                                                                         rotorInertia 0.5
+                                                                                                         children[
+                                                                                                           DEF link_13_Link Segment{
+                                                                                                             centerOfMass 0.1 0 0 
+                                                                                                             mass 0.1
+                                                                                                             momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                             children[
+                                                                                                               Transform {
+                                                                                                                 translation 0.1 0 0 
+                                                                                                                 rotation 0 0 1 1.570790 
+                                                                                                                 children[
+                                                                                                                   Shape{
+                                                                                                                     geometry Cylinder{
+                                                                                                                       radius 0.025
+                                                                                                                       height 0.2
+                                                                                                                     }
+                                                                                                                     appearance Appearance{
+                                                                                                                       material Material{
+                                                                                                                         diffuseColor 0.0 2.0 2.0
+                                                                                                                       }
+                                                                                                                     }
+                                                                                                                   }
+                                                                                                                 ]
+                                                                                                               }
+                                                                                                             ]
+                                                                                                           }  
+
+                                                                                                           DEF sphere_14 Joint {
+                                                                                                             jointType "rotate"
+                                                                                                             jointId 26
+                                                                                                             jointAxis 0.0 0.0 1.0 
+                                                                                                             translation 0.2 0 0
+                                                                                                             rotation 0 1 0 0 
+                                                                                                             ulimit  [ 0.7 ]   # 70 deg
+                                                                                                             llimit  [-0.7 ]  # -70 deg
+                                                                                                             uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                             lvlimit [-2.0 ] # -150 deg/s
+                                                                                                             rotorInertia 0.5
+                                                                                                             children[
+                                                                                                               DEF sphere_14_Link Segment{
+                                                                                                                 centerOfMass 0 0 0 
+                                                                                                                 mass 0.1
+                                                                                                                 momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                 children[
+                                                                                                                   Transform {
+                                                                                                                     translation 0 0 0 
+                                                                                                                     rotation 0 1 0 0 
+                                                                                                                     children[
+                                                                                                                       Shape{
+                                                                                                                         geometry Sphere{
+                                                                                                                           radius 0.025
+                                                                                                                         }
+                                                                                                                         appearance Appearance{
+                                                                                                                           material Material{
+                                                                                                                             diffuseColor 0.0 2.0 2.0
+                                                                                                                           }
+                                                                                                                         }
+                                                                                                                       }
+                                                                                                                     ]
+                                                                                                                   }
+                                                                                                                 ]
+                                                                                                               }
+ 	 	 	 	 	 	 	 	 		
+                                                                                                               DEF link_14 Joint {
+                                                                                                                 jointType "rotate"
+                                                                                                                 jointId 27
+                                                                                                                 jointAxis 0.0 1.0 0.0 
+                                                                                                                 translation 0.0 0 0
+                                                                                                                 rotation 0 1 0 0
+                                                                                                                 ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                 llimit  [-0.7 ]  # -70 deg
+                                                                                                                 uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                 lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                 rotorInertia 0.5
+                                                                                                                 children[
+                                                                                                                   DEF link_14_Link Segment{
+                                                                                                                     centerOfMass 0.1 0 0 
+                                                                                                                     mass 0.1
+                                                                                                                     momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                     children[
+                                                                                                                       Transform {
+                                                                                                                         translation 0.1 0 0 
+                                                                                                                         rotation 0 0 1 1.570790 
+                                                                                                                         children[
+                                                                                                                           Shape{
+                                                                                                                             geometry Cylinder{
+                                                                                                                               radius 0.025
+                                                                                                                               height 0.2
+                                                                                                                             }
+                                                                                                                             appearance Appearance{
+                                                                                                                               material Material{
+                                                                                                                                 diffuseColor 0.0 2.0 2.0
+                                                                                                                               }
+                                                                                                                             }
+                                                                                                                           }
+                                                                                                                         ]
+                                                                                                                       }
+                                                                                                                     ]
+                                                                                                                   }  
+
+                                                                                                                   DEF sphere_15 Joint {
+                                                                                                                     jointType "rotate"
+                                                                                                                     jointId 28
+                                                                                                                     jointAxis 0.0 0.0 1.0 
+                                                                                                                     translation 0.2 0 0
+                                                                                                                     rotation 0 1 0 0 
+                                                                                                                     ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                     llimit  [-0.7 ]  # -70 deg
+                                                                                                                     uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                     lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                     rotorInertia 0.5
+                                                                                                                     children[
+                                                                                                                       DEF sphere_15_Link Segment{
+                                                                                                                         centerOfMass 0 0 0 
+                                                                                                                         mass 0.1
+                                                                                                                         momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                         children[
+                                                                                                                           Transform {
+                                                                                                                             translation 0 0 0 
+                                                                                                                             rotation 0 1 0 0 
+                                                                                                                             children[
+                                                                                                                               Shape{
+                                                                                                                                 geometry Sphere{
+                                                                                                                                   radius 0.025
+                                                                                                                                 }
+                                                                                                                                 appearance Appearance{
+                                                                                                                                   material Material{
+                                                                                                                                     diffuseColor 0.0 2.0 2.0
+                                                                                                                                   }
+                                                                                                                                 }
+                                                                                                                               }
+                                                                                                                             ]
+                                                                                                                           }
+                                                                                                                         ]
+                                                                                                                       }
+ 	 	 	 	 	 	 	 	 	 		
+                                                                                                                       DEF link_15 Joint {
+                                                                                                                         jointType "rotate"
+                                                                                                                         jointId 29
+                                                                                                                         jointAxis 0.0 1.0 0.0 
+                                                                                                                         translation 0.0 0 0
+                                                                                                                         rotation 0 1 0 0
+                                                                                                                         ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                         llimit  [-0.7 ]  # -70 deg
+                                                                                                                         uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                         lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                         rotorInertia 0.5
+                                                                                                                         children[
+                                                                                                                           DEF link_15_Link Segment{
+                                                                                                                             centerOfMass 0.1 0 0 
+                                                                                                                             mass 0.1
+                                                                                                                             momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                             children[
+                                                                                                                               Transform {
+                                                                                                                                 translation 0.1 0 0 
+                                                                                                                                 rotation 0 0 1 1.570790 
+                                                                                                                                 children[
+                                                                                                                                   Shape{
+                                                                                                                                     geometry Cylinder{
+                                                                                                                                       radius 0.025
+                                                                                                                                       height 0.2
+                                                                                                                                     }
+                                                                                                                                     appearance Appearance{
+                                                                                                                                       material Material{
+                                                                                                                                         diffuseColor 0.0 2.0 2.0
+                                                                                                                                       }
+                                                                                                                                     }
+                                                                                                                                   }
+                                                                                                                                 ]
+                                                                                                                               }
+                                                                                                                             ]
+                                                                                                                           }  
+
+                                                                                                                           DEF sphere_16 Joint {
+                                                                                                                             jointType "rotate"
+                                                                                                                             jointId 30
+                                                                                                                             jointAxis 0.0 0.0 1.0 
+                                                                                                                             translation 0.2 0 0
+                                                                                                                             rotation 0 1 0 0 
+                                                                                                                             ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                             llimit  [-0.7 ]  # -70 deg
+                                                                                                                             uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                             lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                             rotorInertia 0.5
+                                                                                                                             children[
+                                                                                                                               DEF sphere_16_Link Segment{
+                                                                                                                                 centerOfMass 0 0 0 
+                                                                                                                                 mass 0.1
+                                                                                                                                 momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                                 children[
+                                                                                                                                   Transform {
+                                                                                                                                     translation 0 0 0 
+                                                                                                                                     rotation 0 1 0 0 
+                                                                                                                                     children[
+                                                                                                                                       Shape{
+                                                                                                                                         geometry Sphere{
+                                                                                                                                           radius 0.025
+                                                                                                                                         }
+                                                                                                                                         appearance Appearance{
+                                                                                                                                           material Material{
+                                                                                                                                             diffuseColor 0.0 2.0 2.0
+                                                                                                                                           }
+                                                                                                                                         }
+                                                                                                                                       }
+                                                                                                                                     ]
+                                                                                                                                   }
+                                                                                                                                 ]
+                                                                                                                               }
+ 	 	 	 	 	 	 	 	 	 	 		
+                                                                                                                               DEF link_16 Joint {
+                                                                                                                                 jointType "rotate"
+                                                                                                                                 jointId 31
+                                                                                                                                 jointAxis 0.0 1.0 0.0 
+                                                                                                                                 translation 0.0 0 0
+                                                                                                                                 rotation 0 1 0 0
+                                                                                                                                 ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                                 llimit  [-0.7 ]  # -70 deg
+                                                                                                                                 uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                                 lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                                 rotorInertia 0.5
+                                                                                                                                 children[
+                                                                                                                                   DEF link_16_Link Segment{
+                                                                                                                                     centerOfMass 0.1 0 0 
+                                                                                                                                     mass 0.1
+                                                                                                                                     momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                                     children[
+                                                                                                                                       Transform {
+                                                                                                                                         translation 0.1 0 0 
+                                                                                                                                         rotation 0 0 1 1.570790 
+                                                                                                                                         children[
+                                                                                                                                           Shape{
+                                                                                                                                             geometry Cylinder{
+                                                                                                                                               radius 0.025
+                                                                                                                                               height 0.2
+                                                                                                                                             }
+                                                                                                                                             appearance Appearance{
+                                                                                                                                               material Material{
+                                                                                                                                                 diffuseColor 0.0 2.0 2.0
+                                                                                                                                               }
+                                                                                                                                             }
+                                                                                                                                           }
+                                                                                                                                         ]
+                                                                                                                                       }
+                                                                                                                                     ]
+                                                                                                                                   }  
+
+                                                                                                                                   DEF sphere_17 Joint {
+                                                                                                                                     jointType "rotate"
+                                                                                                                                     jointId 32
+                                                                                                                                     jointAxis 0.0 0.0 1.0 
+                                                                                                                                     translation 0.2 0 0
+                                                                                                                                     rotation 0 1 0 0 
+                                                                                                                                     ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                                     llimit  [-0.7 ]  # -70 deg
+                                                                                                                                     uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                                     lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                                     rotorInertia 0.5
+                                                                                                                                     children[
+                                                                                                                                       DEF sphere_17_Link Segment{
+                                                                                                                                         centerOfMass 0 0 0 
+                                                                                                                                         mass 0.1
+                                                                                                                                         momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                                         children[
+                                                                                                                                           Transform {
+                                                                                                                                             translation 0 0 0 
+                                                                                                                                             rotation 0 1 0 0 
+                                                                                                                                             children[
+                                                                                                                                               Shape{
+                                                                                                                                                 geometry Sphere{
+                                                                                                                                                   radius 0.025
+                                                                                                                                                 }
+                                                                                                                                                 appearance Appearance{
+                                                                                                                                                   material Material{
+                                                                                                                                                     diffuseColor 0.0 2.0 2.0
+                                                                                                                                                   }
+                                                                                                                                                 }
+                                                                                                                                               }
+                                                                                                                                             ]
+                                                                                                                                           }
+                                                                                                                                         ]
+                                                                                                                                       }
+  	  	  	  	  	  	  	  	  	  	  			
+                                                                                                                                       DEF link_17 Joint {
+                                                                                                                                         jointType "rotate"
+                                                                                                                                         jointId 33
+                                                                                                                                         jointAxis 0.0 1.0 0.0 
+                                                                                                                                         translation 0.0 0 0
+                                                                                                                                         rotation 0 1 0 0
+                                                                                                                                         ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                                         llimit  [-0.7 ]  # -70 deg
+                                                                                                                                         uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                                         lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                                         rotorInertia 0.5
+                                                                                                                                         children[
+                                                                                                                                           DEF link_17_Link Segment{
+                                                                                                                                             centerOfMass 0.1 0 0 
+                                                                                                                                             mass 0.1
+                                                                                                                                             momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                                             children[
+                                                                                                                                               Transform {
+                                                                                                                                                 translation 0.1 0 0 
+                                                                                                                                                 rotation 0 0 1 1.570790 
+                                                                                                                                                 children[
+                                                                                                                                                   Shape{
+                                                                                                                                                     geometry Cylinder{
+                                                                                                                                                       radius 0.025
+                                                                                                                                                       height 0.2
+                                                                                                                                                     }
+                                                                                                                                                     appearance Appearance{
+                                                                                                                                                       material Material{
+                                                                                                                                                         diffuseColor 0.0 2.0 2.0
+                                                                                                                                                       }
+                                                                                                                                                     }
+                                                                                                                                                   }
+                                                                                                                                                 ]
+                                                                                                                                               }
+                                                                                                                                             ]
+                                                                                                                                           }  
+
+                                                                                                                                           DEF sphere_18 Joint {
+                                                                                                                                             jointType "rotate"
+                                                                                                                                             jointId 34
+                                                                                                                                             jointAxis 0.0 0.0 1.0 
+                                                                                                                                             translation 0.2 0 0
+                                                                                                                                             rotation 0 1 0 0 
+                                                                                                                                             ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                                             llimit  [-0.7 ]  # -70 deg
+                                                                                                                                             uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                                             lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                                             rotorInertia 0.5
+                                                                                                                                             children[
+                                                                                                                                               DEF sphere_18_Link Segment{
+                                                                                                                                                 centerOfMass 0 0 0 
+                                                                                                                                                 mass 0.1
+                                                                                                                                                 momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                                                 children[
+                                                                                                                                                   Transform {
+                                                                                                                                                     translation 0 0 0 
+                                                                                                                                                     rotation 0 1 0 0 
+                                                                                                                                                     children[
+                                                                                                                                                       Shape{
+                                                                                                                                                         geometry Sphere{
+                                                                                                                                                           radius 0.025
+                                                                                                                                                         }
+                                                                                                                                                         appearance Appearance{
+                                                                                                                                                           material Material{
+                                                                                                                                                             diffuseColor 0.0 2.0 2.0
+                                                                                                                                                           }
+                                                                                                                                                         }
+                                                                                                                                                       }
+                                                                                                                                                     ]
+                                                                                                                                                   }
+                                                                                                                                                 ]
+                                                                                                                                               }
+ 	 	 	 	 	 	 	 	 	 	 	 	 		
+                                                                                                                                               DEF link_18 Joint {
+                                                                                                                                                 jointType "rotate"
+                                                                                                                                                 jointId 35
+                                                                                                                                                 jointAxis 0.0 1.0 0.0 
+                                                                                                                                                 translation 0.0 0 0
+                                                                                                                                                 rotation 0 1 0 0
+                                                                                                                                                 ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                                                 llimit  [-0.7 ]  # -70 deg
+                                                                                                                                                 uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                                                 lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                                                 rotorInertia 0.5
+                                                                                                                                                 children[
+                                                                                                                                                   DEF link_18_Link Segment{
+                                                                                                                                                     centerOfMass 0.1 0 0 
+                                                                                                                                                     mass 0.1
+                                                                                                                                                     momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                                                     children[
+                                                                                                                                                       Transform {
+                                                                                                                                                         translation 0.1 0 0 
+                                                                                                                                                         rotation 0 0 1 1.570790 
+                                                                                                                                                         children[
+                                                                                                                                                           Shape{
+                                                                                                                                                             geometry Cylinder{
+                                                                                                                                                               radius 0.025
+                                                                                                                                                               height 0.2
+                                                                                                                                                             }
+                                                                                                                                                             appearance Appearance{
+                                                                                                                                                               material Material{
+                                                                                                                                                                 diffuseColor 0.0 2.0 2.0
+                                                                                                                                                               }
+                                                                                                                                                             }
+                                                                                                                                                           }
+                                                                                                                                                         ]
+                                                                                                                                                       }
+                                                                                                                                                     ]
+                                                                                                                                                   }  
+
+                                                                                                                                                   DEF sphere_19 Joint {
+                                                                                                                                                     jointType "rotate"
+                                                                                                                                                     jointId 36
+                                                                                                                                                     jointAxis 0.0 0.0 1.0 
+                                                                                                                                                     translation 0.2 0 0
+                                                                                                                                                     rotation 0 1 0 0 
+                                                                                                                                                     ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                                                     llimit  [-0.7 ]  # -70 deg
+                                                                                                                                                     uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                                                     lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                                                     rotorInertia 0.5
+                                                                                                                                                     children[
+                                                                                                                                                       DEF sphere_19_Link Segment{
+                                                                                                                                                         centerOfMass 0 0 0 
+                                                                                                                                                         mass 0.1
+                                                                                                                                                         momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                                                         children[
+                                                                                                                                                           Transform {
+                                                                                                                                                             translation 0 0 0 
+                                                                                                                                                             rotation 0 1 0 0 
+                                                                                                                                                             children[
+                                                                                                                                                               Shape{
+                                                                                                                                                                 geometry Sphere{
+                                                                                                                                                                   radius 0.025
+                                                                                                                                                                 }
+                                                                                                                                                                 appearance Appearance{
+                                                                                                                                                                   material Material{
+                                                                                                                                                                     diffuseColor 0.0 2.0 2.0
+                                                                                                                                                                   }
+                                                                                                                                                                 }
+                                                                                                                                                               }
+                                                                                                                                                             ]
+                                                                                                                                                           }
+                                                                                                                                                         ]
+                                                                                                                                                       }
+ 	 	 	 	 	 	 	 	 	 	 	 	 	 		
+                                                                                                                                                       DEF link_19 Joint {
+                                                                                                                                                         jointType "rotate"
+                                                                                                                                                         jointId 37
+                                                                                                                                                         jointAxis 0.0 1.0 0.0 
+                                                                                                                                                         translation 0.0 0 0
+                                                                                                                                                         rotation 0 1 0 0
+                                                                                                                                                         ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                                                         llimit  [-0.7 ]  # -70 deg
+                                                                                                                                                         uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                                                         lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                                                         rotorInertia 0.5
+                                                                                                                                                         children[
+                                                                                                                                                           DEF link_19_Link Segment{
+                                                                                                                                                             centerOfMass 0.1 0 0 
+                                                                                                                                                             mass 0.1
+                                                                                                                                                             momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                                                             children[
+                                                                                                                                                               Transform {
+                                                                                                                                                                 translation 0.1 0 0 
+                                                                                                                                                                 rotation 0 0 1 1.570790 
+                                                                                                                                                                 children[
+                                                                                                                                                                   Shape{
+                                                                                                                                                                     geometry Cylinder{
+                                                                                                                                                                       radius 0.025
+                                                                                                                                                                       height 0.2
+                                                                                                                                                                     }
+                                                                                                                                                                     appearance Appearance{
+                                                                                                                                                                       material Material{
+                                                                                                                                                                         diffuseColor 0.0 2.0 2.0
+                                                                                                                                                                       }
+                                                                                                                                                                     }
+                                                                                                                                                                   }
+                                                                                                                                                                 ]
+                                                                                                                                                               }
+                                                                                                                                                             ]
+                                                                                                                                                           }  
+
+                                                                                                                                                           DEF sphere_20 Joint {
+                                                                                                                                                             jointType "rotate"
+                                                                                                                                                             jointId 38
+                                                                                                                                                             jointAxis 0.0 0.0 1.0 
+                                                                                                                                                             translation 0.2 0 0
+                                                                                                                                                             rotation 0 1 0 0 
+                                                                                                                                                             ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                                                             llimit  [-0.7 ]  # -70 deg
+                                                                                                                                                             uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                                                             lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                                                             rotorInertia 0.5
+                                                                                                                                                             children[
+                                                                                                                                                               DEF sphere_20_Link Segment{
+                                                                                                                                                                 centerOfMass 0 0 0 
+                                                                                                                                                                 mass 0.1
+                                                                                                                                                                 momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                                                                 children[
+                                                                                                                                                                   Transform {
+                                                                                                                                                                     translation 0 0 0 
+                                                                                                                                                                     rotation 0 1 0 0 
+                                                                                                                                                                     children[
+                                                                                                                                                                       Shape{
+                                                                                                                                                                         geometry Sphere{
+                                                                                                                                                                           radius 0.025
+                                                                                                                                                                         }
+                                                                                                                                                                         appearance Appearance{
+                                                                                                                                                                           material Material{
+                                                                                                                                                                             diffuseColor 0.0 2.0 2.0
+                                                                                                                                                                           }
+                                                                                                                                                                         }
+                                                                                                                                                                       }
+                                                                                                                                                                     ]
+                                                                                                                                                                   }
+                                                                                                                                                                 ]
+                                                                                                                                                               }
+ 	 	 	 	 	 	 	 	 	 	 	 	 	 	 		
+                                                                                                                                                               DEF coupling Joint {
+                                                                                                                                                                 jointType "rotate"
+                                                                                                                                                                 jointId 39
+                                                                                                                                                                 jointAxis 0.0 1.0 0.0 
+                                                                                                                                                                 translation 0.0 0 0
+                                                                                                                                                                 rotation 0 1 0 0
+                                                                                                                                                                 ulimit  [ 0.7 ]   # 70 deg
+                                                                                                                                                                 llimit  [-0.7 ]  # -70 deg
+                                                                                                                                                                 uvlimit [ 2.0 ] #  150 deg/s
+                                                                                                                                                                 lvlimit [-2.0 ] # -150 deg/s
+                                                                                                                                                                 rotorInertia 0.5
+                                                                                                                                                                 children[
+                                                                                                                                                                   DEF coupling_Link Segment{
+                                                                                                                                                                     centerOfMass 0.1 0 0 
+                                                                                                                                                                     mass 0.1
+                                                                                                                                                                     momentsOfInertia [ 0.01 0 0  0 0.01 0  0 0 0.01 ]
+                                                                                                                			                             children[
+                                                                                                                				                       Transform {
+                                                                                                                				                         rotation 0 1 0 0 
+                                                                                                                                                                         scale 0.001 0.001 0.001
+                                                                                                                				                         children[
+                                                                                                                					                   Inline { url "coupling.wrl" }
+                                                                                                                				                         ]
+                                                                                                                				                       }
+                                                                                                                                                                     ]
+                                                                                                                                                                   }
+                                                                                                                                                                 ]
+                                                                                                                                                               }
+                                                                                                                                                             ]
+                                                                                                                                                           }
+                                                                                                                                                         ]
+                                                                                                                                                       }
+                                                                                                                                                     ]
+                                                                                                                                                   }
+                                                                                                                                                 ]
+                                                                                                                                               }
+                                                                                                                                             ]
+                                                                                                                                           }
+                                                                                                                                         ]
+                                                                                                                                       }
+                                                                                                                                     ]
+                                                                                                                                   }
+                                                                                                                                 ]
+                                                                                                                               }
+                                                                                                                             ]
+                                                                                                                           }
+                                                                                                                         ]
+                                                                                                                       }
+                                                                                                                     ]
+                                                                                                                   }
+                                                                                                                 ]
+                                                                                                               }
+                                                                                                             ]
+                                                                                                           }
+                                                                                                         ]
+                                                                                                       }
+                                                                                                     ]  
+                                                                                                   }
+                                                                                                 ]
+                                                                                               }
+                                                                                             ]
+                                                                                           }
+                                                                                         ]
+                                                                                       }
+                                                                                     ]
+                                                                                   }
+                                                                                 ]
+                                                                               }
+                                                                             ]
+                                                                           }
+                                                                         ]
+                                                                       }
+                                                                     ]
+                                                                   }
+                                                                 ]
+                                                               }
+                                                             ]
+                                                           }
+                                                         ]
+                                                       }
+                                                     ]
+                                                   }
+                                                 ]
+                                               }
+                                             ]
+                                           }
+                                         ]
+                                       }
+                                     ]
+                                   }
+                                 ]
+                               }
+                             ]
+                           }
+                         ]
+                       }
+                     ]
+                   }
+                 ]
+               }
+             ]
+           } 
+         ]
+       }
+     ]
+   }
+ ]
+}
+]
+   joints [
+    USE nozzle,
+    USE sphere_01,
+    USE link_01,
+    USE sphere_02,
+    USE link_02,
+    USE sphere_03,
+    USE link_03,
+    USE sphere_04,
+    USE link_04,
+    USE sphere_05,
+    USE link_05,
+    USE sphere_06,
+    USE link_06,
+    USE sphere_07,
+    USE link_07,
+    USE sphere_08,
+    USE link_08,
+    USE sphere_09,
+    USE link_09,
+    USE sphere_10,
+    USE link_10,
+    USE sphere_11,
+    USE link_11,
+    USE sphere_12,
+    USE link_12,
+    USE sphere_13,
+    USE link_13,
+    USE sphere_14,
+    USE link_14,
+    USE sphere_15,
+    USE link_15,
+    USE sphere_16,
+    USE link_16,
+    USE sphere_17,
+    USE link_17,
+    USE sphere_18,
+    USE link_18,
+    USE sphere_19,
+    USE link_19,
+    USE sphere_20,
+    USE coupling,
+   ]
+   segments [
+    USE nozzle_Link,
+    USE sphere_01_Link,
+    USE link_01_Link,
+    USE sphere_02_Link,
+    USE link_02_Link,
+    USE sphere_03_Link,
+    USE link_03_Link,
+    USE sphere_04_Link,
+    USE link_04_Link,
+    USE sphere_05_Link,
+    USE link_05_Link,
+    USE sphere_06_Link,
+    USE link_06_Link,
+    USE sphere_07_Link,
+    USE link_07_Link,
+    USE sphere_08_Link,
+    USE link_08_Link,
+    USE sphere_09_Link,
+    USE link_09_Link,
+    USE sphere_10_Link,
+    USE link_10_Link,
+    USE sphere_11_Link,
+    USE link_11_Link,
+    USE sphere_12_Link,
+    USE link_12_Link,
+    USE sphere_13_Link,
+    USE link_13_Link,
+    USE sphere_14_Link,
+    USE link_14_Link,
+    USE sphere_15_Link,
+    USE link_15_Link,
+    USE sphere_16_Link,
+    USE link_16_Link,
+    USE sphere_17_Link,
+    USE link_17_Link,
+    USE sphere_18_Link,
+    USE link_18_Link,
+    USE sphere_19_Link,
+    USE link_19_Link,
+    USE sphere_20_Link,
+    USE coupling_Link,
+   ]
+}

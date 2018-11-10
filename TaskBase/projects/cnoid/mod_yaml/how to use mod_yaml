@@ -1,0 +1,18 @@
+Python Version: 2.7
+Required library: Pyyaml
+
+1.Enter an input yaml file.(Including extension)
+  e.g.) input.yaml
+2.Enter sequence time.
+  e.g.) time = 0
+3.Enter new translation.(x,y,z)
+　　e.g.) x = 1
+        y = 2
+        z = 3 
+4.Enter new rotation.
+  e.g.) rotation = 1 2 3
+                   4 5 6
+                   7 8 9  
+5.continue or end
+  If you want to modify the value of another sequence, enter 0.
+6.Enter an output yaml file.(Including extension)

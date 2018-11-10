@@ -1,0 +1,14 @@
+modelFile: ../../Samples/Object/box5hrp.wrl
+
+EnvCluster:
+  -
+    id: [ 38 ]
+    area: [ 0.10101 ]
+    outer_normal: [ 0, 0, 1 ]
+    tangent_vector: [ 1, 0, 0 ]
+    convexhull: [ -0.185, 0.1365, 0.002, 0.185, 0.1365, 0.002, 0.185, -0.1365, 0.002, -0.185, -0.1365, 0.002 ]
+    boundary: [ 0.185, -0.1365, 0.002, 0.185, 0.1365, 0.002, -0.185, 0.1365, 0.002, -0.185, -0.1365, 0.002 ]
+    convexity: [ 1 ]
+    bounding_box_edge: [ 0.37, 0.273, 0 ]
+    bounding_box_center: [ 0, 0, 0.002 ]
+    is_putting_cluster: [ 1 ]

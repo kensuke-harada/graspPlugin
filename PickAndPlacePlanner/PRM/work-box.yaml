@@ -1,0 +1,13 @@
+modelFile: ../../../hrgPlugin/Samples/ExaustPipe/work-box_Hrp.wrl
+
+EnvCluster:
+  -
+    id: [ 114 ]
+    area: [ 0.09854 ]
+    outer_normal: [ -2.87244e-018, -0, 1 ]
+    tangent_vector: [ 1, 0, 0 ]
+    convexhull: [ 0.1895, -0.13, 0.006, -0.1895, -0.13, 0.006, -0.1895, 0.13, 0.006, 0.1895, 0.13, 0.006 ]
+    convexity: [ 2 ]
+    bounding_box_edge: [ 0.379, 0.26, 1.08865e-018 ]
+    bounding_box_center: [ 0, 0, 0.006 ]
+    is_putting_cluster: [ 1 ]

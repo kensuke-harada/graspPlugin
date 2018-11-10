@@ -1,0 +1,194 @@
+modelFile: ../../Samples/Object/box5Hrp.wrl
+size: [0.185, 0.135]
+initSearchPos: [-1.5, 0.0]
+
+EnvCluster:
+  -
+    id: [ 38 ]
+    area: [ 0.10101 ]
+    outer_normal: [ 0, 0, 1 ]
+    tangent_vector: [ 1, 0, 0 ]
+    convexhull: [ -0.185, 0.1365, 0.002, 0.185, 0.1365, 0.002, 0.185, -0.1365, 0.002, -0.185, -0.1365, 0.002 ]
+    convexity: [ 1 ]
+    bounding_box_edge: [ 0.37, 0.273, 4.33681e-019 ]
+    bounding_box_center: [ 0, 0, 0.002 ]
+    is_putting_cluster: [ 1 ]
+    
+object:
+  -
+    name: door_2
+    modelFile: ../../../hrgPlugin/Samples/CarParts2/DOOR_2LowHrp.wrl
+    relPos: [0, 0, 0.0323]
+    relRpy: [1.3910, -0.03665, 0.0]
+    marginBoxObj: [0.02, 0.04]
+    marginObjObj: [0.02, 0.04]
+    
+collisionShape:
+  -
+    center: [0.000707467 , 0.1365 , -0.00224124]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.185561 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.000707467 , 0.1365 , 0.0592412]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.185561 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.000707467 , -0.1365 , -0.00224124]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.185561 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.000707467 , -0.1365 , 0.0592412]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.185561 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.185512 , 0.1365 , 0.0327693]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.005 , 0.0307494 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.185512 , -0.1365 , 0.0327693]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.005 , 0.0307494 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.185512 , 0.1365 , 0.0242307]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.005 , 0.0307494 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.185512 , -0.1365 , 0.0242307]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.005 , 0.0307494 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.186219 , 0 , 0.00202806]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.005 , 0.005 , 0.1365]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.184804 , 0 , -0.00651053]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.005 , 0.005 , 0.1365]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.184804 , 0 , 0.0635105]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.005 , 0.005 , 0.1365]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.186219 , 0 , 0.0549719]
+    rpy: [-1.5708 , -0.0230096 , 0]
+    length: [0.005 , 0.005 , 0.1365]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.000263838 , 0.1385 , 0.0564877]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.215994 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.000154335 , 0.1385 , -0.00134383]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.215994 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.000263838 , -0.1385 , 0.0564877]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.215994 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.000154335 , -0.1385 , -0.00134383]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.215994 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.215934 , 0.1385 , 0.0291337]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.005 , 0.0289165 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.215934 , -0.1385 , 0.0291337]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.005 , 0.0289165 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.216043 , 0.1385 , 0.0260101]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.005 , 0.0289165 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.216043 , -0.1385 , 0.0260101]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.005 , 0.0289165 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.215725 , 9.4648e-013 , 0.0580494]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.005 , 0.005 , 0.1385]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.216253 , -2.57021e-013 , 0.0549259]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.005 , 0.005 , 0.1385]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.216143 , 2.04706e-013 , 0.000217961]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.005 , 0.005 , 0.1385]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.215834 , -9.98795e-013 , -0.00290562]
+    rpy: [1.5708 , -0.00723077 , 3.14159]
+    length: [0.005 , 0.005 , 0.1385]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1

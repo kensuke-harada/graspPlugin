@@ -1,0 +1,1 @@
+omniidl.exe -bpython HiroNX.idl HIROController.idl 

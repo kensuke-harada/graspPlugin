@@ -1,0 +1,96 @@
+# Body pose sequence format version 1.0 defined by cnoid-Robotics
+
+type: PoseSeq
+name: "action1"
+targetBody: "FXAC15-15-F22-MA12_2"
+refs: 
+  - 
+    time: 7
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0871953174, -0.0773561387, 0.0139663849 ]
+          rotation: [ 
+            1, 0, 0, 
+            0, 1, 0, 
+            0, 0, 1 ]
+  - 
+    time: 8
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0871953174, -0.0773561387, 0.10432195 ]
+          rotation: [ 
+            1, 0, 0, 
+            0, 1, 0, 
+            0, 0, 1 ]
+  - 
+    time: 9
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0871953174, 0.101137941, 0.10432195 ]
+          rotation: [ 
+            1, 0, 0, 
+            0, 1, 0, 
+            0, 0, 1 ]
+  - 
+    time: 10
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0871953174, 0.101137941, 0.10432195 ]
+          rotation: [ 
+            -9.4941076e-16, 0, -1, 
+            0, 1, -8.20787804e-41, 
+            1, 0, -9.4941076e-16 ]
+  - 
+    time: 11
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0501981021, 0.104594674, 0.10432195 ]
+          rotation: [ 
+            -9.4941076e-16, 0, -1, 
+            0, 1, -8.20787804e-41, 
+            1, 0, -9.4941076e-16 ]
+  - 
+    time: 12
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0501981021, 0.104594674, 0.0066997836 ]
+          rotation: [ 
+            -9.4941076e-16, 0, -1, 
+            0, 1, -8.20787804e-41, 
+            1, 0, -9.4941076e-16 ]

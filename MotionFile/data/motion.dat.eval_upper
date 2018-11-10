@@ -1,0 +1,9 @@
+# Base project file : RobotModels/Controller/project/evaluation.cnoid
+# 
+ 00.0 1.0 RARM_XYZ_ABS -0.1 0 0.1 0 -90 0
+ 00.0 0.5 RARM_XYZ_ABS -0.1 0 0.084 0 -90 0
+ 00.0 0.5 RARM_XYZ_REL 0 -0.04  0 0 0 0
+ 00.0 0.5 RARM_XYZ_REL 0 0.005  0 0 0 0
+ 00.0 0.5 RARM_XYZ_REL 0.04 0 0 0 0 0
+ 00.0 0.5 RARM_XYZ_REL -0.005 0 0 0 0 0
+ 00.0 0.5 RARM_XYZ_REL 0.005 -0.005 0 0 0 0

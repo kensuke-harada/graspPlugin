@@ -1,0 +1,479 @@
+items: 
+  id: 0
+  name: "Root"
+  plugin: Base
+  class: RootItem
+  children: 
+    - 
+      id: 1
+      name: "World"
+      plugin: Body
+      class: WorldItem
+      data: 
+        collisionDetection: false
+      children: 
+        - 
+          id: 2
+          name: "mug2"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/mug2hrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.000923, -0.001786,  0.008933 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  0.000000, -1.000000, 
+               0.000000,  1.000000,  0.000000 ]
+            jointPositions: [  ]
+            initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            initialJointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 3
+          name: "finger"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "finger.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.075139,  0.009703,  0.141536 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            initialJointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 4
+          name: "can200"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/can200hrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.000000,  0.000000,  0.000000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            initialJointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 5
+          name: "ahiru"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/ahiruLowHrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.000000,  0.000000,  0.000000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            initialJointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 6
+          name: "W0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/W0Hrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.000000,  0.000000,  0.000000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            initialJointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 7
+          name: "W1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/W1Hrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.000000,  0.000000,  0.000000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            initialJointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 8
+          name: "W2"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/W2Hrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.000000,  0.000000,  0.000000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            initialJointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 9
+          name: "cap"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/capHrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.000000,  0.000000,  0.000000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            initialJointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 10
+          name: "table-can"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/table-canhrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.000000,  0.000000,  0.000000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            initialJointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 11
+          name: "dog"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/doghrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.000000,  0.000000,  0.000000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            initialJointPositions: [  ]
+            selfCollisionDetection: true
+views: 
+  "Items": 
+    selected: [ 1 ]
+    checked: [ 2, 3 ]
+    expanded: [ 1 ]
+  "Scene": 
+    mode: edit
+    floorGird: true
+    collisions: true
+    shadow: false
+    floorGridSpan: 10
+    floorGridInterval: 0.5
+    hiPriorityRendering: false
+    camera: 
+      projection: perspetive
+      perspective: [ 40, 1.67553, 0.00310007, 6.32415 ]
+      ortho: [ -1, 1, -1, 1, -1, 1 ]
+      eye: [ 0.138102, 0.475562, 0.302368 ]
+      center: [ -0.139751, -0.370965, -0.151714 ]
+      up: [ -0.141609, -0.431436, 0.89096 ]
+  "Links": 
+    listingMode: "link list"
+    currentBodyItem: 2
+    bodyItems: 
+      - 
+        id: 2
+        selectedLinks: [ 0 ]
+  "Body / Link": 
+    showRotationMatrix: false
+  "Joint Sliders": 
+    showAllJoints: false
+    jointId: false
+    name: true
+    numColumns: 1
+    spinBox: true
+    slider: true
+    labelOnLeft: true
+    currentBodyItem: 2
+  "Multi Value Seq": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: false
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+  "Multi Affine3 Seq": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: false
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+    visibleElements: [ 0, 1, 2 ]
+  "Pose Roll": 
+    defaultTransitionTime: 0
+    updateAll: true
+    autoUpdate: false
+    timeSync: true
+    listingMode: "part tree"
+    timeLength: 10
+    showLipSync: false
+    gridInterval: 1
+toolbars: 
+  "TimeBar": 
+    minTime: 0
+    maxTime: 30
+    frameRate: 100
+    currentTime: 0
+    speedScale: 1
+  "BodyMotionGenerationBar": 
+    balancer: false
+    autoGeneration: false
+    timeScaleRatio: 1
+    preInitialDuration: 1
+    postFinalDuration: 1
+    onlyTimeBarRange: false
+    makeNewBodyItem: true
+    stealthyStepMode: true
+    stealthyHeightRatioThresh: 2
+    flatLiftingHeight: 0.005
+    flatLandingHeight: 0.005
+    impactReductionHeight: 0.005
+    impactReductionTime: 0.04
+    autoZmp: true
+    minZmpTransitionTime: 0.1
+    zmpCenteringTimeThresh: 0.03
+    zmpTimeMarginBeforeLiftingSpin: 0
+    allLinkPositions: false
+    lipSyncMix: false
+  "BodyBar": 
+    current: 2
+    stanceWidth: 0.15
+  "KinematicsBar": 
+    mode: IK
+    attitude: false
+    penetrationBlock: true
+    collisionLinkHighlight: false
+    snapDistance: 0.025
+    penetrationBlockDepth: 0.0005
+    lazyCollisionDetectionMode: true
+  "GraspBar": 
+    graspRobot: 3
+    graspObject: 2
+    objTag2Item: [ 2 ]
+Body: 
+  "KinematicFaultChecker": 
+    checkJointPositions: true
+    angleMargin: 0
+    translationMargin: 0
+    checkJointVelocities: true
+    velocityLimitRatio: 100
+    targetJoints: all
+    checkSelfCollisions: true
+    onlyTimeBarRange: false
+  "SceneBodyManager": 
+    sceneBodies: 
+      - 
+        bodyItem: 3
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 2
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 5
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 4
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 6
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 7
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 8
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 9
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 10
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 11
+        editable: true
+        centerOfMass: false
+        zmp: false
+layoutOfViews: 
+  type: splitter
+  orientation: horizontal
+  sizes: 
+    - 231
+    - 1127
+  children: 
+    - 
+      type: splitter
+      orientation: vertical
+      sizes: 
+        - 285
+        - 284
+      children: 
+        - 
+          type: pane
+          views: [ "Items" ]
+          current: "Items"
+        - 
+          type: pane
+          views: [ "Property", "Links" ]
+          current: "Property"
+    - 
+      type: splitter
+      orientation: vertical
+      sizes: 
+        - 406
+        - 163
+      children: 
+        - 
+          type: splitter
+          orientation: horizontal
+          sizes: 
+            - 487
+            - 634
+          children: 
+            - 
+              type: pane
+              views: [ "Body / Link", "Joint Sliders" ]
+              current: "Body / Link"
+            - 
+              type: pane
+              views: [ "Scene" ]
+              current: "Scene"
+        - 
+          type: pane
+          views: [ "Message", "Multi Value Seq", "Multi Affine3 Seq", "Pose Roll" ]
+          current: "Message"
+layoutOfToolBars: 
+  rows: 
+    - 
+      - { name: "FileBar", x: 0, priority: 0 }
+      - { name: "TimeBar", x: 47, priority: 1 }
+      - { name: "SceneBar", x: 986, priority: 2 }
+      - { name: "ManipBar", x: 641, priority: 0 }
+    - 
+      - { name: "BodyMotionGenerationBar", x: 0, priority: 1 }
+      - { name: "BodyBar", x: 137, priority: 2 }
+      - { name: "GraphBar", x: 257, priority: 0 }
+      - { name: "KinematicsBar", x: 819, priority: 3 }
+      - { name: "SimulationBar", x: 1057, priority: 4 }
+    - 
+      - { name: "GraspBar", x: 0, priority: 0 }
+      - { name: "TrajectoryBar", x: 997, priority: 1 }
+currentFileDialogDirectory: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object"

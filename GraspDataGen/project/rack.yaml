@@ -1,0 +1,508 @@
+modelFile: ./rackHrp.wrl
+
+collisionShape:
+  -
+    center: [0.36 , 1.22 , 0.89]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.36 , -1.43051e-008 , 0.89]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.36 , 1.22 , 0.85]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.36 , -1.43051e-008 , 0.85]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.38 , 0.61 , 0.89]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.38 , 0.61 , 0.85]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.34 , 0.61 , 0.89]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.34 , 0.61 , 0.85]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.38 , 1.22 , 0.87]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.34 , 1.22 , 0.87]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.38 , -1.43051e-008 , 0.87]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.34 , -1.43051e-008 , 0.87]
+    rpy: [-2.33147e-015 , 2.39209e-007 , 8.41093e-016]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.36 , 1.22 , 1.24]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.36 , -1.43051e-008 , 1.24]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.36 , 1.22 , 1.2]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.36 , -1.43051e-008 , 1.2]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.38 , 0.61 , 1.24]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.38 , 0.61 , 1.2]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.34 , 0.61 , 1.24]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.34 , 0.61 , 1.2]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.38 , 1.22 , 1.22]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.34 , 1.22 , 1.22]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.38 , -1.43051e-008 , 1.22]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.34 , -1.43051e-008 , 1.22]
+    rpy: [-2.60902e-015 , -2.39209e-007 , 8.41094e-016]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.06 , 1.22 , 1.29]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.06 , -1.43051e-008 , 1.29]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.06 , 1.22 , 1.25]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.06 , -1.43051e-008 , 1.25]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.08 , 0.61 , 1.29]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.08 , 0.61 , 1.25]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.04 , 0.61 , 1.29]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.04 , 0.61 , 1.25]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.08 , 1.22 , 1.27]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.04 , 1.22 , 1.27]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.08 , -1.43051e-008 , 1.27]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.04 , -1.43051e-008 , 1.27]
+    rpy: [-1.12146e-015 , 2.64637e-023 , 7.00911e-017]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.06 , -1.43051e-008 , 0.9]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.06 , 1.22 , 0.9]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.06 , -1.43051e-008 , 0.94]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.06 , 1.22 , 0.94]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.02 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.08 , 0.61 , 0.9]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.08 , 0.61 , 0.94]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.04 , 0.61 , 0.9]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.04 , 0.61 , 0.94]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.005 , 0.61 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.08 , -1.43051e-008 , 0.92]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.04 , -1.43051e-008 , 0.92]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.08 , 1.22 , 0.92]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.04 , 1.22 , 0.92]
+    rpy: [3.14159 , -1.22399e-007 , 3.50456e-017]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.21 , 0.795 , 0.7]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.21 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.21 , 0.795 , 1.46]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.21 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.21 , 0.755 , 0.7]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.21 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.21 , 0.755 , 1.46]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.21 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.42 , 0.795 , 1.08]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.005 , 0.38 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.42 , 0.755 , 1.08]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.005 , 0.38 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-7.08763e-009 , 0.795 , 1.08]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.005 , 0.38 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-7.08763e-009 , 0.755 , 1.08]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.005 , 0.38 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.42 , 0.775 , 0.7]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-1.46223e-008 , 0.775 , 0.7]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.42 , 0.775 , 1.46]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [4.47035e-010 , 0.775 , 1.46]
+    rpy: [-1.5708 , 1.98281e-008 , -5.05321e-015]
+    length: [0.005 , 0.005 , 0.02]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.208998 , 0.040392 , 1.46055]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.211 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.211002 , 0.04 , 0.699429]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.211 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.208998 , 2.70523e-008 , 1.46057]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.211 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.211002 , -0.000392018 , 0.69945]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.211 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.000999552 , 0.0401954 , 1.07943]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.005 , 0.380562 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.000999501 , -0.000196549 , 1.07945]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.005 , 0.380562 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.420999 , 0.0401965 , 1.08055]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.005 , 0.380562 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.421 , -0.000195441 , 1.08057]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.005 , 0.380562 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.00200194 , 0.0201955 , 1.46]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.005 , 0.005 , 0.020196]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.419997 , 0.0201966 , 1.46112]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.005 , 0.005 , 0.020196]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [2.88936e-006 , 0.0198034 , 0.698883]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.005 , 0.005 , 0.020196]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.422002 , 0.0198045 , 0.699995]
+    rpy: [1.57131 , 0.00263404 , -3.14159]
+    length: [0.005 , 0.005 , 0.020196]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+

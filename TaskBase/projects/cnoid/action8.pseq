@@ -1,0 +1,81 @@
+# Body pose sequence format version 1.0 defined by cnoid-Robotics
+
+type: PoseSeq
+name: "action8"
+targetBody: "LBNR12_1"
+refs: 
+  - 
+    time: 40
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.131927501, -0.412398874, 0.00877435909 ]
+          rotation: [ 
+            0, 4.45383317e-32, 1, 
+            -6.123234e-17, 1, -4.45383321e-32, 
+            -1, -6.123234e-17, 0 ]
+  - 
+    time: 41
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.131927501, -0.412398874, 0.0909844763 ]
+          rotation: [ 
+            0, 4.45383317e-32, 1, 
+            -6.123234e-17, 1, -4.45383321e-32, 
+            -1, -6.123234e-17, 0 ]
+  - 
+    time: 42
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.131927501, 0.0334641623, 0.0909844763 ]
+          rotation: [ 
+            0, 4.45383317e-32, 1, 
+            -6.123234e-17, 1, -4.45383321e-32, 
+            -1, -6.123234e-17, 0 ]
+  - 
+    time: 43
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0496140853, 0.0348983954, 0.0909844763 ]
+          rotation: [ 
+            0, 4.45383317e-32, 1, 
+            -6.123234e-17, 1, -4.45383321e-32, 
+            -1, -6.123234e-17, 0 ]
+  - 
+    time: 44
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0496140853, 0.0348983954, 0.0696284657 ]
+          rotation: [ 
+            0, 4.45383317e-32, 1, 
+            -6.123234e-17, 1, -4.45383321e-32, 
+            -1, -6.123234e-17, 0 ]

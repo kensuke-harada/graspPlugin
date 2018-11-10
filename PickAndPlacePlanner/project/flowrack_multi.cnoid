@@ -1,0 +1,860 @@
+items: 
+  id: 0
+  name: "Root"
+  plugin: Base
+  class: RootItem
+  children: 
+    - 
+      id: 1
+      name: "World"
+      plugin: Body
+      class: WorldItem
+      data: 
+        collisionDetection: false
+      children: 
+        - 
+          id: 2
+          name: "PA10"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/RobotModels/PA10/PA10.yaml"
+            currentBaseLink: "BASE"
+            rootPosition: [  0.000000,  0.000000,  0.670000 ]
+            rootAttitude: [ 
+              -1.000000,  0.000000,  0.000000, 
+               0.000000, -1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  0.000000,  0.000000,  0.000000,  1.540000,  0.000000,  1.540000,  0.000000,  0.000000,  0.000000 ]
+            selfCollisionDetection: true
+        - 
+          id: 3
+          name: "flowrack"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/flowrack_o.wrl"
+            currentBaseLink: "root"
+            rootPosition: [ -0.455000,  0.705000, -0.060000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000, -1.000000,  0.000000, 
+               0.000000,  0.000000, -1.000000 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 4
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.189817,  0.662253,  0.866110 ]
+            rootAttitude: [ 
+              -0.474935,  0.879972, -0.009340, 
+              -0.877510, -0.474354, -0.070462, 
+              -0.066436, -0.025269,  0.997471 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 5
+          name: "box"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/boxHrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.157590,  0.829330,  0.728540 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  0.998719, -0.050593, 
+               0.000000,  0.050593,  0.998719 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 6
+          name: "box3"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/box3Hrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.153006,  0.829330,  0.728540 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  0.998719, -0.050593, 
+               0.000000,  0.050593,  0.998719 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 7
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.180326,  0.725856,  0.835026 ]
+            rootAttitude: [ 
+              -0.647868,  0.761456, -0.021278, 
+              -0.760902, -0.648211, -0.029152, 
+              -0.035990, -0.002696,  0.999348 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 8
+          name: "box4"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/box4.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.542011,  0.169800,  0.711190 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 9
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.056344,  0.660401,  0.865211 ]
+            rootAttitude: [ 
+              -0.393882,  0.919067, -0.013132, 
+              -0.915369, -0.393513, -0.085123, 
+              -0.083401, -0.021508,  0.996284 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 10
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.123810,  0.658888,  0.865118 ]
+            rootAttitude: [ 
+              -0.367157,  0.930154,  0.003072, 
+              -0.928282, -0.366205, -0.064699, 
+              -0.059055, -0.026607,  0.997900 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 11
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.121544,  0.725185,  0.869426 ]
+            rootAttitude: [ 
+              -0.393041,  0.918309, -0.047187, 
+              -0.915013, -0.395674, -0.078695, 
+              -0.090937,  0.012246,  0.995781 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 12
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.119611,  0.790303,  0.874499 ]
+            rootAttitude: [ 
+              -0.400645,  0.915733, -0.030267, 
+              -0.913480, -0.401782, -0.064229, 
+              -0.070977,  0.001916,  0.997476 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 13
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.187192,  0.726530,  0.870435 ]
+            rootAttitude: [ 
+              -0.438603,  0.898055, -0.033541, 
+              -0.894010, -0.439820, -0.085467, 
+              -0.091506, -0.007500,  0.995776 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 14
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.186209,  0.792608,  0.875139 ]
+            rootAttitude: [ 
+              -0.506037,  0.860121, -0.064173, 
+              -0.859052, -0.509268, -0.051734, 
+              -0.077179,  0.028949,  0.996597 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 15
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.055427,  0.725671,  0.869846 ]
+            rootAttitude: [ 
+              -0.412142,  0.910755, -0.025795, 
+              -0.908747, -0.412945, -0.060463, 
+              -0.065718, -0.001478,  0.997837 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 16
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.052821,  0.791096,  0.874472 ]
+            rootAttitude: [ 
+              -0.514238,  0.857310, -0.024065, 
+              -0.855488, -0.514732, -0.056488, 
+              -0.060814, -0.008461,  0.998113 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 17
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.256524,  0.665541,  0.865275 ]
+            rootAttitude: [ 
+              -0.446439,  0.891595, -0.075829, 
+              -0.887737, -0.451952, -0.087538, 
+              -0.112320,  0.028236,  0.993271 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 18
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.257428,  0.796372,  0.874101 ]
+            rootAttitude: [ 
+              -0.864149,  0.501677,  0.039583, 
+              -0.503234, -0.861241, -0.070847, 
+              -0.001452, -0.081142,  0.996701 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 19
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.118463,  0.857884,  0.879155 ]
+            rootAttitude: [ 
+              -0.856694,  0.515565,  0.016360, 
+              -0.514165, -0.856050,  0.053033, 
+               0.041347,  0.037021,  0.998459 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 20
+          name: "cap1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap1.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.256654,  0.730957,  0.869449 ]
+            rootAttitude: [ 
+              -0.544229,  0.837249,  0.053188, 
+              -0.838706, -0.541501, -0.057861, 
+              -0.019643, -0.076099,  0.996907 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 21
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.116725,  0.726696,  0.836315 ]
+            rootAttitude: [ 
+              -0.603556,  0.795889, -0.047760, 
+              -0.794996, -0.605286, -0.040125, 
+              -0.060843,  0.013751,  0.998053 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 22
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.251906,  0.922180,  0.850555 ]
+            rootAttitude: [ 
+              -0.699331,  0.714554,  0.018680, 
+              -0.712111, -0.694202, -0.104792, 
+              -0.061912, -0.086587,  0.994319 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 23
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.247596,  0.727093,  0.835275 ]
+            rootAttitude: [ 
+              -0.770441,  0.637502, -0.003599, 
+              -0.634261, -0.767069, -0.096527, 
+              -0.064297, -0.072086,  0.995324 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 24
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.178618,  0.660706,  0.831847 ]
+            rootAttitude: [ 
+              -0.759802,  0.649140,  0.036309, 
+              -0.649773, -0.760085, -0.008170, 
+               0.022294, -0.029800,  0.999307 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 25
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.244295,  0.661166,  0.832325 ]
+            rootAttitude: [ 
+              -0.592162,  0.805295,  0.029060, 
+              -0.805286, -0.590073, -0.057698, 
+              -0.029316, -0.057569,  0.997911 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 26
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.114768,  0.662922,  0.832305 ]
+            rootAttitude: [ 
+              -0.859827,  0.509344, -0.035580, 
+              -0.509236, -0.860533, -0.012702, 
+              -0.037088,  0.007197,  0.999286 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 27
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.040836,  0.729122,  0.834957 ]
+            rootAttitude: [ 
+              -0.827890,  0.560884,  0.002764, 
+              -0.558685, -0.824188, -0.092660, 
+              -0.049693, -0.078256,  0.995694 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 28
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.039717,  0.792618,  0.840416 ]
+            rootAttitude: [ 
+              -0.881884,  0.471383,  0.008800, 
+              -0.471366, -0.881160, -0.037038, 
+              -0.009705, -0.036812,  0.999275 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 29
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.180619,  0.790106,  0.840691 ]
+            rootAttitude: [ 
+              -0.768967,  0.638004, -0.040502, 
+              -0.636767, -0.770017, -0.040034, 
+              -0.056729, -0.004994,  0.998377 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 30
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.246809,  0.791078,  0.840745 ]
+            rootAttitude: [ 
+              -0.597895,  0.801186, -0.024951, 
+              -0.800456, -0.598415, -0.034195, 
+              -0.042328, -0.000473,  0.999104 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 31
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.117951,  0.792401,  0.841536 ]
+            rootAttitude: [ 
+              -0.637293,  0.770586, -0.007326, 
+              -0.768415, -0.636159, -0.069570, 
+              -0.058271, -0.038707,  0.997550 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 32
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.042187,  0.665946,  0.831424 ]
+            rootAttitude: [ 
+              -0.720882,  0.693025, -0.006734, 
+              -0.691962, -0.720255, -0.049211, 
+              -0.038955, -0.030815,  0.998766 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 33
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.251580,  0.856741,  0.845541 ]
+            rootAttitude: [ 
+              -0.600719,  0.792706, -0.103705, 
+              -0.796181, -0.604937, -0.012118, 
+              -0.072341,  0.075289,  0.994534 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 34
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.180803,  0.855665,  0.845162 ]
+            rootAttitude: [ 
+              -0.687808,  0.725892, -0.000808, 
+              -0.723490, -0.685622, -0.080533, 
+              -0.059012, -0.054807,  0.996752 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 35
+          name: "cap0"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/cap0.yaml"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.117727,  0.857806,  0.845843 ]
+            rootAttitude: [ 
+              -0.637101,  0.770620,  0.015726, 
+              -0.765174, -0.629878, -0.133280, 
+              -0.092803, -0.096946,  0.990954 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+views: 
+  "Items": 
+    checked: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35 ]
+    expanded: [ 1 ]
+  "Scene": 
+    mode: edit
+    collisions: true
+    shadow: false
+    floorGird: true
+    floorGridSpan: 10
+    floorGridInterval: 0.5
+    hiPriorityRendering: false
+    camera: 
+      projection: perspetive
+      perspective: [ 40, 1.86003, 0.00427338, 8.71769 ]
+      ortho: [ -1, 1, -1, 1, -1, 1 ]
+      eye: [ 1.37251, -1.01458, 2.38503 ]
+      center: [ 0.90405, -0.290836, 1.87833 ]
+      up: [ -0.275323, 0.425368, 0.862125 ]
+  "Links": 
+    listingMode: "link list"
+    bodyItems: 
+      - 
+        id: 3
+        selectedLinks: [ 0 ]
+      - 
+        id: 4
+        selectedLinks: [ 0 ]
+      - 
+        id: 6
+        selectedLinks: [ 0 ]
+      - 
+        id: 9
+        selectedLinks: [ 0 ]
+      - 
+        id: 7
+        selectedLinks: [ 0 ]
+      - 
+        id: 5
+        selectedLinks: [ 0 ]
+      - 
+        id: 8
+        selectedLinks: [ 0 ]
+  "Body / Link": 
+    showRotationMatrix: false
+  "Joint Sliders": 
+    showAllJoints: true
+    jointId: true
+    name: true
+    numColumns: 1
+    spinBox: true
+    slider: true
+    labelOnLeft: true
+  "Multi Value Seq": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: false
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+  "Multi Affine3 Seq": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: false
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+    visibleElements: [ 0, 1, 2 ]
+  "Pose Roll": 
+    defaultTransitionTime: 0
+    updateAll: true
+    autoUpdate: false
+    timeSync: true
+    listingMode: "part tree"
+    timeLength: 10
+    showLipSync: false
+    gridInterval: 1
+toolbars: 
+  "TimeBar": 
+    minTime: 0
+    maxTime: 30
+    frameRate: 100
+    currentTime: 0
+  "BodyBar": 
+    stanceWidth: 0.15
+  "KinematicsBar": 
+    mode: FK
+    attitude: false
+    penetrationBlock: true
+    footSnap: true
+    collisionLinkHighlight: false
+    snapDistance: 0.025
+    penetrationBlockDepth: 0.0005
+    lazyCollisionDetectionMode: true
+  "BodyMotionGenerationBar": 
+    balancer: false
+    autoGeneration: false
+    timeScaleRatio: 1
+    preInitialDuration: 1
+    postFinalDuration: 1
+    onlyTimeBarRange: false
+    makeNewBodyItem: true
+    timeToStartBalancer: 0
+    balancerIterations: 2
+    plainBalancerMode: false
+    boundaryConditionType: position
+    boundarySmootherType: quintic
+    boundarySmootherTime: 0.5
+    boundaryCmAdjustment: false
+    boundaryCmAdjustmentTime: 1
+    gravity: 9.8
+    dynamicsTimeRatio: 1
+    stealthyStepMode: true
+    stealthyHeightRatioThresh: 2
+    flatLiftingHeight: 0.005
+    flatLandingHeight: 0.005
+    impactReductionHeight: 0.005
+    impactReductionTime: 0.04
+    autoZmp: true
+    minZmpTransitionTime: 0.1
+    zmpCenteringTimeThresh: 0.03
+    zmpTimeMarginBeforeLiftingSpin: 0
+    allLinkPositions: false
+    lipSyncMix: false
+  "GraspBar": 
+    graspRobot: 2
+    graspObject: 7
+    graspEnv: [ 6, 3, 5, 8 ]
+    objTag2Item: [ 4, 7 ]
+Body: 
+  "KinematicFaultChecker": 
+    checkJointPositions: true
+    angleMargin: 0
+    translationMargin: 0
+    checkJointVelocities: true
+    velocityLimitRatio: 100
+    targetJoints: all
+    checkSelfCollisions: true
+    onlyTimeBarRange: false
+  "SceneBodyManager": 
+    sceneBodies: 
+      - 
+        bodyItem: 2
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 3
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 4
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 6
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 9
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 22
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 7
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 5
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 25
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 23
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 8
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 12
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 21
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 10
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 11
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 13
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 14
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 15
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 16
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 17
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 18
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 19
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 20
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 24
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 27
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 26
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 28
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 30
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 29
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 32
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 31
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 34
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 33
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 35
+        editable: true
+        centerOfMass: false
+        zmp: false
+currentFileDialogDirectory: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object"

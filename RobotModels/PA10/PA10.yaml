@@ -1,0 +1,17 @@
+GrasplotPluginDir: ./   
+
+modelFile: pa10.main.wrl
+
+graspPluginSetting: 
+  base: BASE
+  palm: J7
+  fingerEnds: [ HAND_L, HAND_R ]
+  prehensionList: [prehension]
+  armStandardPose: [0, 0, 0, 0.1, 0, 0, 0]
+  fingerOpenPose: [-0.03, 0.03]
+  fingerOffset: [0.0]
+  GrasplotPluginDir: ./
+  pythonInterface: robotInterface.py
+  selfContactPair: [J7, HAND_L, J7, HAND_R]
+
+standardPose: [ 0, 0, 0, 90, 0, 90, 0, -1.4, 1.4 ] 

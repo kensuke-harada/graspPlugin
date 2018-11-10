@@ -1,0 +1,2 @@
+#command
+./make_vec ../data/mphone.stl ../data/mphone.vec

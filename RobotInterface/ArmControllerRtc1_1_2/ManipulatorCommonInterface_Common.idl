@@ -1,0 +1,73 @@
+
+/*
+Manipulator Common Interface (Common Commands)
+	- This IDL is used as service port on RTC
+    - This command specification is provided by Intelligent RT Software
+		Project of NEDO. 
+rev. 20100318
+*/
+
+#ifndef MANIPULATORCOMMONINTERFACE_COMMON_IDL
+#define MANIPULATORCOMMONINTERFACE_COMMON_IDL
+
+#include "ManipulatorCommonInterface_DataTypes.idl"
+
+module RTC
+{
+
+  enum AlarmType {
+    FAULT,
+    WARNING,
+    UNKNOWN
+  };
+
+  struct Alarm {
+    unsigned long code;
+    AlarmType type;
+    string description;
+  };
+
+  typedef sequence<Alarm> AlarmSeq;
+
+  typedef sequence<LimitValue> LimitSeq;
+
+  struct ManipInfo {
+    string manufactur;
+    string type;
+    ULONG  axisNum;
+    ULONG  cmdCycle;
+    boolean isGripper;
+  };
+
+  const ULONG CONST_BINARY_00000001 = 0x01;		/* isServoOn    */
+  const ULONG CONST_BINARY_00000010 = 0x02;		/* isMoving     */
+  const ULONG CONST_BINARY_00000100 = 0x04;		/* isAlarmed    */
+  const ULONG CONST_BINARY_00001000 = 0x08;		/* isBufferFull */
+
+};
+
+
+interface ManipulatorCommonInterface_Common
+{
+
+  RTC::RETURN_ID clearAlarms();
+
+  RTC::RETURN_ID getActiveAlarm(out RTC::AlarmSeq alarms);
+
+  RTC::RETURN_ID getFeedbackPosJoint(out RTC::JointPos pos);
+
+  RTC::RETURN_ID getManipInfo(out RTC::ManipInfo manipInfo);
+
+  RTC::RETURN_ID getSoftLimitJoint(out RTC::LimitSeq softLimit);
+
+  RTC::RETURN_ID getState(out RTC::ULONG state);
+
+  RTC::RETURN_ID servoOFF();
+
+  RTC::RETURN_ID servoON();
+
+  RTC::RETURN_ID setSoftLimitJoint(in RTC::LimitSeq softLimit);
+
+};
+
+#endif // MANIPULATORCOMMONINTERFACE_COMMON_IDL

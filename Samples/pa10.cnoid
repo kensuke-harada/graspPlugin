@@ -1,0 +1,209 @@
+items: 
+  id: 0
+  name: "Root"
+  plugin: Base
+  class: RootItem
+  children: 
+    - 
+      id: 1
+      name: "PA10"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "../RobotModels/PA10/PA10.yaml"
+        currentBaseLink: "BASE"
+        rootPosition: [  0.000000,  0.000000,  0.000000 ]
+        rootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        jointPositions: [  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: true
+    - 
+      id: 2
+      name: "can200"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "Object/can200hrp.wrl"
+        currentBaseLink: "WAIST"
+        rootPosition: [  0.173465,  0.601363,  0.738767 ]
+        rootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        jointPositions: [  ]
+        selfCollisionDetection: true
+views: 
+  "Items": 
+    selected: [ 1 ]
+    checked: [ 1, 2 ]
+  "Scene": 
+    mode: edit
+    floorGrid: true
+    shadow: false
+    collisions: false
+    hiPriorityRendering: false
+    camera: 
+      projection: perspetive
+      perspective: [ 40, 1.16692, 0.00794694, 16.2118 ]
+      ortho: [ -1, 1, -1, 1, -1, 1 ]
+      eye: [ 2.1965, 2.63363, 4.03681 ]
+      center: [ 1.716, 2.04804, 3.38396 ]
+      up: [ -0.414126, -0.504691, 0.757487 ]
+  "Media": 
+    keepAspectRatio: true
+    keepOriginalSize: true
+  "Links": 
+    listingMode: "link list"
+    currentBodyItem: 1
+  "Body / Link": 
+    showRotationMatrix: false
+  "Joint Sliders": 
+    showAllJoints: false
+    jointId: false
+    name: true
+    numColumns: 1
+    spinBox: true
+    slider: true
+    labelOnLeft: true
+    currentBodyItem: 1
+  "Multi Value Seq": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: true
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+  "Multi Affine3 Seq": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: true
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+    visibleElements: [ 0, 1, 2 ]
+  "Pose Seq": 
+    defaultTransitionTime: 0
+    updateAll: true
+    autoUpdate: false
+    timeSync: true
+    listingMode: "part tree"
+    mode: normal
+    splitMode: vertical
+    splitPosition: 298
+  "Pose Roll": 
+    defaultTransitionTime: 0
+    updateAll: true
+    autoUpdate: false
+    timeSync: true
+    listingMode: "part tree"
+    timeLength: 10
+    showLipSync: false
+    gridInterval: 1
+toolbars: 
+  "TimeBar": 
+    minTime: 0
+    maxTime: 30
+    frameRate: 100
+    currentTime: 0
+  "BodyBar": 
+    current: 1
+    stanceWidth: 0.15
+  "KinematicsBar": 
+    mode: IK
+    attitude: false
+    penetrationBlock: true
+    footSnap: true
+    collisionLinkHighlight: false
+    snapDistance: 0.025
+    penetrationBlockDepth: 0.0005
+    lazyCollisionDetectionMode: true
+  "BodyMotionGenerationBar": 
+    balancer: false
+    autoGeneration: false
+    timeScaleRatio: 1
+    preInitialDuration: 1
+    postFinalDuration: 1
+    onlyTimeBarRange: false
+    makeNewBodyItem: true
+    timeToStartBalancer: 0
+    balancerIterations: 2
+    plainBalancerMode: false
+    boundaryConditionType: position
+    boundarySmootherType: quintic
+    boundarySmootherTime: 0.5
+    boundaryCmAdjustment: false
+    boundaryCmAdjustmentTime: 1
+    gravity: 9.8
+    dynamicsTimeRatio: 1
+    stealthyStepMode: true
+    stealthyHeightRatioThresh: 2
+    flatLiftingHeight: 0.005
+    flatLandingHeight: 0.005
+    impactReductionHeight: 0.005
+    impactReductionTime: 0.04
+    autoZmp: true
+    minZmpTransitionTime: 0.1
+    zmpCenteringTimeThresh: 0.03
+    zmpTimeMarginBeforeLiftingSpin: 0
+    allLinkPositions: false
+    lipSyncMix: false
+  "GraspBar": 
+    graspRobot: 1
+    graspObject: 2
+Base: 
+  "MovieGenerator": 
+    folder: 
+    basename: scene
+    begin: 0
+    fps: 30
+    width: 640
+    heiht: 480
+Body: 
+  "KinematicFaultChecker": 
+    checkJointPositions: true
+    angleMargin: 0
+    translationMargin: 0
+    checkJointVelocities: true
+    velocityLimitRatio: 100
+    targetJoints: all
+    checkSelfCollisions: true
+    onlyTimeBarRange: false
+  "SceneBodyManager": 
+    sceneBodies: 
+      - 
+        bodyItem: 1
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 2
+        editable: true
+        centerOfMass: false
+        zmp: false
+currentFileDialogDirectory: "Object"

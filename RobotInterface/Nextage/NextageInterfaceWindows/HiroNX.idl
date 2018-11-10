@@ -1,0 +1,20 @@
+interface HiroNX {
+	void setupRobot();
+	void restart();
+	void goInitial();
+	void goOffPose();
+	void servoOn();
+	void servoOff();
+	void calibrateJoint();
+	void servoOnHands();
+	void servoOffHands();
+	void EngageProtectiveStop();
+	void DisengageProtectiveStop();
+	void reboot();
+	void shutdown();
+
+    void rhandOpen();
+    void rhandClose();
+    void lhandOpen();
+    void lhandClose();
+};

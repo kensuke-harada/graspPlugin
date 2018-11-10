@@ -1,0 +1,80 @@
+#ifndef GRASP_CONTROLLER_TRAJECTORY_IDL
+#define GRASP_CONTROLLER_TRAJECTORY_IDL
+
+interface planGraspPath
+{
+  typedef sequence<double, 3> DblSeq3;
+  typedef sequence<double, 9> DblSeq9;
+  typedef sequence<double> DblSeq;
+  typedef sequence<long> LngSeq;
+  typedef unsigned long ULONG;
+	
+
+  enum MotionState {
+    APROACH,	//ターゲットへハンドを接近中
+    BACKAWAY,	//ターゲット位置からハンド離脱中
+    CLOSING_GRIPPER,	//グリッパ閉じる
+    OPENING_GRIPPER,	//グリッパ開く
+    UP_HAND,	//ターゲット位置でハンド上昇
+    DOWN_HAND	//ターゲット位置でハンド下降
+  };
+  enum ObjectInputMode {
+    CREATE_RECORD,	//内部データレコードを新規に追加
+    REMOVE_RECORD,	//内部データレコードを削除
+    APPEAR,	//内部データレコードの属性を存在に変更
+    DISAPPEAR,	//内部データレコードの属性を消失に変更
+    SETPOS,
+    SET_TOLERANCE
+  };
+
+  struct ManipInfo {
+    DblSeq pos;	//汎用性のため関節角度列（左右同時解法に切り替える場合など）
+    MotionState state;
+    boolean leftArm;
+    boolean rightArm;
+    boolean leftGripper;
+    boolean rightGripper;
+    boolean waist;
+  };
+
+  struct ObjectInfo {
+		DblSeq3 pos;
+		DblSeq9 ori;
+		ULONG objId;
+		string tagId;
+		double tolerance; // temporary setting
+  };
+
+  typedef sequence<ManipInfo> ManipInfoSeq;
+
+    void GraspPlanningStart(
+		in ULONG mode,	//実行モード指定のための予約変数．開発初期では使用しない
+		in DblSeq begin,	//把持前の現在の姿勢
+		in DblSeq end,	//把持後に戻ってくる姿勢
+		in string robotId,	//ロボットを指定する．左手，右手，両手などを指定する．ロボットIDは事前に決められた文字列を用いる
+		in string objectTagId,	//オブジェクトを指定する．座標系はグローバル座標系で指定
+		in double resolution,	//関節角度列の分割数を指定する．指定の仕方は将来的には要検討
+		out ManipInfoSeq trajectory,	//計画結果を返す
+		out ULONG state	//成功時は0失敗時はエラーコード
+	);
+
+	//引数仕様は、Graspに合わせた方が分かり易い
+    void ReleasePlanningStart(
+		in ULONG mode,
+		in DblSeq begin,
+		in DblSeq end,
+		in string robotId,
+		in string objectTagId,
+		in double resolution,
+		out ManipInfoSeq trajectory,
+		out ULONG state
+    );
+
+	void SetStatusObject(
+		in ObjectInputMode mode, // ObjectInputModeを入力する．
+		in ObjectInfo obj	//位置，姿勢，タグなど．
+	);
+
+};
+
+#endif

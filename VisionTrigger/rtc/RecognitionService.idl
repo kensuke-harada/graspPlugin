@@ -1,0 +1,35 @@
+#ifndef RECOGNITION_SERVICE_idl
+#define RECOGNITION_SERVICE_idl
+
+#include <BasicDataType.idl>
+
+/*
+  TimedRecognitionResult:
+  Camera ID, Object ID, Candidate No., Coordinate system No.,
+  Recognition reliability, Error No., Reserve 1, Reserve 2,
+  r000, r001, r002, t0x,
+  r010, r011, r012, t0y,
+  r020, r021, r022, t0z,
+  Camera ID...
+ */
+
+typedef RTC::TimedDoubleSeq TimedRecognitionResult;
+
+interface RecognitionService {
+#if 0
+  long getValue();
+  void setValue(in long ModelID);
+#else
+  long getModelID();
+  void setModelID(in long ModelID);
+#endif
+};
+
+interface RecognitionServiceSDL {
+  typedef double Vec3d[3];
+
+  void recognize_by_ID(in long ModelID, out RTC::TimedDoubleSeq Result);
+  //void recognize_by_ID_sorted(in long ModelID, in Vec3d Axis, out RTC::TimedDoubleSeq Result);
+};
+
+#endif /* RECOGNITION_SERVICE_idl */

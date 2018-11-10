@@ -1,0 +1,17 @@
+modelFile: ../../Samples/Object/ahiruLowHrp.wrl
+
+collisionShape:
+  -
+    center: [0.00669497 , -0.00132075 , 0.0288738]
+    rpy: [-2.39381 , 0.194982 , -1.88319]
+    length: [0.0194772 , 0.0203881 , 0.0243281]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.000123443 , -0.000170126 , -0.00369676]
+    rpy: [0.733278 , 1.51854 , 0.61391]
+    length: [0.0192826 , 0.0330927 , 0.039756]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1

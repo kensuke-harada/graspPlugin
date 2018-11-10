@@ -1,0 +1,494 @@
+items: 
+  id: 0
+  name: "Root"
+  plugin: Base
+  class: RootItem
+  children: 
+    - 
+      id: 1
+      name: "HIRO"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/RobotModels/HIRO/HIRO2.yaml"
+        currentBaseLink: "WAIST"
+        rootPosition: [  0.000000,  0.000000,  0.795000 ]
+        rootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        jointPositions: [ 
+           0.000000,  0.000000,  0.000000,  0.000000, -0.349066, -2.094395,  0.000000,  0.000000,  0.000000, 
+           0.000000, -0.349066, -2.094395,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000, 
+           0.000000,  0.000000,  0.000000,  0.000000,  0.000000 ]
+        initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+        initialRootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        initialJointPositions: [ 
+           0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000, 
+           0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000, 
+           0.000000,  0.000000,  0.000000,  0.000000,  0.000000 ]
+        zmp: [  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: false
+    - 
+      id: 2
+      name: "box"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/RobotModels/HIRO/PCbox.wrl"
+        currentBaseLink: "WAIST"
+        rootPosition: [  0.000000,  0.000000,  0.400000 ]
+        rootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        jointPositions: [  ]
+        initialRootPosition: [  0.000000,  0.000000,  0.400000 ]
+        initialRootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        initialJointPositions: [  ]
+        zmp: [  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: false
+    - 
+      id: 3
+      name: "box5"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/box5Hrp.wrl"
+        currentBaseLink: "WAIST"
+        rootPosition: [  0.790200, -0.413600,  1.302000 ]
+        rootAttitude: [ 
+           0.972191, -0.019197, -0.233402, 
+           0.018667,  0.999816, -0.004482, 
+           0.233445,  0.000000,  0.972370 ]
+        jointPositions: [  ]
+        initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+        initialRootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        initialJointPositions: [  ]
+        zmp: [  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: false
+    - 
+      id: 4
+      name: "box5"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/box5Hrp.wrl"
+        currentBaseLink: "WAIST"
+        rootPosition: [  0.784900, -0.136600,  1.302000 ]
+        rootAttitude: [ 
+           0.972191, -0.019197, -0.233402, 
+           0.018667,  0.999816, -0.004482, 
+           0.233445,  0.000000,  0.972370 ]
+        jointPositions: [  ]
+        initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+        initialRootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        initialJointPositions: [  ]
+        zmp: [  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: false
+    - 
+      id: 5
+      name: "box5"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/box5Hrp.wrl"
+        currentBaseLink: "WAIST"
+        rootPosition: [  0.790200, -0.413600,  0.922000 ]
+        rootAttitude: [ 
+           0.972191, -0.019197, -0.233402, 
+           0.018667,  0.999816, -0.004482, 
+           0.233445,  0.000000,  0.972370 ]
+        jointPositions: [  ]
+        initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+        initialRootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        initialJointPositions: [  ]
+        zmp: [  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: false
+    - 
+      id: 6
+      name: "box5"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/box5Hrp.wrl"
+        currentBaseLink: "WAIST"
+        rootPosition: [  0.784900, -0.136600,  0.922000 ]
+        rootAttitude: [ 
+           0.972191, -0.019197, -0.233402, 
+           0.018667,  0.999816, -0.004482, 
+           0.233445,  0.000000,  0.972370 ]
+        jointPositions: [  ]
+        initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+        initialRootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        initialJointPositions: [  ]
+        zmp: [  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: false
+    - 
+      id: 7
+      name: "table-can"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/table-can.yaml"
+        currentBaseLink: "table-WAIST"
+        rootPosition: [  0.425000, -0.122500, -0.070000 ]
+        rootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        jointPositions: [  ]
+        initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+        initialRootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        initialJointPositions: [  ]
+        zmp: [  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: false
+    - 
+      id: 8
+      name: "table-can"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/table-can.yaml"
+        currentBaseLink: "table-WAIST"
+        rootPosition: [  0.275000, -0.872500, -0.070000 ]
+        rootAttitude: [ 
+           0.000000, -1.000000,  0.000000, 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        jointPositions: [  ]
+        initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+        initialRootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        initialJointPositions: [  ]
+        zmp: [  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: false
+    - 
+      id: 9
+      name: "110418_ELPA_Merged"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object2/110418_ELPA_lowhrp.wrl"
+        currentBaseLink: "WAIST"
+        rootPosition: [  0.620646,  0.423726,  0.232159 ]
+        rootAttitude: [ 
+           0.984898,  0.146693, -0.092018, 
+           0.170294, -0.724623,  0.667590, 
+           0.031245, -0.673332, -0.738839 ]
+        jointPositions: [  ]
+        initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+        initialRootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        initialJointPositions: [  ]
+        zmp: [  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: false
+    - 
+      id: 10
+      name: "pipe_rack"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/pipe_rackHrp.wrl"
+        currentBaseLink: "WAIST"
+        rootPosition: [  0.934900,  0.200600,  0.000000 ]
+        rootAttitude: [ 
+          -0.999816,  0.019197,  0.000000, 
+          -0.019197, -0.999816,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        jointPositions: [  ]
+        initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+        initialRootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        initialJointPositions: [  ]
+        zmp: [  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: false
+    - 
+      id: 11
+      name: "box6"
+      plugin: Body
+      class: BodyItem
+      data: 
+        modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/PickAndPlacePlanner/PRM/box6.yaml"
+        currentBaseLink: "WAIST"
+        rootPosition: [  0.275000, -0.465000,  0.740000 ]
+        rootAttitude: [ 
+           0.000000, -1.000000,  0.000000, 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        jointPositions: [  ]
+        initialRootPosition: [  0.000000,  0.000000,  0.000000 ]
+        initialRootAttitude: [ 
+           1.000000,  0.000000,  0.000000, 
+           0.000000,  1.000000,  0.000000, 
+           0.000000,  0.000000,  1.000000 ]
+        initialJointPositions: [  ]
+        zmp: [  0.000000,  0.000000,  0.000000 ]
+        selfCollisionDetection: false
+views: 
+  "Items": 
+    selected: [ 11 ]
+    checked: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+    expanded: [ 1, 2 ]
+  "Scene": 
+    mode: view
+    floorGird: true
+    collisions: true
+    shadow: false
+    floorGridSpan: 10
+    floorGridInterval: 0.5
+    hiPriorityRendering: false
+    camera: 
+      projection: perspetive
+      perspective: [ 40, 1.6094, 0.00391253, 7.98157 ]
+      ortho: [ -1, 1, -1, 1, -1, 1 ]
+      eye: [ -1.81099, -1.34287, 2.57194 ]
+      center: [ -1.00952, -1.20586, 1.98982 ]
+      up: [ 0.573795, 0.0980934, 0.813103 ]
+  "Multi Value Seq": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: false
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+  "Multi SE3 Seq": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: false
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+    visibleElements: [ 0, 1, 2 ]
+  "Links": 
+    listingMode: "link list"
+    currentBodyItem: 11
+  "Body / Link": 
+    showRotationMatrix: false
+  "Joint Sliders": 
+    showAllJoints: true
+    jointId: false
+    name: true
+    numColumns: 1
+    spinBox: true
+    slider: true
+    labelOnLeft: true
+    currentBodyItem: 11
+  "Joint Trajectories": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: false
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+  "Multi Affine3 Seq": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: false
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+    visibleElements: [ 0, 1, 2 ]
+  "Pose Roll": 
+    defaultTransitionTime: 0
+    updateAll: true
+    autoUpdate: false
+    timeSync: true
+    listingMode: "part tree"
+    timeLength: 10
+    showLipSync: false
+    gridInterval: 1
+toolbars: 
+  "TimeBar": 
+    minTime: 0
+    maxTime: 30
+    frameRate: 100
+    playbackFrameRate: 50
+    currentTime: 0
+    speedScale: 1
+  "KinematicsBar": 
+    mode: IK
+    attitude: false
+    penetrationBlock: true
+    collisionLinkHighlight: false
+    snapDistance: 0.025
+    penetrationBlockDepth: 0.0005
+    lazyCollisionDetectionMode: true
+  "BodyBar": 
+    current: 11
+    stanceWidth: 0.15
+  "GraspBar": 
+    graspRobot: 1
+    graspObject: 9
+    graspEnv: [ 11 ]
+    objTag2Item: [ -1, 9 ]
+  "BodyMotionGenerationBar": 
+    balancer: false
+    autoGeneration: false
+    timeScaleRatio: 1
+    preInitialDuration: 1
+    postFinalDuration: 1
+    onlyTimeBarRange: false
+    makeNewBodyItem: true
+    stealthyStepMode: true
+    stealthyHeightRatioThresh: 2
+    flatLiftingHeight: 0.005
+    flatLandingHeight: 0.005
+    impactReductionHeight: 0.005
+    impactReductionTime: 0.04
+    autoZmp: true
+    minZmpTransitionTime: 0.1
+    zmpCenteringTimeThresh: 0.03
+    zmpTimeMarginBeforeLiftingSpin: 0
+    allLinkPositions: false
+    lipSyncMix: false
+Base: 
+  "MovieGenerator": 
+    directory: 
+    basename: scene
+    begin: 0
+    fps: 30
+    width: 640
+    heiht: 480
+Body: 
+  "KinematicFaultChecker": 
+    checkJointPositions: true
+    angleMargin: 0
+    translationMargin: 0
+    checkJointVelocities: true
+    velocityLimitRatio: 100
+    targetJoints: all
+    checkSelfCollisions: true
+    onlyTimeBarRange: false
+  "SceneBodyManager": 
+    sceneBodies: 
+      - 
+        bodyItem: 1
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 3
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 2
+        editable: false
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 4
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 5
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 6
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 7
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 8
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 9
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 10
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 11
+        editable: true
+        centerOfMass: false
+        zmp: false

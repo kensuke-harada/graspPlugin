@@ -1,0 +1,2 @@
+#!/bin/sh
+omniidl -bpython ManipulatorCommonInterface_Common.idl ManipulatorCommonInterface_MiddleLevel.idl ManipulatorCommonInterface_DataTypes.idl

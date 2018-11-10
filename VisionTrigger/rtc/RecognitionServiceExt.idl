@@ -1,0 +1,39 @@
+/**
+ * @file RecognitionServiceExt.idl
+ * @brief interfaces for messages between an object recognizer and a grasp planner
+ */
+
+/**
+ * @interface RecognitionServiceExt
+ * @brief an interface from a planner to an object recognizer
+ */
+interface RecognitionServiceExt {
+	typedef sequence<double> DblSeq;
+
+	/**
+	 * @brief start object recognition
+	 */
+	boolean startObjectRecognition();
+
+	/**
+	 * @brief set parameters
+	 *
+	 * Refer to ConvertData.h for a parameter format.
+	 */
+	void setParameters(in DblSeq param);
+};
+
+/**
+ * @interface RecognitionServiceExt
+ * @brief an interface from an object recognizer to a planner
+ */
+interface RecognitionResultServiceExt {
+	typedef sequence<double> DblSeqResult;
+
+	/**
+	 * @brief set results expect for object recogniton.
+	 *
+	 * Refer to ConvertData.h for a result format.
+	 */
+	void setEnvResults(in DblSeqResult res);
+};

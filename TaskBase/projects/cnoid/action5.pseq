@@ -1,0 +1,126 @@
+# Body pose sequence format version 1.0 defined by cnoid-Robotics
+
+type: PoseSeq
+name: "action5"
+targetBody: "GEABDM2_0-40-20"
+refs: 
+  - 
+    time: 25
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0137857769, -0.279551168, 0.00170786122 ]
+          rotation: [ 
+            -1.73800926e-15, 9.00247151e-47, -1, 
+            8.90766633e-32, 1, -8.20787804e-41, 
+            1, -8.90766633e-32, -1.73800926e-15 ]
+  - 
+    time: 26
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0137857769, -0.279551168, 0.150016704 ]
+          rotation: [ 
+            -1.73800926e-15, 9.00247151e-47, -1, 
+            8.90766633e-32, 1, -8.20787804e-41, 
+            1, -8.90766633e-32, -1.73800926e-15 ]
+  - 
+    time: 27
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0137857769, 0.0989723391, 0.150016704 ]
+          rotation: [ 
+            -1.73800926e-15, 9.00247151e-47, -1, 
+            8.90766633e-32, 1, -8.20787804e-41, 
+            1, -8.90766633e-32, -1.73800926e-15 ]
+  - 
+    time: 28
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0498093119, 0.10438005, 0.150016704 ]
+          rotation: [ 
+            -1.73800926e-15, 9.00247151e-47, -1, 
+            8.90766633e-32, 1, -8.20787804e-41, 
+            1, -8.90766633e-32, -1.73800926e-15 ]
+  - 
+    time: 29
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0498093119, 0.10438005, 0.093193123 ]
+          rotation: [ 
+            -1.73800926e-15, 9.00247151e-47, -1, 
+            8.90766633e-32, 1, -8.20787804e-41, 
+            1, -8.90766633e-32, -1.73800926e-15 ]
+  - 
+    time: 30
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0498093119, 0.10438005, 0.093193123 ]
+          rotation: [ 
+            -1.73800926e-15, 0.0982070495, -0.995166004, 
+            8.62816615e-32, 0.995166004, 0.0982070495, 
+            1, 1.70684761e-16, -1.72960773e-15 ]
+  - 
+    time: 31
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0498093119, 0.10438005, 0.0674595221 ]
+          rotation: [ 
+            -1.73800926e-15, 0.0778725124, -0.996963325, 
+            8.62816615e-32, 0.996963325, 0.0778725124, 
+            1, 1.35343147e-16, -1.73273149e-15 ]
+  - 
+    time: 32
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0498093119, 0.10438005, 0.046537364 ]
+          rotation: [ 
+            -1.73800926e-15, 0.0778725124, -0.996963325, 
+            8.62816615e-32, 0.996963325, 0.0778725124, 
+            1, 1.35343147e-16, -1.73273149e-15 ]

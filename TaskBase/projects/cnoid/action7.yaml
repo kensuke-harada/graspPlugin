@@ -1,0 +1,91 @@
+# Assembly action data format version 0.1
+
+mainItem: FXAC15-15-F22-MA12_2
+subItem: SLW12_2
+durationTime: 4
+sequence: 
+  - 
+    time: 0
+    pose: 
+      translation: [ -0.0066997836, -0.201475158, 0.0831762119 ]
+      rotation: [ 
+        -1, -3.46914204e-32, -2.22044605e-16, 
+        -3.46914204e-32, 1, 0, 
+        2.22044605e-16, -2.12423685e-48, -1 ]
+    subObject: 
+      prehension: 
+        type: prehension
+        handFrame: 
+          translation: [ -0.1, 0, 0 ]
+          rotation: [ 
+            -1, 0, 0, 
+            0, 0.965926, 0.258819, 
+            0, 0.258819, -0.965926 ]
+  - 
+    time: 1
+    pose: 
+      translation: [ 0.093811082, -0.201475158, 0.0831762119 ]
+      rotation: [ 
+        -1, -3.46914204e-32, -2.22044605e-16, 
+        -3.46914204e-32, 1, 0, 
+        2.22044605e-16, -2.12423685e-48, -1 ]
+    subObject: 
+      prehension: 
+        type: prehension
+        handFrame: 
+          translation: [ -0.1, 0, 0 ]
+          rotation: [ 
+            -1, 0, 0, 
+            0, 0.965926, 0.258819, 
+            0, 0.258819, -0.965926 ]
+  - 
+    time: 2
+    pose: 
+      translation: [ 0.093811082, 0.00242197992, 0.0831762119 ]
+      rotation: [ 
+        -1, -3.46914204e-32, -2.22044605e-16, 
+        -3.46914204e-32, 1, 0, 
+        2.22044605e-16, -2.12423685e-48, -1 ]
+    subObject: 
+      prehension: 
+        type: prehension
+        handFrame: 
+          translation: [ -0.1, 0, 0 ]
+          rotation: [ 
+            -1, 0, 0, 
+            0, 0.965926, 0.258819, 
+            0, 0.258819, -0.965926 ]
+  - 
+    time: 3
+    pose: 
+      translation: [ 0.093811082, -2.56289631e-05, -0.000100003041 ]
+      rotation: [ 
+        -1, -3.46914204e-32, -2.22044605e-16, 
+        -3.46914204e-32, 1, 0, 
+        2.22044605e-16, -2.12423685e-48, -1 ]
+    subObject: 
+      prehension: 
+        type: prehension
+        handFrame: 
+          translation: [ -0.1, 0, 0 ]
+          rotation: [ 
+            -1, 0, 0, 
+            0, 0.965926, 0.258819, 
+            0, 0.258819, -0.965926 ]
+  - 
+    time: 4
+    pose: 
+      translation: [ 0.0564784368, -2.56289631e-05, -0.000100003041 ]
+      rotation: [ 
+        -1, -3.46914204e-32, -2.22044605e-16, 
+        -3.46914204e-32, 1, 0, 
+        2.22044605e-16, -2.12423685e-48, -1 ]
+    subObject: 
+      prehension: 
+        type: prehension
+        handFrame: 
+          translation: [ -0.1, 0, 0 ]
+          rotation: [ 
+            -1, 0, 0, 
+            0, 0.965926, 0.258819, 
+            0, 0.258819, -0.965926 ]

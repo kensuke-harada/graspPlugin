@@ -1,0 +1,128 @@
+#VRML V2.0 utf8
+
+Transform {
+  children  Shape {
+    appearance Appearance {
+		  material DEF MA_Material Material {
+			  diffuseColor 0.4 0.4 0.4
+			  ambientIntensity 0.1666667
+  			specularColor 0.4012008 0.4012008 0.4012008
+	  		emissiveColor  0.0 0.0 0.0
+		  	shininess 0.0976563
+  			transparency 0.0
+	  	}
+	  }
+    geometry  Box {
+      size 0.04 0.04 1.50
+    }
+  }
+  translation 0.02 0.02 0.75
+}
+
+Transform {
+  children  Shape {
+    appearance Appearance {
+		  material USE MA_Material
+    }
+	  geometry  Box {
+      size 0.04 0.04 1.50
+    }
+  }
+  translation 0.02 0.77 0.75
+}
+
+Transform {
+  children  Shape {
+    appearance Appearance {
+		  material USE MA_Material
+    }
+	  geometry  Box {
+      size 0.04 1.22 0.04
+    }
+  }
+  translation 0.06 0.61 0.92
+}
+
+Transform {
+  children  Shape {
+    appearance Appearance {
+		  material USE MA_Material
+    }
+	  geometry  Box {
+      size 0.04 1.22 0.04
+    }
+  }
+  translation 0.06 0.61 1.30
+}
+
+Transform {
+  children  Shape {
+    appearance Appearance {
+		  material USE MA_Material
+    }
+	  geometry  Box {
+      size 0.34 0.04 0.04
+    }
+  }
+  translation 0.21 0.02 1.44
+}
+
+Transform {
+  children  Shape {
+    appearance Appearance {
+		  material USE MA_Material
+    }
+	  geometry  Box {
+      size 0.34 0.04 0.04
+    }
+  }
+  translation 0.21 0.77 1.44
+}
+
+Transform {
+  children  Shape {
+    appearance Appearance {
+		  material USE MA_Material
+    }
+	  geometry  Box {
+      size 0.04 0.04 0.72
+    }
+  }
+  translation 0.40 0.02 1.10
+}
+
+Transform {
+  children  Shape {
+    appearance Appearance {
+		  material USE MA_Material
+    }
+	  geometry  Box {
+      size 0.04 0.04 0.72
+    }
+  }
+  translation 0.40 0.77 1.10
+}
+
+Transform {
+  children  Shape {
+    appearance Appearance {
+		  material USE MA_Material
+    }
+	  geometry  Box {
+      size 0.04 1.22 0.04
+    }
+  }
+  translation 0.36 0.61 1.25
+}
+
+Transform {
+  children  Shape {
+    appearance Appearance {
+		  material USE MA_Material
+    }
+	  geometry  Box {
+      size 0.04 1.22 0.04
+    }
+  }
+  translation 0.36 0.61 0.87
+}

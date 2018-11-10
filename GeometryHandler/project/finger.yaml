@@ -1,0 +1,12 @@
+GrasplotPluginDir: ./   
+
+modelFile: fingerHrp.wrl
+
+graspPluginSetting: 
+  base: WAIST
+  palm: WAIST
+  fingerEnds: []
+  prehensionList: []
+  armStandardPose: []
+  GrasplotPluginDir: ./
+  pythonInterface: robotInterface.py

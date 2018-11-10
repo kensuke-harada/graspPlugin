@@ -1,0 +1,15 @@
+modelFile: ../../Samples/Object/holeHrp.wrl
+
+EnvCluster:
+  -
+    id: [ 19 ]
+    area: [ 0.006 ]
+    outer_normal: [ 1.28018e-17, 5.77067e-17, 1 ]
+    tangent_vector: [ 1, 0, 0 ]
+    convexhull: [ 0.04, 0.04, 0.005, -0.04, 0.04, 0.005, -0.04, -0.04, 0.005, 0.04, -0.04, 0.005 ]
+    boundaryList: [ 4, 4 ]
+    boundary: [ 0.04, -0.04, 0.005, 0.04, 0.04, 0.005, -0.04, 0.04, 0.005, -0.04, -0.04, 0.005, 0.01, 0.01, 0.005, 0.01, -0.01, 0.005, -0.01, -0.01, 0.005, -0.01, 0.01, 0.005 ]
+    convexity: [ 1 ]
+    bounding_box_edge: [ 0.08, 0.0848345, 5.64068e-18 ]
+    bounding_box_center: [ 1.56117e-18, 0, 0.005 ]
+    is_putting_cluster: [ 1 ]

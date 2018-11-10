@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rtc:RtcProfile rtc:version="0.2" rtc:id="RTC:AIST:Category:PortDuplicator:1.0.0" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="PortDuplicator" rtc:updateDate="2014-07-03T15:48:44.641+09:00" rtc:creationDate="2014-07-03T15:48:44.641+09:00" rtc:version="1.0.0" rtc:vendor="AIST" rtc:maxInstances="0" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="0.0" rtc:description="Duplicate service port" rtc:category="Category" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="STATIC" rtc:name="PortDuplicator">
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+    </rtc:BasicInfo>
+    <rtc:Actions>
+        <rtc:OnInitialize xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
+        <rtc:OnFinalize xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnStartup xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnShutdown xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnActivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnDeactivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnAborting xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnError xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnReset xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnExecute xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnStateUpdate xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnRateChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnAction xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnModeChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+    </rtc:Actions>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="LEFT" rtc:name="HiroNX">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="HiroNX" rtc:idlFile="/home/ohchi/workspace/HIRO/PortDuplicator/HiroNX.idl" rtc:instanceName="" rtc:direction="Provided" rtc:name="manipulator"/>
+    </rtc:ServicePorts>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="LEFT" rtc:name="HIRO">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="CommonCommands" rtc:idlFile="/home/ohchi/workspace/HIRO/PortDuplicator/HIROController.idl" rtc:instanceName="" rtc:direction="Provided" rtc:name="common"/>
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="MotionCommands" rtc:idlFile="/home/ohchi/workspace/HIRO/PortDuplicator/HIROController.idl" rtc:instanceName="" rtc:direction="Provided" rtc:name="motion"/>
+    </rtc:ServicePorts>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="RIGHT" rtc:name="HiroNX0">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="HiroNX" rtc:idlFile="/home/ohchi/workspace/HIRO/PortDuplicator/HiroNX.idl" rtc:instanceName="" rtc:direction="Required" rtc:name="HiroNX0"/>
+    </rtc:ServicePorts>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="RIGHT" rtc:name="HIRO0">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="CommonCommands" rtc:idlFile="/home/ohchi/workspace/HIRO/PortDuplicator/HIROController.idl" rtc:instanceName="" rtc:direction="Required" rtc:name="common0"/>
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="MotionCommands" rtc:idlFile="/home/ohchi/workspace/HIRO/PortDuplicator/HIROController.idl" rtc:instanceName="" rtc:direction="Required" rtc:name="motion0"/>
+    </rtc:ServicePorts>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="RIGHT" rtc:name="HiroNX1">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="HiroNX" rtc:idlFile="/home/ohchi/workspace/HIRO/PortDuplicator/HiroNX.idl" rtc:instanceName="" rtc:direction="Required" rtc:name="HiroNX1"/>
+    </rtc:ServicePorts>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="RIGHT" rtc:name="HIRO1">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="CommonCommands" rtc:idlFile="/home/ohchi/workspace/HIRO/PortDuplicator/HIROController.idl" rtc:instanceName="" rtc:direction="Required" rtc:name="common1"/>
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="MotionCommands" rtc:idlFile="/home/ohchi/workspace/HIRO/PortDuplicator/HIROController.idl" rtc:instanceName="" rtc:direction="Required" rtc:name="motion1"/>
+    </rtc:ServicePorts>
+    <rtc:Language xsi:type="rtcExt:language_ext" rtc:kind="Python"/>
+</rtc:RtcProfile>

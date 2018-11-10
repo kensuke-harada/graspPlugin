@@ -1,0 +1,81 @@
+# Body pose sequence format version 1.0 defined by cnoid-Robotics
+
+type: PoseSeq
+name: "action6"
+targetBody: "SLW12_1"
+refs: 
+  - 
+    time: 32
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.134019881, -0.157457074, -4.77048956e-17 ]
+          rotation: [ 
+            -8.88178415e-16, 4.45383317e-32, 1, 
+            -6.123234e-17, 1, -9.89235748e-32, 
+            -1, -6.123234e-17, -8.88178415e-16 ]
+  - 
+    time: 33
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.134019881, -0.157457074, 0.0969527635 ]
+          rotation: [ 
+            -8.88178415e-16, 4.45383317e-32, 1, 
+            -6.123234e-17, 1, -9.89235748e-32, 
+            -1, -6.123234e-17, -8.88178415e-16 ]
+  - 
+    time: 34
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.134019881, 0.034469782, 0.0969527635 ]
+          rotation: [ 
+            -8.88178415e-16, 4.45383317e-32, 1, 
+            -6.123234e-17, 1, -9.89235748e-32, 
+            -1, -6.123234e-17, -8.88178415e-16 ]
+  - 
+    time: 35
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0499421502, 0.0348062767, 0.098028907 ]
+          rotation: [ 
+            -8.88178415e-16, 4.45383317e-32, 1, 
+            -6.123234e-17, 1, -9.89235748e-32, 
+            -1, -6.123234e-17, -8.88178415e-16 ]
+  - 
+    time: 36
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0499630371, 0.0347909464, 0.0631418235 ]
+          rotation: [ 
+            -8.88178415e-16, 4.45383317e-32, 1, 
+            -6.123234e-17, 1, -9.89235748e-32, 
+            -1, -6.123234e-17, -8.88178415e-16 ]

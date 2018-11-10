@@ -1,0 +1,102 @@
+
+/*
+Manipulator Common Interface (Middle Level Commands)
+	- This IDL is used as service port on RTC
+    - This command specification is provided by Intelligent RT Software
+		Project of NEDO. 
+rev. 20100318
+*/
+
+#ifndef MANIPULATORCOMMONINTERFACE_MIDDLE_IDL
+#define MANIPULATORCOMMONINTERFACE_MIDDLE_IDL
+
+#include "ManipulatorCommonInterface_DataTypes.idl"
+
+module RTC
+{
+
+  typedef double HgMatrix [3][4];
+
+  struct CarPosWithElbow {
+    HgMatrix carPos;
+    double   elbow;
+    ULONG    structFlag;
+  };
+
+  struct CartesianSpeed {
+    double translation;
+    double rotation;
+  };
+
+};
+
+interface ManipulatorCommonInterface_Middle
+{
+
+  RTC::RETURN_ID closeGripper();
+
+  RTC::RETURN_ID getBaseOffset(out RTC::HgMatrix offset);
+
+  RTC::RETURN_ID getFeedbackPosCartesian(out RTC::CarPosWithElbow pos);
+
+  RTC::RETURN_ID getMaxSpeedCartesian(out RTC::CartesianSpeed speed);
+
+  RTC::RETURN_ID getMaxSpeedJoint(out RTC::DoubleSeq speed);
+
+  RTC::RETURN_ID getMinAccelTimeCartesian(out double aclTime);
+
+  RTC::RETURN_ID getMinAccelTimeJoint(out double aclTime);
+
+  RTC::RETURN_ID getSoftLimitCartesian(out RTC::LimitValue xLimit,
+																		 out RTC::LimitValue yLimit,
+                                     out RTC::LimitValue zLimit );
+
+  RTC::RETURN_ID moveGripper(in RTC::ULONG angleRatio);
+
+  RTC::RETURN_ID moveLinearCartesianAbs(in RTC::CarPosWithElbow carPoint);
+
+  RTC::RETURN_ID moveLinearCartesianRel(in RTC::CarPosWithElbow carPoint);
+
+  RTC::RETURN_ID movePTPCartesianAbs(in RTC::CarPosWithElbow carPoint);
+
+  RTC::RETURN_ID movePTPCartesianRel(in RTC::CarPosWithElbow carPoint);
+
+  RTC::RETURN_ID movePTPJointAbs(in RTC::JointPos jointPoints);
+
+  RTC::RETURN_ID movePTPJointRel(in RTC::JointPos jointPoints);
+
+  RTC::RETURN_ID openGripper();
+
+  RTC::RETURN_ID pause();
+  
+  RTC::RETURN_ID resume();
+  
+  RTC::RETURN_ID stop();
+
+  RTC::RETURN_ID setAccelTimeCartesian(in double aclTime);
+
+  RTC::RETURN_ID setAccelTimeJoint(in double aclTime);
+
+  RTC::RETURN_ID setBaseOffset(in RTC::HgMatrix offset);
+
+  RTC::RETURN_ID setControlPointOffset(in RTC::HgMatrix offset);
+
+  RTC::RETURN_ID setMaxSpeedCartesian(in RTC::CartesianSpeed speed);
+
+  RTC::RETURN_ID setMaxSpeedJoint(in RTC::DoubleSeq speed);
+
+  RTC::RETURN_ID setMinAccelTimeCartesian(in double aclTime);
+
+  RTC::RETURN_ID setMinAccelTimeJoint(in double aclTime);
+
+  RTC::RETURN_ID setSoftLimitCartesian(in RTC::LimitValue xLimit, 
+																			in RTC::LimitValue yLimit,
+                                     	in RTC::LimitValue zLimit);
+
+  RTC::RETURN_ID setSpeedCartesian(in RTC::ULONG spdRatio);
+
+  RTC::RETURN_ID setSpeedJoint(in RTC::ULONG spdRatio);
+
+};
+
+#endif // MANIPULATORCOMMONINTERFACE_MIDDLE_IDL

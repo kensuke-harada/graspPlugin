@@ -1,0 +1,42 @@
+
+
+interface GraspPlanStart {
+        typedef sequence<double, 3> DblSequence3;
+        typedef sequence<double, 9> DblSequence9;
+  
+
+    void GraspPlanningStart(	in unsigned long ObjId,
+				in DblSequence3 objPos,
+				in DblSequence9 objOri,
+				out unsigned long state);
+	
+    void ReleasePlanningStart(in unsigned long ObjId,
+				in DblSequence3 objPos,
+				in DblSequence9 objOri,
+				out unsigned long state);
+	
+};
+	  
+interface GraspPlanResult {
+        typedef sequence<double, 3> DblSequence3;
+        typedef sequence<double, 9> DblSequence9;
+	
+	void GraspPlanningResult(in DblSequence3 GraspPos,
+				in DblSequence9 GraspOri,
+				in DblSequence3 ApproachPos,
+				in DblSequence9 ApproachOri,
+				in double angle,
+				in unsigned long state,
+				out unsigned long isContinue );
+
+	
+	void ReleasePlanningResult(in DblSequence3 GraspPos,
+				in DblSequence9 GraspOri,
+				in DblSequence3 ApproachPos,
+				in DblSequence9 ApproachOri,
+				in double angle,
+				in unsigned long state,
+				out unsigned long isContinue );
+
+};
+

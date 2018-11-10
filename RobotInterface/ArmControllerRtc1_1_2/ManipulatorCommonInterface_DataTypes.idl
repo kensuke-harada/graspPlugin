@@ -1,0 +1,41 @@
+
+/*
+Manipulator Common Interface (Data type defenition)
+	- This IDL is used as service port on RTC
+    - This command specification is provided by Intelligent RT Software
+		Project of NEDO. 
+rev. 20100502
+*/
+
+#ifndef MANIPULATORCOMMONINTERFACE_DATATYPES_IDL
+#define MANIPULATORCOMMONINTERFACE_DATATYPES_IDL
+
+#include "BasicDataType.idl"
+
+module RTC
+{
+
+  typedef sequence<double> DoubleSeq;
+
+  typedef sequence<double> JointPos;
+
+  struct LimitValue {
+    double upper;
+    double lower;
+  };
+
+  struct RETURN_ID
+  {
+    long id;                                  /**< エラーID                               */    string comment;                           /**< エラーコト                         */
+  };
+
+  struct TimedJointPos {
+	  Time tm;
+	  JointPos pos;
+  };
+
+  typedef unsigned long ULONG;
+
+};
+
+#endif // MANIPULATORCOMMONINTERFACE_DATATYPES_IDL

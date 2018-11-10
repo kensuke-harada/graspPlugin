@@ -1,0 +1,102 @@
+if(ENABLE_INSTALL_RPATH)
+  set(CMAKE_INSTALL_RPATH "$ORIGIN/..")
+endif()
+
+set(GRASP_PLUGINS "Grasp" CACHE STRING
+  "Sub-directories containing plugins to compile in the each directory")
+
+if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
+  add_definitions(-DCNOID_10_11)
+endif()
+
+if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1 OR CNOID_VERSION EQUAL 1.2  OR CNOID_VERSION EQUAL 1.3 )
+  add_definitions(-DCNOID_10_11_12_13)
+elseif(CNOID_VERSION EQUAL 1.4)
+  add_definitions(-DCNOID_14)
+elseif(CNOID_VERSION EQUAL 1.5)
+  add_definitions(-DCNOID_15)
+	add_definitions(-DCNOID_GE_15)
+elseif(CNOID_VERSION VERSION_EQUAL 1.6)
+	add_definitions(-DCNOID_16)
+	add_definitions(-DCNOID_GE_16)
+endif()
+
+if(CNOID_VERSION VERSION_GREATER 1.5)
+	add_definitions(-DCNOID_GE_15)
+endif()
+
+if(CNOID_VERSION VERSION_GREATER 1.6)
+	add_definitions(-DCNOID_GE_16)
+endif()
+
+
+  option(ROUGH_CLEARANCE_ON "ROUGH CLEARANCE MODE" OFF)
+  if(ROUGH_CLEARANCE_ON)
+    add_definitions(-DROUGH_CLEARANCE)
+  endif()
+
+
+if(MSVC)
+  list(FIND GRASP_PLUGINS Grasp has_grasp)
+  if(${has_grasp} GREATER -1)
+    # Qhull
+    set(QHULL_DIR ${QHULL_DIR} CACHE PATH "set the direcotry of qhull")
+    if(NOT QHULL_DIR)
+      message(FATAL_ERROR "Please specify the Qhull top directory to QHULL_DIR.")
+    else()
+      set(QHULL__INCLUDE_DIR ${QHULL_DIR}/include)
+      set(QHULL__LIBRARY_DIR ${QHULL_DIR}/lib)
+      set(QHULL__BINARY_DIR ${QHULL_DIR}/bin)
+	  if(EXISTS "${QHULL__LIBRARY_DIR}/qhull6.lib")
+	    set(QHULL__LIBRARY_RELEASE qhull6)
+	    set(QHULL__LIBRARY_DEBUG qhull_d)
+	  else()
+	    set(QHULL__LIBRARY_RELEASE qhull_p)
+	    if(EXISTS "${QHULL__LIBRARY_DIR}/qhull_p_d.lib")
+	      set(QHULL__LIBRARY_DEBUG qhull_p_d)
+	    else()
+	      set(QHULL__LIBRARY_DEBUG qhull_p)
+	    endif()
+	  endif()
+	  include(SelectLibraryConfigurations)
+	  select_library_configurations(QHULL_)
+    endif()
+    include_directories(${QHULL__INCLUDE_DIR})
+    link_directories(${QHULL__LIBRARY_DIR})
+    install_external_libraries(${QHULL__BINARY_DIR} ${QHULL__LIBRARY_DIR} ${QHULL__LIBRARY})
+
+	# FreeGlut
+    set(FREEGLUT_DIR ${FREEGLUT_DIR} CACHE PATH "set the directory of freeglut")
+    if (NOT FREEGLUT_DIR)
+      message(FATAL_ERROR "Please specify the freeglut to directory to FREEGLUT_DIR.")
+    else()
+     set(FREEGLUT_INCLUDE_DIR ${FREEGLUT_DIR}/include)
+     set(FREEGLUT_LIBRARY_DIR ${FREEGLUT_DIR}/lib)
+     set(FREEGLUT_LIBRARY_RELEASE freeglut)
+     set(FREEGLUT_LIBRARY_DEBUG freeglutd)
+     set(FREEGLUT_BINARY_DIR ${FREEGLUT_DIR}/bin)
+     include(SelectLibraryConfigurations)
+     select_library_configurations(FREEGLUT)
+    endif()
+    include_directories(${FREEGLUT_INCLUDE_DIR})
+    link_directories(${FREEGLUT_LIBRARY_DIR})
+    install_external_libraries(${FREEGLUT_BINARY_DIR} ${FREEGLUT_LIBRARY_DIR} ${FREEGLUT_LIBRARY})
+  endif()
+  
+
+  link_directories(${PYTHON_LIBRARY})
+
+  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /fp:precise")
+endif()
+
+if(USE_QT5)
+	unset(QT_QMAKE_EXECUTABLE CACHE)
+endif()
+
+foreach(subdirectory ${GRASP_PLUGINS})
+  add_subdirectory(${subdirectory})
+endforeach()
+
+add_subdirectory(RobotModels)
+
+

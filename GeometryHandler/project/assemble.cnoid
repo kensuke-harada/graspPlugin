@@ -1,0 +1,287 @@
+items: 
+  id: 0
+  name: "Root"
+  plugin: Base
+  class: RootItem
+  children: 
+    - 
+      id: 1
+      name: "World"
+      plugin: Body
+      class: WorldItem
+      data: 
+        collisionDetection: false
+      children: 
+        - 
+          id: 2
+          name: "Frontcase"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/camera/FrontcaseHrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.000000,  0.000000,  0.000000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 3
+          name: "RearcaseA"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/camera/RearcaseCutAHrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.008714,  0.146333,  0.000187 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 4
+          name: "RearcaseB1"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/camera/RearcaseCutB1Hrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [ -0.045442,  0.223493,  0.027966 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 5
+          name: "RearcaseB2"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/camera/RearcaseCutB2Hrp.wrl"
+            currentBaseLink: "WAIST"
+            rootPosition: [  0.014217,  0.221464,  0.022843 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+        - 
+          id: 6
+          name: "sphere"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object/sphere.wrl"
+            currentBaseLink: "root"
+            rootPosition: [  0.000000,  0.000000,  0.000000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            selfCollisionDetection: true
+views: 
+  "Items": 
+    selected: [ 1 ]
+    checked: [ 2, 3, 4, 5, 6 ]
+    expanded: [ "1" ]
+  "Scene": 
+    mode: edit
+    floorGrid: true
+    shadow: false
+    collisions: true
+    hiPriorityRendering: false
+    camera: 
+      projection: perspetive
+      perspective: [ 40, 0.943299, 0.00616735, 12.5814 ]
+      ortho: [ -1, 1, -1, 1, -1, 1 ]
+      eye: [ 0.23053, -0.228649, 0.274674 ]
+      center: [ -0.237923, 0.495103, -0.232016 ]
+      up: [ -0.275319, 0.425364, 0.862128 ]
+  "Links": 
+    listingMode: "link list"
+    currentBodyItem: 6
+    bodyItems: 
+      - 
+        id: 4
+        selectedLinks: [ 0 ]
+      - 
+        id: 2
+        selectedLinks: [ 0 ]
+      - 
+        id: 5
+        selectedLinks: [ 0 ]
+  "Body / Link": 
+    showRotationMatrix: false
+  "Joint Sliders": 
+    showAllJoints: false
+    jointId: false
+    name: true
+    numColumns: 1
+    spinBox: true
+    slider: true
+    labelOnLeft: true
+    currentBodyItem: 6
+  "Multi Value Seq": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: true
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+  "Multi Affine3 Seq": 
+    mode: view
+    editMode: freeLine
+    original: true
+    velocity: false
+    acceleration: false
+    limits: true
+    grid: true
+    gridWidth: 0.2
+    gridHeight: 0.2
+    lineWidth: 1
+    rulers: true
+    sync: true
+    controlPointStep: 1
+    controlPointOffset: 0
+    controlPointHeighlight: false
+    scrollMode: continuous
+    lower: -10
+    upper: 10
+    visibleElements: [ 0, 1, 2 ]
+  "Media": 
+    keepAspectRatio: true
+    keepOriginalSize: true
+  "Pose Seq": 
+    defaultTransitionTime: 0
+    updateAll: true
+    autoUpdate: false
+    timeSync: true
+    listingMode: "part tree"
+    mode: normal
+    splitMode: vertical
+    splitPosition: 262
+  "Pose Roll": 
+    defaultTransitionTime: 0
+    updateAll: true
+    autoUpdate: false
+    timeSync: true
+    listingMode: "part tree"
+    timeLength: 10
+    showLipSync: false
+    gridInterval: 1
+toolbars: 
+  "TimeBar": 
+    minTime: 0
+    maxTime: 30
+    frameRate: 100
+    currentTime: 0
+  "BodyBar": 
+    current: 6
+    stanceWidth: 0.15
+  "KinematicsBar": 
+    mode: IK
+    attitude: false
+    penetrationBlock: true
+    footSnap: true
+    collisionLinkHighlight: false
+    snapDistance: 0.025
+    penetrationBlockDepth: 0.0005
+    lazyCollisionDetectionMode: true
+  "BodyMotionGenerationBar": 
+    balancer: false
+    autoGeneration: false
+    timeScaleRatio: 1
+    preInitialDuration: 1
+    postFinalDuration: 1
+    onlyTimeBarRange: false
+    makeNewBodyItem: true
+    timeToStartBalancer: 0
+    balancerIterations: 2
+    plainBalancerMode: false
+    boundaryConditionType: position
+    boundarySmootherType: quintic
+    boundarySmootherTime: 0.5
+    boundaryCmAdjustment: false
+    boundaryCmAdjustmentTime: 1
+    gravity: 9.8
+    dynamicsTimeRatio: 1
+    stealthyStepMode: true
+    stealthyHeightRatioThresh: 2
+    flatLiftingHeight: 0.005
+    flatLandingHeight: 0.005
+    impactReductionHeight: 0.005
+    impactReductionTime: 0.04
+    autoZmp: true
+    minZmpTransitionTime: 0.1
+    zmpCenteringTimeThresh: 0.03
+    zmpTimeMarginBeforeLiftingSpin: 0
+    allLinkPositions: false
+    lipSyncMix: false
+  "GraspBar": 
+    graspObject: 2
+Base: 
+  "MovieGenerator": 
+    folder: 
+    basename: scene
+    begin: 0
+    fps: 30
+    width: 640
+    heiht: 480
+Body: 
+  "KinematicFaultChecker": 
+    checkJointPositions: true
+    angleMargin: 0
+    translationMargin: 0
+    checkJointVelocities: true
+    velocityLimitRatio: 100
+    targetJoints: all
+    checkSelfCollisions: true
+    onlyTimeBarRange: false
+  "SceneBodyManager": 
+    sceneBodies: 
+      - 
+        bodyItem: 4
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 2
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 5
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 3
+        editable: true
+        centerOfMass: false
+        zmp: false
+      - 
+        bodyItem: 6
+        editable: true
+        centerOfMass: false
+        zmp: false
+currentFileDialogDirectory: "${PROGRAM_TOP}/extplugin/graspPlugin/Samples/Object"

@@ -1,0 +1,81 @@
+# Body pose sequence format version 1.0 defined by cnoid-Robotics
+
+type: PoseSeq
+name: "action2"
+targetBody: "NCLC15-25-11_0_1"
+refs: 
+  - 
+    time: 12
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.117371481, -0.230508266, -0.00045383503 ]
+          rotation: [ 
+            1, -7.27366155e-16, -1.54264623e-30, 
+            -4.47234871e-40, 2.12086612e-15, -1, 
+            7.27366155e-16, 1, 2.12086612e-15 ]
+  - 
+    time: 13
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.117371481, -0.230508266, 0.0966825459 ]
+          rotation: [ 
+            1, -7.27366155e-16, -1.54264623e-30, 
+            -4.47234871e-40, 2.12086612e-15, -1, 
+            7.27366155e-16, 1, 2.12086612e-15 ]
+  - 
+    time: 14
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.117371481, 0.0337980254, 0.0966825459 ]
+          rotation: [ 
+            1, -7.27366155e-16, -1.54264623e-30, 
+            -4.47234871e-40, 2.12086612e-15, -1, 
+            7.27366155e-16, 1, 2.12086612e-15 ]
+  - 
+    time: 15
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0502547715, 0.0350209412, 0.0966825459 ]
+          rotation: [ 
+            1, -7.27366155e-16, -1.54264623e-30, 
+            -4.47234871e-40, 2.12086612e-15, -1, 
+            7.27366155e-16, 1, 2.12086612e-15 ]
+  - 
+    time: 16
+    refer: 
+      type: Pose
+      name: ""
+      ikLinks: 
+        - 
+          name: WAIST
+          index: 0
+          isBaseLink: true
+          translation: [ -0.0502547715, 0.0350209412, 0.0398995117 ]
+          rotation: [ 
+            1, -7.27366155e-16, -1.54264623e-30, 
+            -4.47234871e-40, 2.12086612e-15, -1, 
+            7.27366155e-16, 1, 2.12086612e-15 ]

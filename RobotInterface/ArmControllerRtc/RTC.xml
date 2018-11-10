@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rtc:RtcProfile rtc:version="0.2" rtc:id="RTC:AIST:VMRG:ArmController:1.1.0" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="ArmControllerRtc" rtc:updateDate="2011-10-20T14:34:43.029+09:00" rtc:creationDate="2011-10-05T13:33:33.217+09:00" rtc:version="1.1.0" rtc:vendor="AIST" rtc:maxInstances="1" rtc:executionType="ExtTrigExecutionContext" rtc:executionRate="1.0" rtc:description="The controller of the single/dual arm from Choreonoid" rtc:category="VMRG" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="STATIC" rtc:name="ArmController">
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+    </rtc:BasicInfo>
+    <rtc:Actions>
+        <rtc:OnInitialize xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
+        <rtc:OnFinalize xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnStartup xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnShutdown xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnActivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnDeactivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnAborting xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnError xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnReset xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnExecute xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnStateUpdate xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnRateChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnAction xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnModeChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+    </rtc:Actions>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="LEFT" rtc:name="HiroNX">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="HiroNX" rtc:idlFile="/home/asahi/workspace/choreonoid-1.1.0/extplugin/graspPlugin/RobotInterface/ArmControllerRtc/HiroNX.idl" rtc:instanceName="" rtc:direction="Required" rtc:name="manipulator"/>
+    </rtc:ServicePorts>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="LEFT" rtc:name="HIRO">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="CommonCommands" rtc:idlFile="/home/asahi/workspace/choreonoid-1.1.0/extplugin/graspPlugin/RobotInterface/ArmControllerRtc/HIROController.idl" rtc:instanceName="" rtc:direction="Required" rtc:name="common"/>
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="" rtc:type="MotionCommands" rtc:idlFile="/home/asahi/workspace/choreonoid-1.1.0/extplugin/graspPlugin/RobotInterface/ArmControllerRtc/HIROController.idl" rtc:instanceName="" rtc:direction="Required" rtc:name="motion"/>
+    </rtc:ServicePorts>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="LEFT" rtc:name="Manipulator">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="/home/asahi/workspace/choreonoid-1.1.0/extplugin/graspPlugin/RobotInterface/ArmControllerRtc" rtc:type="ManipulatorCommonInterface_Common" rtc:idlFile="/home/asahi/workspace/choreonoid-1.1.0/extplugin/graspPlugin/RobotInterface/ArmControllerRtc/ManipulatorCommonInterface_Common.idl" rtc:instanceName="" rtc:direction="Required" rtc:name="manipulator_common"/>
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="" rtc:path="/home/asahi/workspace/choreonoid-1.1.0/extplugin/graspPlugin/RobotInterface/ArmControllerRtc/" rtc:type="ManipulatorCommonInterface_Middle" rtc:idlFile="/home/asahi/workspace/choreonoid-1.1.0/extplugin/graspPlugin/RobotInterface/ArmControllerRtc/ManipulatorCommonInterface_MiddleLevel.idl" rtc:instanceName="" rtc:direction="Required" rtc:name="manipulator_motion"/>
+    </rtc:ServicePorts>
+    <rtc:Language xsi:type="rtcExt:language_ext" rtc:kind="C++"/>
+</rtc:RtcProfile>

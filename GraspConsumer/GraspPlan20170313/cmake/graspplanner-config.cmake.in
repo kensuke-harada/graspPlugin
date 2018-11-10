@@ -1,0 +1,54 @@
+# GraspPlanner CMake config file
+#
+# This file sets the following variables:
+# GraspPlanner_FOUND - Always TRUE.
+# GraspPlanner_INCLUDE_DIRS - Directories containing the GraspPlanner include files.
+# GraspPlanner_IDL_DIRS - Directories containing the GraspPlanner IDL files.
+# GraspPlanner_LIBRARIES - Libraries needed to use GraspPlanner.
+# GraspPlanner_DEFINITIONS - Compiler flags for GraspPlanner.
+# GraspPlanner_VERSION - The version of GraspPlanner found.
+# GraspPlanner_VERSION_MAJOR - The major version of GraspPlanner found.
+# GraspPlanner_VERSION_MINOR - The minor version of GraspPlanner found.
+# GraspPlanner_VERSION_REVISION - The revision version of GraspPlanner found.
+# GraspPlanner_VERSION_CANDIDATE - The candidate version of GraspPlanner found.
+
+message(STATUS "Found GraspPlanner-@PROJECT_VERSION@")
+set(GraspPlanner_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(GraspPlanner_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(GraspPlanner_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(GraspPlanner_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(GraspPlanner_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(GraspPlanner_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(GraspPlanner_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(GraspPlanner_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(GraspPlanner_VERSION @PROJECT_VERSION@)
+set(GraspPlanner_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(GraspPlanner_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(GraspPlanner_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(GraspPlanner_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

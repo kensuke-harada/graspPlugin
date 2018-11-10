@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraspPathPlanConsumerComp", "GraspPathPlanConsumerComp_vc9.vcproj", "{1426E5A2-731B-42E2-A940-85899DDF8783}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraspPathPlanConsumer", "GraspPathPlanConsumer_vc9.vcproj", "{AC1468DE-5804-4524-B88A-34D52C3D90BC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|Win32 = Release|Win32
+		Debug|Win32 = Debug|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1426E5A2-731B-42E2-A940-85899DDF8783}.Release|Win32.ActiveCfg = Release|Win32
+		{1426E5A2-731B-42E2-A940-85899DDF8783}.Release|Win32.Build.0   = Release|Win32
+		{1426E5A2-731B-42E2-A940-85899DDF8783}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1426E5A2-731B-42E2-A940-85899DDF8783}.Debug|Win32.Build.0   = Debug|Win32
+		{AC1468DE-5804-4524-B88A-34D52C3D90BC}.Release|Win32.ActiveCfg = Release|Win32
+		{AC1468DE-5804-4524-B88A-34D52C3D90BC}.Release|Win32.Build.0   = Release|Win32
+		{AC1468DE-5804-4524-B88A-34D52C3D90BC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AC1468DE-5804-4524-B88A-34D52C3D90BC}.Debug|Win32.Build.0   = Debug|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

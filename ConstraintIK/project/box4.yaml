@@ -1,0 +1,171 @@
+modelFile: ../../Samples/Object/box4Hrp.wrl
+
+collisionShape:
+  -
+    center: [0 , 0.1875 , 0.15]
+    rpy: [0 , -0 , 0]
+    length: [0.14 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0 , -0.1875 , 0.15]
+    rpy: [0 , -0 , 0]
+    length: [0.14 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0 , 0.1875 , 0.007]
+    rpy: [0 , -0 , 0]
+    length: [0.14 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0 , -0.1875 , 0.007]
+    rpy: [0 , -0 , 0]
+    length: [0.14 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.14 , 0 , 0.15]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.1875 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.14 , 0 , 0.007]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.1875 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.14 , 0 , 0.15]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.1875 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.14 , 0 , 0.007]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.1875 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.14 , 0.1875 , 0.0785]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.005 , 0.0715]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.14 , 0.1875 , 0.0785]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.005 , 0.0715]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.14 , -0.1875 , 0.0785]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.005 , 0.0715]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.14 , -0.1875 , 0.0785]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.005 , 0.0715]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0 , 0.21 , 0.15]
+    rpy: [0 , -0 , 0]
+    length: [0.15 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0 , -0.21 , 0.15]
+    rpy: [0 , -0 , 0]
+    length: [0.15 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0 , 0.21 , 0]
+    rpy: [0 , -0 , 0]
+    length: [0.15 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0 , -0.21 , 0]
+    rpy: [0 , -0 , 0]
+    length: [0.15 , 0.005 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.15 , 0 , 0.15]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.21 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.15 , 0 , 0]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.21 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.15 , 0 , 0.15]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.21 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.15 , 0 , 0]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.21 , 0.005]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.15 , 0.21 , 0.075]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.005 , 0.075]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.15 , 0.21 , 0.075]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.005 , 0.075]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [0.15 , -0.21 , 0.075]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.005 , 0.075]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1
+  -
+    center: [-0.15 , -0.21 , 0.075]
+    rpy: [0 , -0 , 0]
+    length: [0.005 , 0.005 , 0.075]
+    security_distance: 0.01
+    effective_distance: 0.2
+    xi: 0.1

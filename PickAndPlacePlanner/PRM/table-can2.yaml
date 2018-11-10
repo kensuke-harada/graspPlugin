@@ -1,0 +1,14 @@
+modelFile: ../../Samples/Object/table-canhrp.wrl
+
+EnvCluster:
+  -
+    id: [ 2 ]
+    area: [ 0.54 ]
+    outer_normal: [ -2.14163e-16, -2.22407e-16, 1 ]
+    tangent_vector: [ 5.73054e-18, -1, -4.15439e-16 ]
+    convexhull: [ -0.3, 0.45, 0.81, -0.3, -0.45, 0.81, 0.3, -0.45, 0.81, 0.3, 0.45, 0.81 ]
+    boundary: [ -0.3, -0.45, 0.81, 0.3, -0.45, 0.81, 0.3, 0.45, 0.81, -0.3, 0.45, 0.81 ]
+    convexity: [ 0 ]
+    bounding_box_edge: [ 0.9, 0.6, 3.28664e-16 ]
+    bounding_box_center: [ 0, 0, 0.81 ]
+    is_putting_cluster: [ 1 ]
