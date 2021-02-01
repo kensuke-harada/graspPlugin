@@ -90,11 +90,15 @@ jobs:
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DGRASP_PLUGINS="Grasp;PRM;MotionFile;GeometryHandler;PickAndPlacePlanner;ObjectPlacePlanner"
 
+    - name: Get number of CPU cores
+      id: cpu-cores
+      uses: SimenB/github-actions-cpu-cores@v1
+
     - name: Build
       working-directory: ${{github.workspace}}/build
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: cmake --build . --config $BUILD_TYPE -- -j
+      run: cmake --build . --config $BUILD_TYPE -- -j ${{ steps.cpu-cores.outputs.count }}
 
     - name: Test
       working-directory: ${{github.workspace}}/build
