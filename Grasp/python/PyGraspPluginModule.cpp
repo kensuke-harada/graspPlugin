@@ -1,4 +1,5 @@
 #include <cnoid/PyUtil>
+#include <boost/python.hpp>
 
 void exportPlanBase();
 void exportGrasp();

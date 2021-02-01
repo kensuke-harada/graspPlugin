@@ -262,7 +262,11 @@ PlanBase::PlanBase()  : 	os (MessageView::mainInstance()->cout() )
 	boundingBoxSafetySize = Vector3(0.005,0.005,0.005);
 	motionId = -1;
 	doCheckCollisionPointCloudFinger = true;
+#ifdef CNOID_GE_17
+	if ( PyImport_AppendInittab( (char *)"grasp", PyInit_grasp ) == -1 ) {
+#else
 	if ( PyImport_AppendInittab( (char *)"grasp", initgrasp ) == -1 ) {
+#endif
 		MessageView::mainInstance()->put("faild init Grasp Module");
 		//        return;
 	}

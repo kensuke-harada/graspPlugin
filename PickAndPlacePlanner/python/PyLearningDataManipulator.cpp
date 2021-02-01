@@ -1,6 +1,7 @@
 #include "../LearningDataManipulator.h"
 
 #include <cnoid/PyBase>
+#include <boost/python.hpp>
 
 using namespace boost::python;
 using namespace grasp;
