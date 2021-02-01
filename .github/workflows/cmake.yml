@@ -10,9 +10,13 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-18.04, ubuntu-16.04]
+        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04]
         choreonoid: [1.7, 1.6, 1.5]
         exclude:
+        - os: ubuntu-20.04
+          choreonoid: 1.6
+        - os: ubuntu-20.04
+          choreonoid: 1.5
         - os: ubuntu-18.04
           choreonoid: 1.6
         - os: ubuntu-18.04
@@ -49,6 +53,13 @@ jobs:
     - uses: actions/checkout@v2
       with:
         path: ext/graspPlugin
+
+    - name: Install depending packages for ubuntu 20.04
+      if: matrix.os == 'ubuntu-20.04'
+      run: |
+        sudo apt-get update
+        curl https://raw.githubusercontent.com/choreonoid/choreonoid/master/misc/script/install-requisites-ubuntu-20.04.sh | sh
+        sudo apt-get install -y libqhull-dev freeglut3-dev libglew-dev
 
     - name: Install depending packages for ubuntu 18.04
       if: matrix.os == 'ubuntu-18.04'
