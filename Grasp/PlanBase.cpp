@@ -262,7 +262,7 @@ PlanBase::PlanBase()  : 	os (MessageView::mainInstance()->cout() )
 	boundingBoxSafetySize = Vector3(0.005,0.005,0.005);
 	motionId = -1;
 	doCheckCollisionPointCloudFinger = true;
-#ifdef CNOID_GE_17
+#ifdef CNOID_GE_16
 	if ( PyImport_AppendInittab( (char *)"grasp", PyInit_grasp ) == -1 ) {
 #else
 	if ( PyImport_AppendInittab( (char *)"grasp", initgrasp ) == -1 ) {

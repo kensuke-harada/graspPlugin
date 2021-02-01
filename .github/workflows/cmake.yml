@@ -11,10 +11,12 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-18.04, ubuntu-16.04]
-        choreonoid: [1.7, 1.6]
+        choreonoid: [1.7, 1.6, 1.5]
         exclude:
         - os: ubuntu-18.04
           choreonoid: 1.6
+        - os: ubuntu-18.04
+          choreonoid: 1.5
 
     # The CMake configure and build commands are platform agnostic and should work equally
     # well on Windows or Mac.  You can convert this to a matrix build if you need
@@ -36,6 +38,13 @@ jobs:
       with:
         repository: s-nakaoka/choreonoid
         ref: release-1.6
+
+    - name: Checkout choreonoid 1.5
+      if: matrix.choreonoid == '1.5'
+      uses: actions/checkout@v2
+      with:
+        repository: s-nakaoka/choreonoid
+        ref: release-1.5
 
     - uses: actions/checkout@v2
       with:
