@@ -141,7 +141,7 @@ include_directories(${PYTHON_INCLUDE_PATH})
 if(UNIX)
 
 
-	target_link_libraries(${libname} CnoidBodyPlugin qhull ${PYTHON_LIBRARIES} boost_regex boost_thread glut)
+	target_link_libraries(${libname} CnoidBodyPlugin qhull ${PYTHON_LIBRARIES} ${Boost_REGEX_LIBRARY} ${Boost_PYTHON_LIBRARY} ${Boost_THREAD_LIBRARY} glut)
     apply_common_setting_for_plugin(${libname})
 
 elseif(MSVC)  
