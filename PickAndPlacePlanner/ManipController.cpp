@@ -1441,7 +1441,6 @@ bool ManipController::doGraspPlanning()
 				tc->flush();
 				return false;
 		}
-#endif
 		return true;
 }
 

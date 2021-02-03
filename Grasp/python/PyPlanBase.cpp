@@ -3,6 +3,7 @@
 
 #include <cnoid/PyBase>
 #include <cnoid/BodyItem>
+#include <boost/python.hpp>
 
 using namespace boost::python;
 using namespace grasp;

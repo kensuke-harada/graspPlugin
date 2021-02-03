@@ -30,7 +30,11 @@ private:
 
 	cnoid::ColdetModelPtr Convert(cnoid::SgNodePtr node) {
 		cnoid::ColdetModelPtr model = createColdetModel();
-        	if(meshExtractor->extract(node, boost::bind(&ColdetConverter::addMesh, this, model))){
+#ifdef CNOID_GE_17
+		if(meshExtractor->extract(node.get(), [&]() { addMesh(model); })){
+#else
+		if(meshExtractor->extract(node, boost::bind(&ColdetConverter::addMesh, this, model))){
+#endif
 			model->setName(node->name());
 			model->build();
 		}
@@ -58,7 +62,7 @@ private:
 			const int v1 = vertexIndexTop + tri[1];
 			const int v2 = vertexIndexTop + tri[2];
 			model->addTriangle(v0, v1, v2);
-    		}
+		}
 	}
 
 	cnoid::SgMeshPtr Extract(cnoid::SgNodePtr node) {
@@ -84,17 +88,17 @@ public:
 	}
 
 	static cnoid::SgShapePtr ConvertTo(cnoid::ColdetModelPtr model) {
-        	cnoid::SgShapePtr shape = new cnoid::SgShape();
-        	cnoid::SgMeshPtr mesh = shape->setMesh(new cnoid::SgMesh());
-        	cnoid::SgVertexArrayPtr vertices = mesh->setVertices(new cnoid::SgVertexArray());
+		cnoid::SgShapePtr shape = new cnoid::SgShape();
+		cnoid::SgMeshPtr mesh = shape->setMesh(new cnoid::SgMesh());
+		cnoid::SgVertexArrayPtr vertices = mesh->setVertices(new cnoid::SgVertexArray());
 		{
 			shape->setName(model->name());
 
 			float x, y, z;
-        		vertices->resize(model->getNumVertices());
+			vertices->resize(model->getNumVertices());
 			for (int i = 0; i < model->getNumVertices(); i++) {
 				model->getVertex(i, x, y, z);
-        			(*vertices)[i] << x, y, z;
+				(*vertices)[i] << x, y, z;
 			}
 
 			int a, b, c;
@@ -103,7 +107,7 @@ public:
 				mesh->addTriangle(a, b, c);
 			}
 
-	        	mesh->texCoordIndices() = mesh->triangleVertices();
+			mesh->texCoordIndices() = mesh->triangleVertices();
 
 			mesh->updateBoundingBox();
 

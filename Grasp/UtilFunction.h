@@ -14,6 +14,9 @@
 
 namespace grasp {
 	inline cnoid::ColdetModelPtr createColdetModel() {
+#ifdef CNOID_GE_17
+		return cnoid::ref_ptr<cnoid::ColdetModel>(new cnoid::ColdetModel());
+#else
 #ifdef CNOID_GE_16
 		return std::make_shared<cnoid::ColdetModel>();
 #else
@@ -23,13 +26,18 @@ namespace grasp {
 		return boost::make_shared<cnoid::ColdetModel>();
 #endif
 #endif
+#endif
 	}
 
 	inline cnoid::ColdetModelPairPtr createColdetModelPair(const cnoid::ColdetModelPtr& model1, const cnoid::ColdetModelPtr& model2) {
+#ifdef CNOID_GE_17
+		return cnoid::ref_ptr<cnoid::ColdetModelPair>(new cnoid::ColdetModelPair(model1, model2));
+#else
 #ifdef CNOID_GE_16
 		return std::make_shared<cnoid::ColdetModelPair>(model1, model2);
 #else
 		return boost::make_shared<cnoid::ColdetModelPair>(model1, model2);
+#endif
 #endif
 	}
 

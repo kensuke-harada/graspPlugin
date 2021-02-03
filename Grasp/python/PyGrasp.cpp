@@ -3,6 +3,7 @@
 #include <cnoid/PyBase>
 #include <cnoid/BodyItem>
 #include <cnoid/MessageView>
+#include <boost/python.hpp>
 
 #include "../PlanBase.h"
 #include "../PlanInterface.h"

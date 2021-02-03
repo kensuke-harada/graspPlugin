@@ -31,7 +31,11 @@ namespace {
 			cnoid::Vector3 obj_press_p = link->R().transpose()*(press_p - link->p());
 
 			cnoid::MeshExtractor extractor;
+#ifdef CNOID_GE_17
+			extractor.extract(link->collisionShape(), [&]() { findAndComputeNormal(&extractor, obj_press_p, &sol); });
+#else
 			extractor.extract(link->collisionShape(), boost::bind(&PressedNormalCalculator::findAndComputeNormal, this, &extractor, obj_press_p, &sol));
+#endif
 
 			normal = link->R() * sol.normal;
 			return sol.has_sol;
