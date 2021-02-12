@@ -2,6 +2,10 @@
 
 set(target PyPickAndPlacePlannerPlugin)
 
+if(ENABLE_INSTALL_RPATH)
+  SET(CMAKE_INSTALL_RPATH ".;$ORIGIN/../..")
+endif()
+
 add_cnoid_python_module(${target}
 	PyPickAndPlacePlannerPluginModule.cpp
 	PyLearningDataManipulator.cpp

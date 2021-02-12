@@ -116,7 +116,7 @@ if(MSVC)
   endif()
 endif()
 
- include(FindPythonLibs)
+include(FindPythonLibs)
 
 option(ADD_TEST_FUNCTION "Addd test funtion" OFF)
 if(ADD_TEST_FUNCTION)
@@ -139,9 +139,9 @@ set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 include_directories(${PYTHON_INCLUDE_PATH})
 
 if(UNIX)
+	find_package(Boost COMPONENTS regex python thread REQUIRED)
 
-
-	target_link_libraries(${libname} CnoidBodyPlugin qhull ${PYTHON_LIBRARIES} ${Boost_REGEX_LIBRARY} ${Boost_PYTHON_LIBRARY} ${Boost_THREAD_LIBRARY} glut)
+	target_link_libraries(${libname} CnoidBodyPlugin qhull ${PYTHON_LIBRARIES} ${Boost_LIBRARIES} glut)
     apply_common_setting_for_plugin(${libname})
 
 elseif(MSVC)  
@@ -186,7 +186,7 @@ elseif(MSVC)
 
 
 if(ENABLE_INSTALL_RPATH)
-  SET(CMAKE_INSTALL_RPATH "$ORIGIN/..")
+  SET(CMAKE_INSTALL_RPATH ".;$ORIGIN/..")
 endif()
 
 if(UNIX)
