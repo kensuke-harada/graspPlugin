@@ -139,7 +139,11 @@ set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 include_directories(${PYTHON_INCLUDE_PATH})
 
 if(UNIX)
-	find_package(Boost COMPONENTS regex python3 thread REQUIRED)
+	if((CNOID_VERSION VERSION_EQUAL 1.7) OR (CNOID_VERSION VERSION_GREATER 1.7))
+		find_package(Boost COMPONENTS regex python3 thread REQUIRED)
+	else()
+		find_package(Boost COMPONENTS regex python thread REQUIRED)
+	endif()
 
 	target_link_libraries(${libname} CnoidBodyPlugin qhull ${PYTHON_LIBRARIES} ${Boost_LIBRARIES} glut)
     apply_common_setting_for_plugin(${libname})
