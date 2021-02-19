@@ -21,8 +21,6 @@ jobs:
           choreonoid: 1.6
         - os: ubuntu-18.04
           choreonoid: 1.5
-        - os: ubuntu-16.04
-          choreonoid: 1.7
 
     # The CMake configure and build commands are platform agnostic and should work equally
     # well on Windows or Mac.  You can convert this to a matrix build if you need
