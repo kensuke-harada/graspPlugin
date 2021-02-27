@@ -112,7 +112,7 @@ public :
 		bool calcJointSeq2(cnoid::Vector3& Pp_grasp, cnoid::Matrix3& Rp_grasp, cnoid::Vector3& appVec);
 		bool calcJointSeqTest2(cnoid::Vector3& Pp_grasp, cnoid::Matrix3& Rp_grasp, cnoid::Vector3& appVec);
 		bool calcJointSeqRegrasp(cnoid::Vector3& P0, cnoid::Matrix3& R0, cnoid::Vector3& P1, cnoid::Matrix3& R1, cnoid::Vector3& P2, cnoid::Matrix3& R2, cnoid::Vector3& P3, cnoid::Matrix3& R3, cnoid::Vector3& appVec, cnoid::Vector3& appVec2, bool is_fixwaist = false, double waist_q = 0.0);
-		virtual bool calcJointSeqTestRegrasp(cnoid::Vector3& P0, cnoid::Matrix3& R0, cnoid::Vector3& P1, cnoid::Matrix3& R1, cnoid::Vector3& P2, cnoid::Matrix3& R2, cnoid::Vector3& P3, cnoid::Matrix3& R3, cnoid::Vector3& appVec, cnoid::Vector3& appVec2, bool is_fixwaist = false, double waist_q = 0.0);
+//		virtual bool calcJointSeqTestRegrasp(cnoid::Vector3& P0, cnoid::Matrix3& R0, cnoid::Vector3& P1, cnoid::Matrix3& R1, cnoid::Vector3& P2, cnoid::Matrix3& R2, cnoid::Vector3& P3, cnoid::Matrix3& R3, cnoid::Vector3& appVec, cnoid::Vector3& appVec2, bool is_fixwaist = false, double waist_q = 0.0);
 		void chooseArmToGrasp();
 		void chooseArmToPut();
 		void selectManipStrategy();
