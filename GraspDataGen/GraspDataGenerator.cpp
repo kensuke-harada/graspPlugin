@@ -1787,7 +1787,7 @@ bool GraspDataGenerator::loadScaledTrobot(double scale_x,double scale_y,double s
 	PyObject *pName,*pModule,*pFunc,*pArgs,*pVal1,*pVal2,*pVal3,*pVal4,*pVal5;
 	Py_Initialize();
 	PySys_SetPath(const_cast<char*>(script_dir.c_str()));
-	pName = PyString_FromString("scaling");
+	pName = PyUnicode_FromString("scaling");
 
 	pModule = PyImport_Import(pName);
 	Py_DECREF(pName);
@@ -1799,7 +1799,7 @@ bool GraspDataGenerator::loadScaledTrobot(double scale_x,double scale_y,double s
     pFunc = PyObject_GetAttrString(pModule, "generateScaledTrobot");
 		if (pFunc && PyCallable_Check(pFunc)) {
 			pArgs = PyTuple_New(5);
-			pVal1 = PyString_FromString(Trobot_dir.c_str());
+			pVal1 = PyUnicode_FromString(Trobot_dir.c_str());
 			PyTuple_SetItem(pArgs, 0, pVal1);
 			pVal2 = PyFloat_FromDouble(scale_x);
 			PyTuple_SetItem(pArgs, 1, pVal2);
@@ -1807,7 +1807,7 @@ bool GraspDataGenerator::loadScaledTrobot(double scale_x,double scale_y,double s
 			PyTuple_SetItem(pArgs, 2, pVal3);
 			pVal4 = PyFloat_FromDouble(scale_z);
 			PyTuple_SetItem(pArgs, 3, pVal4);
-			pVal5 = PyString_FromString(suffix.str().c_str());
+			pVal5 = PyUnicode_FromString(suffix.str().c_str());
 			PyTuple_SetItem(pArgs, 4, pVal5);
 		}
 		PyObject_CallObject(pFunc, pArgs);
