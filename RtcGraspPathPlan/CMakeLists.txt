@@ -50,7 +50,7 @@ set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 if(UNIX)
 target_link_libraries(${libname} CnoidBodyPlugin CnoidGraspPlugin CnoidPRMPlugin uuid dl pthread omniORB4 omnithread omniDynamic4 RTC coil  )
 elseif(MSVC)
-target_link_libraries(${libname} 
+target_link_libraries(${libname}
  general CnoidBodyPlugin CnoidGraspPlugin CnoidPRMPlugin uuid ws2_32 ${OMNIORB_LIBRARIES}
   optimized RTC110 optimized coil110
   debug  RTC110d debug coil110d

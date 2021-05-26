@@ -13,7 +13,7 @@ GraspRtcController.cpp
 GraspRtcBar.cpp
 GraspControllerSVC_impl.cpp
 ${rtc-dir}GraspControllerSkel.cpp
-${rtc-dir}GraspConsumer.cpp 
+${rtc-dir}GraspConsumer.cpp
 )
 
 set(headers

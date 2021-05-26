@@ -89,7 +89,7 @@ GraspDataGenerator* GraspDataGenerator::instance(GraspDataGenerator *gc) {
 
 void GraspDataGenerator::showClusterMesh() {
 	tc = PlanBase::instance();
-	
+
 	if (tc == NULL) {
 		os << "implmentation error: you have to call initial()" << endl;
 		return;
@@ -168,7 +168,7 @@ void GraspDataGenerator::showClusterMesh() {
 
 void GraspDataGenerator::showCylinder() {
 	tc = PlanBase::instance();
-	
+
 	if (tc == NULL) {
 		os << "implmentation error: you have to call initial()" << endl;
 		return;
@@ -534,7 +534,7 @@ bool GraspDataGenerator::generateGraspPattern(){
 	vector<Vector3> target_edges;
 	vector<Vector3> target_centers;
 	vector<Matrix3> target_rots;
-	
+
 	if(clustering_type == C_CYLINDER){
 
 		// make object shape
@@ -575,7 +575,7 @@ bool GraspDataGenerator::generateGraspPattern(){
 			target_centers.push_back(cylinders[i].pos);
 			target_edges.push_back(Vector3(cylinders[i].len,cylinders[i].radius*2,cylinders[i].radius*2));
 			target_rots.push_back(rotFromTwoVecs(x,cylinders[i].dir) * rotFromRpy(M_PI/4.0, 0, 0));
-			
+
 			double edge_len = cylinders[i].len + cylinders[i].radius*2 + cylinders[i].radius*2;
 			if(max_edge_len < edge_len) max_edge_len = edge_len;
 		}
@@ -2002,11 +2002,11 @@ bool GraspDataGenerator::grasp(int index, bool is_move_arm) {
 
 	// bodyItemRobot()->body()->calcForwardKinematics();
 	tc->robotBody()->calcForwardKinematics();
-	
+
 	tc->flush();
 
 	return true;
-} 
+}
 
 ObjectShape* GraspDataGenerator::createObjectShape(ColdetModelPtr c){
 	vector<double> vertex;
@@ -2150,7 +2150,7 @@ void GraspDataAppender::move(const Vector3& diff_pos, const Vector3& diff_rpy) {
 	tc->flush();
 	showTargetBB(cur_bbid);
 	cur_q = calcStability();
-	
+
 	if (cur_state == S_SUCTION) {
 		Vector3 com = tc->targetObject->objCoM_;
 		Vector3 bb_center = boundingboxes[cur_bbid].p;
@@ -2162,7 +2162,7 @@ void GraspDataAppender::move(const Vector3& diff_pos, const Vector3& diff_rpy) {
 		else if (n == 3) {bb_offset(0) = boundingboxes[cur_bbid].edge[0] / 2.0;}
 		else if (n == 4) {bb_offset(1) = boundingboxes[cur_bbid].edge[1] / 2.0;}
 		else if (n == 5) {bb_offset(2) = boundingboxes[cur_bbid].edge[2] / 2.0;}
-		
+
 		cur_q =  1.0 / norm2(com - (boundingboxes[cur_bbid].R * bb_offset + bb_center));
 	}
 }
@@ -2188,7 +2188,7 @@ void GraspDataAppender::nextBB() {
 	if (cur_bbid >= boundingboxes.size()) {
 		cur_bbid = 0;
 	}
-	
+
 	Vector3 pos = Vector3::Zero();
 	Vector3 rpy = Vector3::Zero();
 	cur_pos = pos;
@@ -2262,7 +2262,7 @@ void GraspDataAppender::showTargetBB(int bbid) {
 double GraspDataAppender::calcStability() {
 	cur_state = S_GRASP;
 	is_collide = false;
-	
+
 	// for suction hand
 	if (nFing() == 0) {
 		cur_state = S_SUCTION;
@@ -2348,7 +2348,7 @@ void GraspDataUpdater::moveInit(int gid) {
 	ori_pos_ = tc->targetObject->object->p();
 	ori_R_ = tc->targetObject->object->R();
 	gid_ = gid;
-	
+
 	GraspDataAppender::moveInit();
 }
 
@@ -2364,8 +2364,8 @@ void GraspDataUpdater::move(const Vector3& diff_pos, const Vector3& diff_rpy) {
 	tc->targetObject->object->R() = R * ori_R_;
 	tc->flush();
 	cur_q = calcStability();
-	
-	if (cur_state == S_SUCTION) {		
+
+	if (cur_state == S_SUCTION) {
 		cur_q = gdm->getRecords()[gid_].q;
 	}
 }
@@ -2402,7 +2402,7 @@ void GraspDataUpdater::updateDataBase() {
 		string filepath = tc->dataFilePath() + "preplanning_" + tc->targetObject->bodyItemObject->name() + ".txt";
 		gdm->writeFile(filepath);
 	}
-	
+
 }
 
 GraspDataUpdater* GraspDataUpdater::instance() {
@@ -2424,7 +2424,7 @@ bool GraspControllerWithInterface::doGrasping(const vector<vector<double> >& fin
 		os << "Please select Grasped Object and Grasping Robot" << endl;
 		return false;
 	}
-	
+
 	initial(tc->targetObject, tc->targetArmFinger);
 
 	os << GRCmax.edge << endl;
@@ -2458,4 +2458,3 @@ bool GraspControllerWithInterface::doGrasping(const vector<vector<double> >& fin
 
 	return true;
 }
-

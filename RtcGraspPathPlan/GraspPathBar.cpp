@@ -5,9 +5,9 @@
 #include <time.h>
 
 #include "GraspPathBar.h"
-#include <cnoid/ItemTreeView>	/* modified by qtconv.rb 0th rule*/  
-#include <cnoid/MessageView>	/* modified by qtconv.rb 0th rule*/  
-#include <cnoid/Archive>	/* modified by qtconv.rb 0th rule*/  
+#include <cnoid/ItemTreeView>	/* modified by qtconv.rb 0th rule*/
+#include <cnoid/MessageView>	/* modified by qtconv.rb 0th rule*/
+#include <cnoid/Archive>	/* modified by qtconv.rb 0th rule*/
 #include <boost/bind.hpp>
 #include <boost/format.hpp>
 
@@ -30,32 +30,32 @@ GraspPathBar::GraspPathBar()
 	  mes(*MessageView::mainInstance()),
    	os (MessageView::mainInstance()->cout() )
 {
-	
+
 	addSeparator();
-	
+
 	addLabel(("=PlanGraspPath="));
 
 	addButton(("Grasp"), ("Grasp Path Plan start"))->
-		sigClicked().connect(bind(&GraspPathBar::onStartButtonClicked, this));	/* modified by qtconv.rb 6th rule*/  
+		sigClicked().connect(bind(&GraspPathBar::onStartButtonClicked, this));	/* modified by qtconv.rb 6th rule*/
 
 	addButton(("Release"), ("RTC start"))->
-		sigClicked().connect(bind(&GraspPathBar::onStartButtonClicked2, this));	/* modified by qtconv.rb 6th rule*/  
-	
+		sigClicked().connect(bind(&GraspPathBar::onStartButtonClicked2, this));	/* modified by qtconv.rb 6th rule*/
+
 	addButton(("Stop"), ("RTC stop"))->
-		sigClicked().connect(bind(&GraspPathBar::onStopButtonClicked, this));	/* modified by qtconv.rb 6th rule*/  
+		sigClicked().connect(bind(&GraspPathBar::onStopButtonClicked, this));	/* modified by qtconv.rb 6th rule*/
 
 	addButton(("createObjectTag"), ("caeateObjectTag"))->
-		sigClicked().connect(bind(&GraspPathBar::onCreateRecordButtonClicked, this));	/* modified by qtconv.rb 6th rule*/  
-	// show_all_children();	/* modified by qtconv.rb 7th rule*/  
+		sigClicked().connect(bind(&GraspPathBar::onCreateRecordButtonClicked, this));	/* modified by qtconv.rb 6th rule*/
+	// show_all_children();	/* modified by qtconv.rb 7th rule*/
 
 	addButton(("deleteObjectTag"), ("deleteObjectTag"))->
-		sigClicked().connect(bind(&GraspPathBar::onDeleteRecordButtonClicked, this));	/* modified by qtconv.rb 6th rule*/  
+		sigClicked().connect(bind(&GraspPathBar::onDeleteRecordButtonClicked, this));	/* modified by qtconv.rb 6th rule*/
 
 	addButton(("AppearObject"), ("appear"))->
-		sigClicked().connect(bind(&GraspPathBar::onAppearButtonClicked, this));	/* modified by qtconv.rb 6th rule*/  
+		sigClicked().connect(bind(&GraspPathBar::onAppearButtonClicked, this));	/* modified by qtconv.rb 6th rule*/
 
 	addButton(("DisappearObject"), ("disappear"))->
-		sigClicked().connect(bind(&GraspPathBar::onDisappearButtonClicked, this));	/* modified by qtconv.rb 6th rule*/  
+		sigClicked().connect(bind(&GraspPathBar::onDisappearButtonClicked, this));	/* modified by qtconv.rb 6th rule*/
 
 
 }
@@ -76,12 +76,12 @@ void GraspPathBar::onStartButtonClicked()
 	int state;
 	std::vector<double> begin;
 	std::vector<double> end;
-	
+
 	if( !pb->targetObject || !pb->robTag2Arm.size()) {
 		os <<  "set object and robot" << endl;
 		return;
 	}
-	for(int i=0;i<pb->bodyItemRobot()->body()->numJoints();i++){ // If initial position is not collided, it is stored as 
+	for(int i=0;i<pb->bodyItemRobot()->body()->numJoints();i++){ // If initial position is not collided, it is stored as
         double q = pb->bodyItemRobot()->body()->joint(i)->q();
 		begin.push_back(q);
 		end.push_back(q);
@@ -89,12 +89,12 @@ void GraspPathBar::onStartButtonClicked()
 	GraspPathController::instance()->setTolerance(0.05);
 	GraspPathController::instance()->graspPathPlanStart(0, begin, end, pb->targetArmFinger->name, pb->targetObject->name(), 50, &trajectory, &state);
 //	GraspPathController::instance()->graspPathPlanStart(0, begin, end, (pb->robTag2Arm.begin())->first, pb->targetObject->name(), 50, &trajectory, &state);
-	
+
 	clock_t end_ = clock();
 	cout << "It took "<< (double)(end_-start_)/CLOCKS_PER_SEC << "(s)" << endl;
 
 	cout << "test" << endl;
-	
+
 }
 
 void GraspPathBar::onStartButtonClicked2()
@@ -104,12 +104,12 @@ void GraspPathBar::onStartButtonClicked2()
 	int state;
 	std::vector<double> begin;
 	std::vector<double> end;
-	
+
 	if( !pb->targetObject || !pb->robTag2Arm.size()) {
 		os <<  "set object and robot" << endl;
 		return;
 	}
-	for(int i=0;i<pb->bodyItemRobot()->body()->numJoints();i++){ // If initial position is not collided, it is stored as 
+	for(int i=0;i<pb->bodyItemRobot()->body()->numJoints();i++){ // If initial position is not collided, it is stored as
         double q = pb->bodyItemRobot()->body()->joint(i)->q();
 		begin.push_back(q);
 		end.push_back(q);
@@ -121,13 +121,13 @@ void GraspPathBar::onStartButtonClicked2()
 void GraspPathBar::onStopButtonClicked()
 {
 //	GraspController::instance()->stopFlag = true;
-	os <<  "NOT implemented" << endl;	
+	os <<  "NOT implemented" << endl;
 }
 
 void GraspPathBar::onCreateRecordButtonClicked(){
 
 	GraspPathController::instance()->createRecord(1,"testTagCan");
-	
+
 }
 
 void GraspPathBar::onDeleteRecordButtonClicked(){

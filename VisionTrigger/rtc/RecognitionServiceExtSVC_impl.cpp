@@ -79,6 +79,3 @@ void RecognitionResultServiceExtSVC_impl::setEnvResults(const RecognitionResultS
 
 
 // End of example implementational code
-
-
-
