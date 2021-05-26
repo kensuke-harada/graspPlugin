@@ -13,7 +13,7 @@
 //#include <ExcadePlugins/Grasp/GraspController.h>
 //#include <ExcadePlugins/Grasp/TrajectoryPlanner.h>
 
-#include <GraspRtcController.h>
+#include "GraspRtcController.h"
 #include "GraspRtcBar.h"
 
 using namespace std;

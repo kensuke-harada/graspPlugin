@@ -18,6 +18,8 @@ set(sources
 )
 
 set(headers
+        VisionTriggerRtcController.h
+        ObjectRecognitionResultManipulator.h
   )
 
 if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)

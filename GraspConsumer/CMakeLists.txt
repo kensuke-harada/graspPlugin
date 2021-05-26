@@ -18,6 +18,8 @@ ${rtc-dir}GraspConsumer.cpp
 
 set(headers
 GraspConsumer.h
+GraspRtcBar.h
+GraspRtcController.h
   )
 
 

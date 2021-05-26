@@ -13,7 +13,7 @@
 //#include <ExcadePlugins/Grasp/GraspController.h>
 //#include <ExcadePlugins/Grasp/TrajectoryPlanner.h>
 
-#include <VisionTriggerRtcController.h>
+#include "VisionTriggerRtcController.h"
 
 #include "ObjectRecognitionResultManipulator.h"
 

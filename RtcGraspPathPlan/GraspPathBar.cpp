@@ -11,7 +11,7 @@
 #include <boost/bind.hpp>
 #include <boost/format.hpp>
 
-#include <GraspPathController.h>
+#include "GraspPathController.h"
 #include "GraspPathBar.h"
 
 using namespace std;

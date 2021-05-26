@@ -16,8 +16,9 @@ ${rtc-dir}GraspPathControllerSkel.cpp
 ${rtc-dir}GraspPathPlanner.cpp
 )
 
-#set(headers
-#  )
+set(headers
+GraspPathController.h
+)
 
 if(MSVC)
 	set(OPENRTM_DIR ${OPENRTM_DIR} CACHE PATH "set the directory of OpenRTM-aist")
