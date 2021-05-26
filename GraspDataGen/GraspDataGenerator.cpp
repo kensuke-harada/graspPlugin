@@ -10,6 +10,10 @@
 #include <algorithm>
 #include <time.h>
 #include <sstream>
+#if __cplusplus > 199711L
+#include <locale>
+#include <codecvt>
+#endif
 #ifndef WIN32
 #include <sys/resource.h>
 #endif
@@ -1786,7 +1790,18 @@ bool GraspDataGenerator::loadScaledTrobot(double scale_x,double scale_y,double s
 
 	PyObject *pName,*pModule,*pFunc,*pArgs,*pVal1,*pVal2,*pVal3,*pVal4,*pVal5;
 	Py_Initialize();
+#if PY_MAJOR_VERSION == 3
+	// Since PySys_SetPath() in Python 3 requires a pointer to a wide
+	// character type as its argument we need to convert a narrow
+	// string to a wide one. Note that the conversion used below is
+	// available in C++11 and deprecated in C++17:
+	// https://stackoverflow.com/a/18597384/14398042
+	wstring_convert<codecvt_utf8_utf16<wchar_t>> converter;
+	wstring script_dir_wstring = converter.from_bytes(script_dir);
+	PySys_SetPath(script_dir_wstring.c_str());
+#else
 	PySys_SetPath(const_cast<char*>(script_dir.c_str()));
+#endif
 	pName = PyUnicode_FromString("scaling");
 
 	pModule = PyImport_Import(pName);
