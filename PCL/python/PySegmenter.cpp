@@ -1,6 +1,7 @@
 #include "../Segmenter.h"
 
 #include <cnoid/PyBase>
+#include <boost/python.hpp>
 
 void exportSegmenter() {
 	using namespace boost::python;

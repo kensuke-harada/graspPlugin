@@ -1,6 +1,7 @@
 #include "../PointSetItemDrawer.h"
 
 #include <cnoid/PyBase>
+#include <boost/python.hpp>
 
 #include <iostream>
 

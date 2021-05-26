@@ -1,6 +1,7 @@
 #include "../PointCloudHolder.h"
 
 #include <cnoid/PyBase>
+#include <boost/python.hpp>
 
 namespace {
 	bool capture(PointCloudHolder& self) {
