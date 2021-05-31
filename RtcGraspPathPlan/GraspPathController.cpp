@@ -1,6 +1,6 @@
 
 
-#include "GraspPathPlanner.h"
+#include "rtc/GraspPathPlanner.h"
 #include "GraspPathController.h"
 
 #include "../Grasp/GraspController.h"

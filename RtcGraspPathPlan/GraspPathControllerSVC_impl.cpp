@@ -8,7 +8,7 @@
 #include <cnoid/EigenTypes>
 #include <cnoid/LazyCaller>
 
-#include "GraspPathControllerSVC_impl.h"
+#include "rtc/GraspPathControllerSVC_impl.h"
 #include "GraspPathController.h"
 
 using namespace std;

@@ -6,7 +6,7 @@
  */
 #include <iostream>
 
-#include "GraspControllerSVC_impl.h"
+#include "rtc/GraspControllerSVC_impl.h"
 #include "GraspRtcController.h"
 
 using namespace std;

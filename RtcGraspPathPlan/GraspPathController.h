@@ -1,9 +1,9 @@
 #ifndef _GRASPPATH_RTC_CONTROLLER_H_INCLUDED
 #define _GRASPPATH_RTC_CONTROLLER_H_INCLUDED
 
-#include "GraspPathPlanner.h"
+#include "rtc/GraspPathPlanner.h"
 #include "../Grasp/PlanBase.h"
-#include "GraspPathControllerSVC_impl.h"
+#include "rtc/GraspPathControllerSVC_impl.h"
 
 namespace grasp {
 

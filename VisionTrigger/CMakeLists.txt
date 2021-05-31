@@ -22,17 +22,14 @@ set(headers
         ObjectRecognitionResultManipulator.h
   )
 
+include_directories(${OPENRTM_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIR})
+link_directories(${OPENRTM_LIBRARY_DIRS})
+
 if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
  add_library(${libname} SHARED ${sources} ${headers})
 else()
  add_cnoid_plugin(${libname} SHARED ${sources} ${headers})
 endif()
-
-#find_package(OpenRTM)
-#add_definitions(-Wall -fPIC -O2 -I${OPENRTM_INCLUDE_DIR} -I${OPENRTM_INCLUDE_DIR}/rtm/idl -I. -I${COIL_INCLUDE_DIR})
-add_definitions(-Wall -fPIC -O2 -I/usr/include -I/usr/include/rtm/idl -I/usr/include/openrtm-1.1 -I/usr/include/coil-1.1 -I/usr/include/openrtm-1.1/rtm/idl -I. -DEXCADE_VISIONTRIGGER_MAKE_DLL)
-
-include_directories(${rtc-dir})
 
 #set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0 LINK_FLAGS -export-dynamic -Wl,-z,defs -L/usr/lib)
 set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)

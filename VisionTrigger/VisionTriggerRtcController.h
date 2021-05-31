@@ -5,7 +5,7 @@
 #ifndef EXCADE_ROBOTICS_RTC_CONTROLLER_H_INCLUDED
 #define EXCADE_ROBOTICS_RTC_CONTROLLER_H_INCLUDED
 
-#include "VisionRecognitionTrigger.h"
+#include "rtc/VisionRecognitionTrigger.h"
 #include "../Grasp/GraspController.h"
 
 

@@ -16,7 +16,7 @@
 
 // Service implementation headers
 // <rtc-template block="service_impl_h">
-#include "GraspControllerSVC_impl.h"
+#include "rtc/GraspControllerSVC_impl.h"
 
 // </rtc-template>
 

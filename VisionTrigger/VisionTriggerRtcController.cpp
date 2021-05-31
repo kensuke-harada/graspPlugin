@@ -2,7 +2,7 @@
    c) Tokuo Tsuji (Kyushu univ./AIST)
 */
 
-#include "VisionRecognitionTrigger.h"
+#include "rtc/VisionRecognitionTrigger.h"
 #include "VisionTriggerRtcController.h"
 
 #include <cnoid/MessageView>	/* modified by qtconv.rb 0th rule*/

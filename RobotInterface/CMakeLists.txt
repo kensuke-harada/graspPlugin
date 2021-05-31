@@ -2,14 +2,14 @@
 # @author Shin'ichiro Nakaoka (AIST)
 
 if(UNIX)
-  set(rtc-dir ./ArmControllerRtc)
+  set(rtc-dir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc)
 else()
    find_package(OpenRTM)
    if(OPENRTM_VERSION VERSION_EQUAL 1.1.2)
-     set(rtc-dir ./ArmControllerRtc1_1_2)
+     set(rtc-dir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc1_1_2)
 	 add_definitions(-DOPENRTM112)
    else()
-     set(rtc-dir ./ArmControllerRtc)
+     set(rtc-dir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc)
    endif()
 endif()
 
@@ -50,15 +50,12 @@ set(headers
     ${rtc-dir}/ManipulatorCommonInterface_DataTypes.hh
 	../PickAndPlacePlanner/RobotLocalFunctions.h
   )
-  
-#find_package(OpenRTM)
+
 find_package(PythonLibs REQUIRED)
 
 if(UNIX)
-  include_directories(${rtc-dir} ${PYTHON_INCLUDE_PATH}
-  #    ${OPENRTM_INCLUDE_DIR} ${OPENRTM_INCLUDE_DIR}/rtm/idl ${COIL_INCLUDE_DIR} .
-       /usr/include /usr/include/openrtm-1.1 /usr/include/coil-1.1 /usr/include/rtm/idl /usr/include/openrtm-1.1/rtm/idl .
-  )
+  include_directories(${OPENRTM_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIR})
+  link_directories(${OPENRTM_LIBRARY_DIRS})
 else()
   include_directories(${PYTHON_INCLUDE_PATH} ${rtc-dir} . ${OPENRTM_INCLUDE_DIRS} ${OMNIORB_INCLUDE_DIRS})
   string(REPLACE ";" " " openrtm_flag "${OPENRTM_CFLAGS}")
