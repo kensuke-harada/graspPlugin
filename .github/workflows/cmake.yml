@@ -58,7 +58,22 @@ jobs:
       run: |
         sudo apt-get update
         ./misc/script/install-requisites-ubuntu-16.04.sh
-        sudo apt-get install -y libqhull-dev freeglut3-dev libglew-dev
+        sudo apt-get install -y libqhull-dev freeglut3-dev libglew-dev libqt5x11extras5-dev libpcl-dev libomniorb4-dev=4.1.6-2ubuntu1 omniidl=4.1.6-2ubuntu1 omniorb-nameserver=4.1.6-2ubuntu1
+
+    - name: Create workspace to build and install OpenRTM on Ubuntu 16.04
+      if: matrix.os == 'ubuntu-16.04'
+      run: mkdir -p ${{ github.workspace }}/OpenRTM/usr
+
+    - name: Install OpenRTM-aist 1.1.2 on Ubuntu 16.04
+      if: matrix.os == 'ubuntu-16.04'
+      run: |
+        curl -sLO http://openrtm.org/pub/OpenRTM-aist/cxx/1.1.2/OpenRTM-aist-1.1.2.tar.gz
+        tar xzf OpenRTM-aist-1.1.2.tar.gz
+        cd OpenRTM-aist-1.1.2
+        ./configure --prefix=${{ github.workspace }}/OpenRTM/usr --without-doxygen
+        make
+        make install
+      working-directory: ${{ github.workspace }}/OpenRTM
 
     - name: Create Build Environment
       # Some projects don't allow in-source building, so create a separate build directory
@@ -66,6 +81,7 @@ jobs:
       run: cmake -E make_directory ${{github.workspace}}/build
 
     - name: Configure CMake
+      if: matrix.os != 'ubuntu-16.04'
       # Use a bash shell so we can use the same syntax for environment variable
       # access regardless of the host operating system
       shell: bash
@@ -74,6 +90,17 @@ jobs:
       # and build directories, but this is only available with CMake 3.13 and higher.
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DGRASP_PLUGINS="Grasp;PRM;MotionFile;GeometryHandler;PickAndPlacePlanner;ObjectPlacePlanner"
+
+    - name: Configure CMake on Ubuntu 16.04
+      if: matrix.os == 'ubuntu-16.04'
+      # Use a bash shell so we can use the same syntax for environment variable
+      # access regardless of the host operating system
+      shell: bash
+      working-directory: ${{github.workspace}}/build
+      # Note the current convention is to use the -S and -B options here to specify source
+      # and build directories, but this is only available with CMake 3.13 and higher.
+      # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DUSE_QT5:BOOL=ON -DBUILD_CORBA_PLUGIN:BOOL=TRUE -DBUILD_GRASP_PCL_PLUGIN:BOOL=ON -DBUILD_OPENRTM_PLUGIN:BOOL=TRUE -DENABLE_CORBA:BOOL=TRUE -DOPENRTM_DIR:PATH=${{ github.workspace }}/OpenRTM/usr -DOpenRTM_DIR:PATH=${{ github.workspace }}/OpenRTM/usr/lib/openrtm-1.1/cmake -DGRASP_PLUGINS="CnoidRos;ConstraintIK;GeometryHandler;Grasp;GraspConsumer;GraspDataGen;MotionFile;ObjectPlacePlanner;PCL;PRM;PickAndPlacePlanner;RobotInterface;RtcGraspPathPlan;SoftFingerStability;VisionTrigger;"
 
     - name: Get number of CPU cores
       id: cpu-cores
