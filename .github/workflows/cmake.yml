@@ -9,6 +9,7 @@ env:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04]
         choreonoid: [v1.7.0, v1.6.0, v1.5.0]
