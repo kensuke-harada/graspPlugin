@@ -67,11 +67,11 @@ void GraspPlanResultSVC_impl::GraspPlanningResult(const GraspPlanResult::DblSequ
   // Please insert your code here and remove the following warning pragma
 	if(state > 0){
 		isContinue=0;
-		std::cout << "Grasp Plan failed" << std::endl;	
+		std::cout << "Grasp Plan failed" << std::endl;
 		return;
 	}
 	cout << GraspPos[0] << endl;
-	
+
 	bool flag;
 	flag= grasp::GraspRtcController::instance()->graspPlanResult(GraspPos, GraspOri, ApproachPos, ApproachOri, angle);
 	//flag= RtcController::graspPlanResult(GraspPos, GraspOri, ApproachPos, ApproachOri, angle);
@@ -88,7 +88,7 @@ void GraspPlanResultSVC_impl::GraspPlanningResult(const GraspPlanResult::DblSequ
 void GraspPlanResultSVC_impl::ReleasePlanningResult(const GraspPlanResult::DblSequence3& GraspPos, const GraspPlanResult::DblSequence9& GraspOri, const GraspPlanResult::DblSequence3& ApproachPos, const GraspPlanResult::DblSequence9& ApproachOri, const GraspPlanResult::DblSequence& angle, ::CORBA::ULong state, ::CORBA::ULong& isContinue)
 {
   // Please insert your code here and remove the following warning pragma
-	std::cout << "Release Plan" << std::endl;	
+	std::cout << "Release Plan" << std::endl;
 	GraspPlanningResult(GraspPos, GraspOri, ApproachPos, ApproachOri, angle, state, isContinue);
 	return ;
 }
@@ -96,6 +96,3 @@ void GraspPlanResultSVC_impl::ReleasePlanningResult(const GraspPlanResult::DblSe
 
 
 // End of example implementational code
-
-
-

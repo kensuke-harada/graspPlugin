@@ -6,9 +6,9 @@
 #include "../Grasp/GraspController.h"
 #include "../PRM/TrajectoryPlanner.h"
 
-#include <cnoid/JointPath>	/* modified by qtconv.rb 0th rule*/  
-#include <cnoid/ItemTreeView>	/* modified by qtconv.rb 0th rule*/  
-#include <cnoid/RootItem>	/* modified by qtconv.rb 0th rule*/  
+#include <cnoid/JointPath>	/* modified by qtconv.rb 0th rule*/
+#include <cnoid/ItemTreeView>	/* modified by qtconv.rb 0th rule*/
+#include <cnoid/RootItem>	/* modified by qtconv.rb 0th rule*/
 #include <cnoid/MessageView>
 #include <cnoid/ExecutablePath>
 
@@ -43,7 +43,7 @@ GraspPathController* GraspPathController::instance()
 }
 
 
-GraspPathController::GraspPathController() : os (MessageView::mainInstance()->cout() ) 
+GraspPathController::GraspPathController() : os (MessageView::mainInstance()->cout() )
 {
 #ifdef WIN32
 	objectBasePath = executableTopDirectory() + string("/") + "extplugin/graspPlugin/Samples/Object/" ; //path setting will be changed for Object
@@ -66,9 +66,9 @@ GraspPathController::GraspPathController() : os (MessageView::mainInstance()->co
 		objId2PrePlan.insert(pair <int, string>(id,gp));
 	}
 	if(objId2File.size()==0){
-		os << "Error: cannot read objList.txt" << endl; 
+		os << "Error: cannot read objList.txt" << endl;
 	}
-	
+
 //	pair<char, int>((char)i, i)
 }
 
@@ -76,7 +76,7 @@ int GraspPathController::RtcStart()
 {
 	int argc=1;
 	char *argv[] = {(char *)("GraspPathPlannerComp")};
-  
+
   RTC::Manager* manager;
   manager = RTC::Manager::init(argc, argv);
 
@@ -103,7 +103,7 @@ int GraspPathController::RtcStart()
 
 void GraspPathController::MyModuleInit(RTC::Manager* manager)
 {
-	
+
   GraspPathPlannerInit(manager);
 
   // Create a component
@@ -120,44 +120,44 @@ void GraspPathController::MyModuleInit(RTC::Manager* manager)
 
 
 bool GraspPathController::graspPathPlanStart(
-			int mode, std::vector<double> begin, std::vector<double> end, 
-			std::string robotId, std::string objectTagId, double resolution, 
+			int mode, std::vector<double> begin, std::vector<double> end,
+			std::string robotId, std::string objectTagId, double resolution,
 			std::vector<pathInfo>* trajectory, int* state)
 {
 	*state = 0;
-	
+
 	PlanBase* tc = PlanBase::instance();
-	if(robTag2Arm().find(robotId) == robTag2Arm().end()){ 
-		os << "Error no robotid " << robotId << endl; 
+	if(robTag2Arm().find(robotId) == robTag2Arm().end()){
+		os << "Error no robotid " << robotId << endl;
 		*state = 1;
 		return false;
 	}
 	tc->targetArmFinger = robTag2Arm()[robotId];
 	tc->setTrajectoryPlanDOF();
-	
-	
-	if(objTag2Item().find(objectTagId) == objTag2Item().end()){ 
-		os << "Error no objectTagId " << objectTagId << endl; 
+
+
+	if(objTag2Item().find(objectTagId) == objTag2Item().end()){
+		os << "Error no objectTagId " << objectTagId << endl;
 		*state = 2;
 		return false;
 	}
 	tc->SetGraspedObject(objTag2Item()[objectTagId]);
 	tc->targetObject->preplanningFileName = objTag2PrePlan[objectTagId];
-	
-	if(tc->bodyItemRobot()->body()->numJoints() != (int)begin.size() || 
+
+	if(tc->bodyItemRobot()->body()->numJoints() != (int)begin.size() ||
 		tc->bodyItemRobot()->body()->numJoints() != (int)end.size() ){
-		os << "Error: the number of Joints of input shoud be "<< tc->bodyItemRobot()->body()->numJoints() << endl; 
+		os << "Error: the number of Joints of input shoud be "<< tc->bodyItemRobot()->body()->numJoints() << endl;
 		*state = 3;
 		return false;
 	}
-	for(int i=0;i<(int)begin.size();i++){  
+	for(int i=0;i<(int)begin.size();i++){
         tc->bodyItemRobot()->body()->joint(i)->q() = begin[i];
 	}
-	
+
 	tc->initial();
 	tc->graspMotionSeq.clear();
-	
-	
+
+
 	tc->setGraspingStateMainArm(PlanBase::NOT_GRASPING);
 	tc->setObjectContactState(PlanBase::ON_ENVIRONMENT);
 	tc->graspMotionSeq.push_back( tc->getMotionState() );
@@ -166,16 +166,16 @@ bool GraspPathController::graspPathPlanStart(
 
 	bool success = GraspController::instance()->loadAndSelectGraspPattern();
 	if(!success){
-		os << "Error: Cannot find grasping posure" << endl; 
+		os << "Error: Cannot find grasping posure" << endl;
 		*state = 4;
 		return false;
 	}
 
 	MotionState graspMotionState = tc->getMotionState();
-	
+
     Vector3 Pp_(tc->palm()->p());
     Matrix3 Rp_(tc->palm()->R());
-	
+
 	//tc->setGraspingState(PlanBase::UNDER_GRASPING);
 
 	//==== Approach Point
@@ -195,7 +195,7 @@ bool GraspPathController::graspPathPlanStart(
 	//tc->graspMotionSeq.push_back( tc->getMotionState() );
 
 
-	
+
 	//==== Grasp Point and Hand open
 	tc->setMotionState( graspMotionState );
 	tc->setGraspingStateMainArm(PlanBase::UNDER_GRASPING);
@@ -207,17 +207,17 @@ bool GraspPathController::graspPathPlanStart(
 	tc->graspMotionSeq.push_back( tc->getMotionState() );
 	tc->graspMotionSeq.back().id = planGraspPath::CLOSING_GRIPPER;
 	tc->graspMotionSeq.back().tolerance = 0;
-	
+
 	//==== hand close
 	tc->setMotionState(graspMotionState) ;
 	tc->setGraspingStateMainArm( PlanBase::GRASPING );
 	tc->graspMotionSeq.push_back( tc->getMotionState() );
 	tc->graspMotionSeq.back().id = planGraspPath::UP_HAND;
 	tc->graspMotionSeq.back().tolerance = tc->tolerance;
-	
+
 	//==== lift up
 	tc->arm()->IK_arm(Vector3(Vector3(0,0,0.05)+Pp_), Rp_);
-	
+
 	tc->setObjectContactState(PlanBase::OFF_ENVIRONMENT);
 	tc->graspMotionSeq.push_back( tc->getMotionState() );
 	tc->graspMotionSeq.back().id = planGraspPath::BACKAWAY;
@@ -230,7 +230,7 @@ bool GraspPathController::graspPathPlanStart(
             closefinger.push_back(tc->fingers(i)->fing_path->joint(j)->q());
 		}
 	}
-	for(int i=0;i<(int)begin.size();i++){  
+	for(int i=0;i<(int)begin.size();i++){
         tc->bodyItemRobot()->body()->joint(i)->q() = end[i];
 	}
 	int cnt=0;
@@ -240,9 +240,9 @@ bool GraspPathController::graspPathPlanStart(
 		}
 	}
 	tc->graspMotionSeq.push_back( tc->getMotionState() );
-	
-	
-	
+
+
+
 	double start1 =  getrusage_sec();
 
 	TrajectoryPlanner tp;
@@ -252,12 +252,12 @@ bool GraspPathController::graspPathPlanStart(
 	cout << end1-start1 << "sec "<<endl;
 
 	if(!success){
-		os << "Error: Cannot find motion path" << endl; 
+		os << "Error: Cannot find motion path" << endl;
 		*state = 5;
 		return false;
 	}
-	
-/*	
+
+/*
 	const int numFrames = tp.poseSeqItemRobot->bodyMotionItem()->motion()->getNumFrames();
 	MultiValueSeq& qseqRobot = *tp.poseSeqItemRobot->bodyMotionItem()->motion()->jointPosSeq();
 	for(int i=0;i < numFrames; i++){
@@ -275,29 +275,29 @@ bool GraspPathController::graspPathPlanStart(
 	vector<double> maxAngleSeq;
 	double sumMaxAngle=0;
 	for(unsigned int i=0;i < tp.motionSeq.size()-1;i++){
-		double maxAngle = ( tp.motionSeq[i].jointSeq - tp.motionSeq[i+1].jointSeq ).cwiseAbs().maxCoeff();  
+		double maxAngle = ( tp.motionSeq[i].jointSeq - tp.motionSeq[i+1].jointSeq ).cwiseAbs().maxCoeff();
 		sumMaxAngle += maxAngle;
 		maxAngleSeq.push_back(maxAngle);
-		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).transpose() << endl; 
-		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).cwiseAbs().transpose() << endl; 
-		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).cwiseAbs().maxCoeff() << endl; 
+		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).transpose() << endl;
+		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).cwiseAbs().transpose() << endl;
+		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).cwiseAbs().maxCoeff() << endl;
 	}
 //	cout << endl;
-	
+
 //	outputMotionSeq.push_back( tp.motionSeq[0].jointSeq);
 	for(unsigned int i=0;i < tp.motionSeq.size()-1;i++){
 		if(maxAngleSeq[i]==0) continue;
 		int cnt= resolution*maxAngleSeq[i]/sumMaxAngle;
 		if(cnt==0) cnt=1;
 		for(int j=0;j<cnt;j++){
-			outputMotionSeq.push_back ( (tp.motionSeq[i].jointSeq*(cnt-j) + tp.motionSeq[i+1].jointSeq*j)/cnt ); 
+			outputMotionSeq.push_back ( (tp.motionSeq[i].jointSeq*(cnt-j) + tp.motionSeq[i+1].jointSeq*j)/cnt );
 			outputMotionId.push_back(tp.motionSeq[i].id);
 		}
 	}
-	outputMotionSeq.push_back ( tp.motionSeq.back().jointSeq ); 
+	outputMotionSeq.push_back ( tp.motionSeq.back().jointSeq );
 	outputMotionId.push_back(tp.motionSeq.back().id);
-	
-	
+
+
 	for(unsigned int i=0;i < outputMotionSeq.size(); i++){
 		pathInfo temp;
 		temp.state= outputMotionId[i];
@@ -331,8 +331,8 @@ bool GraspPathController::graspPathPlanStart(
 }
 
 bool GraspPathController::releasePathPlanStart(
-			int mode, std::vector<double> begin, std::vector<double> end, 
-			std::string robotId, std::string objectTagId, double resolution, 
+			int mode, std::vector<double> begin, std::vector<double> end,
+			std::string robotId, std::string objectTagId, double resolution,
 			std::vector<pathInfo>* trajectory, int* state)
 {
 	PlanBase* tc = PlanBase::instance();
@@ -341,36 +341,36 @@ bool GraspPathController::releasePathPlanStart(
     Matrix3 placeRot = tc->object()->R();
 	Vector3 objectPalmPos = tc->targetArmFinger->objectPalmPos;
 	Matrix3 objectPalmRot = tc->targetArmFinger->objectPalmRot;
-	
+
 	os << placePos << endl;
 
 	*state = 0;
-	if(robTag2Arm().find(robotId) == robTag2Arm().end()){ 
-		os << "Error no robotid " << robotId << endl; 
+	if(robTag2Arm().find(robotId) == robTag2Arm().end()){
+		os << "Error no robotid " << robotId << endl;
 		*state = 1;
 		return false;
 	}
 	tc->targetArmFinger = robTag2Arm()[robotId];
 	tc->setTrajectoryPlanDOF();
-	
-	if(objTag2Item().find(objectTagId) == objTag2Item().end()){ 
-		os << "Error no objectTagId " << objectTagId << endl; 
+
+	if(objTag2Item().find(objectTagId) == objTag2Item().end()){
+		os << "Error no objectTagId " << objectTagId << endl;
 		*state = 2;
 		return false;
 	}
 	tc->SetGraspedObject(objTag2Item()[objectTagId]);
 	tc->targetObject->preplanningFileName = objTag2PrePlan[objectTagId];
 	tc->RemoveEnvironment(objTag2Item()[objectTagId]);
-	
-	
-	if(tc->bodyItemRobot()->body()->numJoints() != (int)begin.size() || 
+
+
+	if(tc->bodyItemRobot()->body()->numJoints() != (int)begin.size() ||
 		tc->bodyItemRobot()->body()->numJoints() != (int)end.size() ){
-		os << "Error: the number of Joints of input shoud be "<< tc->bodyItemRobot()->body()->numJoints() << endl; 
+		os << "Error: the number of Joints of input shoud be "<< tc->bodyItemRobot()->body()->numJoints() << endl;
 		*state = 3;
 		return false;
 	}
 
-	for(int i=0;i<(int)begin.size();i++){  
+	for(int i=0;i<(int)begin.size();i++){
         tc->bodyItemRobot()->body()->joint(i)->q() = begin[i];
 	}
 	tc->calcForwardKinematics();
@@ -379,24 +379,24 @@ bool GraspPathController::releasePathPlanStart(
 	tc->setObjectContactState(PlanBase::ON_ENVIRONMENT);
 	bool success = selectReleasePattern(placePos, placeRot);
 	if(!success){
-		os << "Error: Cannot find grasping posure" << endl; 
+		os << "Error: Cannot find grasping posure" << endl;
 		*state = 4;
 		return false;
 	}
-	
+
     tc->object()->R() = tc->palm()->R()*(tc->targetArmFinger->objectPalmRot);
     tc->object()->p() = tc->palm()->p()+tc->palm()->R()*tc->targetArmFinger->objectPalmPos;
 	tc->setGraspingStateMainArm(PlanBase::GRASPING);
 	tc->setObjectContactState(PlanBase::ON_ENVIRONMENT);
 	MotionState graspMotionState = tc->getMotionState();
-	
+
     os << placePos << tc->object()->p() <<endl;
-	
+
 
     Vector3 Pp_(tc->palm()->p());
     Matrix3 Rp_(tc->palm()->R());
-	
-	for(int i=0;i<(int)begin.size();i++){  
+
+	for(int i=0;i<(int)begin.size();i++){
         tc->bodyItemRobot()->body()->joint(i)->q() = begin[i];
 	}
 	tc->calcForwardKinematics();
@@ -410,8 +410,8 @@ bool GraspPathController::releasePathPlanStart(
 	tc->graspMotionSeq.push_back( tc->getMotionState() );
 	tc->graspMotionSeq.back().id = planGraspPath::APROACH;
 	tc->graspMotionSeq.back().tolerance = tc->tolerance;
-	
-	
+
+
 	//==== lift up point
 	tc->arm()->IK_arm(Vector3(Vector3(0,0,0.05)+Pp_), Rp_);
 	tc->setObjectContactState(PlanBase::ON_ENVIRONMENT);
@@ -419,7 +419,7 @@ bool GraspPathController::releasePathPlanStart(
 	tc->graspMotionSeq.push_back( tc->getMotionState() );
 	tc->graspMotionSeq.back().id = planGraspPath::DOWN_HAND;
 	tc->graspMotionSeq.back().tolerance = 0.0;
-	
+
 	//==== Grasp Point and hand keep close
 	tc->setMotionState(graspMotionState) ;
 	tc->calcForwardKinematics();
@@ -440,7 +440,7 @@ bool GraspPathController::releasePathPlanStart(
 	tc->graspMotionSeq.push_back( tc->getMotionState() );
 	tc->graspMotionSeq.back().id = planGraspPath::BACKAWAY;
 	tc->graspMotionSeq.back().tolerance = 0.0;
-	
+
 	tc->setMotionState( graspMotionState );
 	tc->arm()->IK_arm(Rp_*tc->arm()->approachOffset+Pp_+Vector3(0,0,0.05), Rp_);
 	tc->setGraspingStateMainArm(PlanBase::UNDER_GRASPING);
@@ -452,29 +452,29 @@ bool GraspPathController::releasePathPlanStart(
 	tc->graspMotionSeq.push_back( tc->getMotionState() );
 	tc->graspMotionSeq.back().id = planGraspPath::APROACH;
 	tc->graspMotionSeq.back().tolerance = tc->tolerance;
-	
+
 
 	//==== end point
-	for(int i=0;i<(int)begin.size();i++){  
+	for(int i=0;i<(int)begin.size();i++){
         tc->bodyItemRobot()->body()->joint(i)->q() = end[i];
 	}
 	tc->calcForwardKinematics();
 	tc->setGraspingStateMainArm(PlanBase::NOT_GRASPING);
 	tc->graspMotionSeq.push_back( tc->getMotionState() );
-	
+
 	tc->setMotionState(tc->graspMotionSeq[0]);
 	tc->calcForwardKinematics();
     tc->setObjPos(tc->palm()->p()+tc->palm()->R()*objectPalmPos, tc->palm()->R()*objectPalmRot );
-	
+
 	TrajectoryPlanner tp;
 	success = tp.doTrajectoryPlanning();
 	if(!success){
-		os << "Error: Cannot find motion path" << endl; 
+		os << "Error: Cannot find motion path" << endl;
 		*state = 5;
 		return false;
 	}
-	
-/*	
+
+/*
 	const int numFrames = tp.poseSeqItemRobot->bodyMotionItem()->motion()->getNumFrames();
 	MultiValueSeq& qseqRobot = *tp.poseSeqItemRobot->bodyMotionItem()->motion()->jointPosSeq();
 	for(int i=0;i < numFrames; i++){
@@ -492,29 +492,29 @@ bool GraspPathController::releasePathPlanStart(
 	vector<double> maxAngleSeq;
 	double sumMaxAngle=0;
 	for(unsigned int i=0;i < tp.motionSeq.size()-1;i++){
-		double maxAngle = ( tp.motionSeq[i].jointSeq - tp.motionSeq[i+1].jointSeq ).cwiseAbs().maxCoeff();  
+		double maxAngle = ( tp.motionSeq[i].jointSeq - tp.motionSeq[i+1].jointSeq ).cwiseAbs().maxCoeff();
 		sumMaxAngle += maxAngle;
 		maxAngleSeq.push_back(maxAngle);
-		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).transpose() << endl; 
-		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).cwiseAbs().transpose() << endl; 
-		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).cwiseAbs().maxCoeff() << endl; 
+		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).transpose() << endl;
+		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).cwiseAbs().transpose() << endl;
+		//cout << ( tp.motionSeq[i].jointSeq - tp.motionSeq[i-1].jointSeq ).cwiseAbs().maxCoeff() << endl;
 	}
 //	cout << endl;
-	
+
 //	outputMotionSeq.push_back( tp.motionSeq[0].jointSeq);
 	for(unsigned int i=0;i < tp.motionSeq.size()-1;i++){
 		if(maxAngleSeq[i]==0) continue;
 		int cnt= resolution*maxAngleSeq[i]/sumMaxAngle;
 		if(cnt==0) cnt=1;
 		for(int j=0;j<cnt;j++){
-			outputMotionSeq.push_back ( (tp.motionSeq[i].jointSeq*(cnt-j) + tp.motionSeq[i+1].jointSeq*j)/cnt ); 
+			outputMotionSeq.push_back ( (tp.motionSeq[i].jointSeq*(cnt-j) + tp.motionSeq[i+1].jointSeq*j)/cnt );
 			outputMotionId.push_back(tp.motionSeq[i].id);
 		}
 	}
-	outputMotionSeq.push_back ( tp.motionSeq.back().jointSeq ); 
+	outputMotionSeq.push_back ( tp.motionSeq.back().jointSeq );
 	outputMotionId.push_back(tp.motionSeq.back().id);
-	
-	
+
+
 	for(unsigned int i=0;i < outputMotionSeq.size(); i++){
 		pathInfo temp;
 		temp.state= outputMotionId[i];
@@ -552,34 +552,34 @@ bool GraspPathController::selectReleasePattern(Vector3 objVisPos, Matrix3 objVis
 
 	Vector3 palmPos;
 	Matrix3 palmRot;
-	
+
 	Matrix3 rpr ( objVisRot*pb->targetArmFinger->objectPalmRot.transpose() );
 	Vector3  rpp  ( objVisPos - rpr*pb->targetArmFinger->objectPalmPos );
 
 	double Eval = 1.e10;
 	bool found = false;
-	
+
 	vector<double> fpos, fpos_temp, fpos_cand;
 
 	for(int i=0;i<18;i++){
 
 		Vector3 trpy (0,0,2.0*3.141592*i/18.0);
 		Matrix3 tr = rotFromRpy(trpy);
-		
+
 		Matrix3 tmpRot( tr*objVisRot*pb->targetArmFinger->objectPalmRot.transpose()  );
 		Vector3  tmpPos( objVisPos - tmpRot*pb->targetArmFinger->objectPalmPos);
 
 		bool ikConv = pb->arm()->IK_arm(tmpPos, tmpRot);
 		if(!ikConv) continue;
-		
+
 		double dist = 0.0;
 		for (int i = 0; i < pb->arm()->arm_path->numJoints(); i++){
             double edist =  (pb->arm()->arm_path->joint(i)->q() - pb->arm()->armStandardPose[i]);
 			dist +=  edist*edist;
 		}
 		double quality = dist;
-		
-		
+
+
 
 		if (  (Eval > quality) && ikConv && pb->arm()->checkArmLimit() && !pb->isColliding() ) {
 
@@ -614,24 +614,24 @@ bool GraspPathController::selectReleasePattern(Vector3 objVisPos, Matrix3 objVis
 		os << " No feasible grasping posture found" << endl;
 	}
 
-	
+
 	return found;
 
 }
 
 bool GraspPathController::createRecord(int objId, std::string tagId){
 	string objFileName = objectBasePath + objId2File[objId];
-	
-	if(objTag2Item().find(tagId) != objTag2Item().end() || tagId=="ALLID"){ 
+
+	if(objTag2Item().find(tagId) != objTag2Item().end() || tagId=="ALLID"){
 		//os << "Error: the tagId is already recorded " << tagId << endl;
 		os << "Error: the tagId is already recorded " << tagId << endl;
-		return false;	
-	}	
-	
+		return false;
+	}
+
 	BodyItemPtr temp = new BodyItem();
 	if( !temp->loadModelFile(objFileName) ){
 		os << "modelLoadError: " << objFileName << endl;
-		return false;	
+		return false;
 	}
 	temp->setName(tagId);
 	//temp->preplanningFileName=objId2PrePlan[objId];
@@ -641,9 +641,9 @@ bool GraspPathController::createRecord(int objId, std::string tagId){
 	parentItem->addChildItem (temp);
 	objTag2Item().insert( pair <string,BodyItemPtr>(tagId, temp) );
 	objTag2PrePlan.insert( pair <string,string>(tagId, objId2PrePlan[objId]) );
-	
+
 	return true;
-}	
+}
 
 bool GraspPathController::deleteRecord(std::string tagId){
 
@@ -658,9 +658,9 @@ bool GraspPathController::deleteRecord(std::string tagId){
 		return true;
 	}
 
-	if(objTag2Item().find(tagId) == objTag2Item().end()){ 
+	if(objTag2Item().find(tagId) == objTag2Item().end()){
 		os << "Error: the tagId is not recorded " << tagId << endl;
-		return false;	
+		return false;
 	}
 	BodyItemPtr item = objTag2Item()[tagId];
 	disappear(tagId);
@@ -668,7 +668,7 @@ bool GraspPathController::deleteRecord(std::string tagId){
 	item->detachFromParentItem();
 
 	return true;
-}	
+}
 
 bool GraspPathController::appear(std::string tagId){
 	if(tagId=="ALLID"){
@@ -680,9 +680,9 @@ bool GraspPathController::appear(std::string tagId){
 		}
 		return true;
 	}
-	if(objTag2Item().find(tagId) == objTag2Item().end()){ 
+	if(objTag2Item().find(tagId) == objTag2Item().end()){
 		os << "Error: the tagId is not recorded " << tagId << endl;
-		return false;	
+		return false;
 	}
 	BodyItemPtr item = objTag2Item()[tagId];
 	PlanBase::instance()->SetEnvironment(item);
@@ -700,9 +700,9 @@ bool GraspPathController::disappear(std::string tagId){
 		}
 		return true;
 	}
-	if(objTag2Item().find(tagId) == objTag2Item().end()){ 
+	if(objTag2Item().find(tagId) == objTag2Item().end()){
 		os << "Error: the tagId is not recorded " << tagId << endl;
-		return false;	
+		return false;
 	}
 	BodyItemPtr item = objTag2Item()[tagId];
 	PlanBase::instance()->RemoveEnvironment(item);
@@ -712,7 +712,7 @@ bool GraspPathController::disappear(std::string tagId){
 
 bool GraspPathController::setPos(string tagId,Vector3 pos, Matrix3 ori){
 	BodyItemPtr item = NULL;
-	if(objTag2Item().find(tagId) != objTag2Item().end()){ 
+	if(objTag2Item().find(tagId) != objTag2Item().end()){
 		item = objTag2Item()[tagId];
 	}
 	if( robTag2Arm().find(tagId) != robTag2Arm().end() ){
@@ -727,17 +727,17 @@ bool GraspPathController::setPos(string tagId,Vector3 pos, Matrix3 ori){
 	item->calcForwardKinematics();
 	item->notifyKinematicStateChange();
 	return true;
-}	
+}
 
 bool GraspPathController::setTolerance(double setTolerance){
 	PlanBase::instance()->tolerance = setTolerance;
 	return true;
-}	
+}
 /*
 bool GraspPathController::graspPlanResult(const GraspPlanResult::DblSequence3& GraspPos, const GraspPlanResult::DblSequence9& GraspOri, const GraspPlanResult::DblSequence3& ApproachPos, const GraspPlanResult::DblSequence9& ApproachOri, CORBA::Double angle){
-	
+
 	PlanBase* gc = PlanBase::instance();
-	
+
 	Vector3 graspPos_(GraspPos[0],GraspPos[1],GraspPos[2]);
 	Matrix3 graspOri_;
 	graspOri_ << GraspOri[0],GraspOri[1],GraspOri[2],GraspOri[3],GraspOri[4],GraspOri[5],GraspOri[6],GraspOri[7],GraspOri[8];
@@ -746,17 +746,17 @@ bool GraspPathController::graspPlanResult(const GraspPlanResult::DblSequence3& G
 	Matrix3 approachOri_;
 	approachOri_ << ApproachOri[0],ApproachOri[1],ApproachOri[2],ApproachOri[3],ApproachOri[4],ApproachOri[5],ApproachOri[6],ApproachOri[7],ApproachOri[8];
 
-	
+
 	cout << graspPos_ << graspOri_ << basePos << baseOri <<endl;
-	
-	
+
+
 	graspPos_ = Vector3(baseOri*graspPos_ + basePos);
 	graspOri_ = Matrix3(baseOri*graspOri_);
-	
+
 	approachPos_ = Vector3(baseOri*approachPos_ + basePos);
 	approachOri_ = Matrix3(baseOri*approachOri_);
-	
-	
+
+
 	bool ikConv = gc->arm()->IK_arm(approachPos_, approachOri_);
 	bool limitCheck = gc->arm()->checkArmLimit();
 	gc->fingers(0)->fing_path->joint(0)->q = angle;
@@ -764,7 +764,7 @@ bool GraspPathController::graspPlanResult(const GraspPlanResult::DblSequence3& G
 	gc->flush();
 
 	if(ikConv && limitCheck){
-		
+
 	}else{
 		return false;
 	}
@@ -780,6 +780,6 @@ bool GraspPathController::graspPlanResult(const GraspPlanResult::DblSequence3& G
 	}else{
 		return false;
 	}
-	
+
 }
 */

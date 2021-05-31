@@ -22,17 +22,17 @@ class VisionTriggerRtcController{
 		bool VisionRecoginitionStart();
 
 		bool switchExtModeFlag();
-	
-	
+
+
 		static void VisionTriggerMyModuleInit(RTC::Manager* manager);
-	
+
 		bool stopFlag;
-	
+
 	private:
 		cnoid::Vector3 basePos;
 		cnoid::Matrix3 baseOri;
-	
-					
+
+
 };
 
 

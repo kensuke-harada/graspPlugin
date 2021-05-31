@@ -76,12 +76,12 @@ set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 
 if(UNIX)
 
-  target_link_libraries(${libname} 
-  	CnoidBodyPlugin CnoidGraspPlugin  
-  	${PYTHON_LIBRARIES} uuid dl pthread 
+  target_link_libraries(${libname}
+  	CnoidBodyPlugin CnoidGraspPlugin
+  	${PYTHON_LIBRARIES} uuid dl pthread
   	omniORB4 omnithread omniDynamic4 RTC coil)
 
-  apply_common_setting_for_plugin(${libname})    
+  apply_common_setting_for_plugin(${libname})
 
 elseif(MSVC)
   add_definitions(-DEXCADE_ROBOTINTERFACE_MAKE_DLL)
@@ -100,7 +100,7 @@ if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
     LIBRARY DESTINATION lib CONFIGURATIONS Release Debug)
 elseif(CNOID_VERSION EQUAL 1.5)
   apply_common_setting_for_plugin(${libname})
-else()    
+else()
   set_target_properties(${libname} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR}
     ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR}

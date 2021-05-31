@@ -5,8 +5,8 @@
 #include "VisionRecognitionTrigger.h"
 #include "VisionTriggerRtcController.h"
 
-#include <cnoid/MessageView>	/* modified by qtconv.rb 0th rule*/  
-#include <cnoid/JointPath>	/* modified by qtconv.rb 0th rule*/  
+#include <cnoid/MessageView>	/* modified by qtconv.rb 0th rule*/
+#include <cnoid/JointPath>	/* modified by qtconv.rb 0th rule*/
 
 
 using namespace std;
@@ -20,16 +20,16 @@ VisionTriggerRtcController* VisionTriggerRtcController::instance()
 }
 
 
-// MyModuleInit is common name  
+// MyModuleInit is common name
 void VisionTriggerRtcController::VisionTriggerMyModuleInit(RTC::Manager* manager)
 {
-	
+
  VisionRecognitionTriggerInit(manager);
   RTC::RtcBase* comp;
 
   // Create a component
   comp = (VisionRecognitionTrigger *)manager->createComponent("VisionRecognitionTrigger");
-	
+
   VisionTriggerRtcController::instance()->comp_ = (VisionRecognitionTrigger *)comp;
 
   if (comp==NULL)
@@ -42,13 +42,13 @@ void VisionTriggerRtcController::VisionTriggerMyModuleInit(RTC::Manager* manager
 }
 
 bool VisionTriggerRtcController::VisionRecoginitionStart(){
-	
+
 	stopFlag=false;
-	
+
 	if( !PlanBase::instance()->initial()){
 		return false;
 	}
-	
+
 	CORBA::ULong ObjId=0;
 
 	string obj_data   = PlanBase::instance()->bodyItemRobotPath() + string("/data/obj_list.txt");
@@ -59,7 +59,7 @@ bool VisionTriggerRtcController::VisionRecoginitionStart(){
 		cout << "obj_list.txt not found" << obj_data<< endl;
 		return false;
 	}
-	
+
 	while(fin_obj){
 		string tmp_obj;
 		stringstream li2;
@@ -72,14 +72,14 @@ bool VisionTriggerRtcController::VisionRecoginitionStart(){
 
 		li2 >> qtmp;
 		li2 >> tmp_obj;
-		
+
 		if(tmp_obj.find(objname,0) != string::npos){
-			ObjId = qtmp;	
+			ObjId = qtmp;
 			cout << qtmp << tmp_obj << endl;
 			break;
 		}
 	}
-	
+
 	RTC::CorbaConsumer<RecognitionService>* m_recogTrigger = VisionTriggerRtcController::instance()->comp_->m_recogTrigger_();
 	if (::CORBA::is_nil(m_recogTrigger->getObject()) == false) {
 		(*m_recogTrigger)->setModelID(ObjId);
@@ -88,15 +88,15 @@ bool VisionTriggerRtcController::VisionRecoginitionStart(){
 		cout << "RTC not connected" << endl;
 		return false;
 	}
-	
+
 //	while( VisionTriggerRtcController::instance()->comp_->results.size() < 20){
 //		MessageView::mainInstance()->flush();
 //		if(stopFlag) return false;
 //	}
-	
+
 	RTC::InPort<RTC::TimedDoubleSeq>* m_recogResultIn = &VisionTriggerRtcController::instance()->comp_->m_recogResultIn;
 
-	
+
 
 	while ( !m_recogResultIn->isNew() ) {
 		MessageView::mainInstance()->flush();
@@ -109,7 +109,7 @@ bool VisionTriggerRtcController::VisionRecoginitionStart(){
 
    /* 		m_recogResultIn.read();
     printf("length: %ld\n", m_recogResult.data.length());
-	  
+
 	  results.clear();
 	  for(unsigned int i=0; i<  m_recogResult.data.length(); i++){
 		  results.push_back(m_recogResult.data[i]);
@@ -129,22 +129,22 @@ bool VisionTriggerRtcController::VisionRecoginitionStart(){
 */
  // }
 	if( m_recogResult->data.length()==0 ){
-		MessageView::mainInstance()->cout() << "Vision Error: No data" << endl;	
+		MessageView::mainInstance()->cout() << "Vision Error: No data" << endl;
 		return false;
 	}
 	if( m_recogResult->data[5] ){
-		MessageView::mainInstance()->cout() << "Vision Error: Return Error Code" << endl;	
+		MessageView::mainInstance()->cout() << "Vision Error: Return Error Code" << endl;
 		return false;
 	}
 
 
 	double* result =  &m_recogResult->data[0];
 //	int size = VisionTriggerRtcController::instance()->comp_->results.size();
-	
+
 	Vector3 objPos ( result[11]/1000.0,result[15]/1000.0,result[19]/1000.0);
 	Matrix3 objOri;
 	objOri << result[8],result[9],result[10],result[12],result[13],result[14],result[16],result[17],result[18];
-	
+
 	PlanBase::instance()->setObjPos(objPos, objOri);
 	PlanBase::instance()->flush();
 
@@ -162,7 +162,7 @@ int VisionTriggerRtcController::RtcStart()
 {
 	int argc=1;
 	char *argv[] = {(char *)("VisionRecognitionTriggerComp")};
-  
+
   RTC::Manager* manager;
   manager = RTC::Manager::init(argc, argv);
 

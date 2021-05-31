@@ -46,7 +46,7 @@ using namespace RTC;
 namespace  grasp {
 	class GraspRtcController;
 }
- 
+
 class GraspConsumer
   : public RTC::DataFlowComponentBase
 {
@@ -64,21 +64,21 @@ class GraspConsumer
   ~GraspConsumer();
 
   // <rtc-template block="public_attribute">
-  
+
   // </rtc-template>
 
   // <rtc-template block="public_operation">
-  
+
   // </rtc-template>
 
   /***
    *
    * The initialize action (on CREATED->ALIVE transition)
-   * formaer rtc_init_entry() 
+   * formaer rtc_init_entry()
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
    virtual RTC::ReturnCode_t onInitialize();
 
@@ -88,8 +88,8 @@ class GraspConsumer
    * formaer rtc_exiting_entry()
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
   // virtual RTC::ReturnCode_t onFinalize();
 
@@ -101,8 +101,8 @@ class GraspConsumer
    * @param ec_id target ExecutionContext Id
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
   // virtual RTC::ReturnCode_t onStartup(RTC::UniqueId ec_id);
 
@@ -114,8 +114,8 @@ class GraspConsumer
    * @param ec_id target ExecutionContext Id
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
   // virtual RTC::ReturnCode_t onShutdown(RTC::UniqueId ec_id);
 
@@ -127,8 +127,8 @@ class GraspConsumer
    * @param ec_id target ExecutionContext Id
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
   // virtual RTC::ReturnCode_t onActivated(RTC::UniqueId ec_id);
 
@@ -140,8 +140,8 @@ class GraspConsumer
    * @param ec_id target ExecutionContext Id
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
   // virtual RTC::ReturnCode_t onDeactivated(RTC::UniqueId ec_id);
 
@@ -153,8 +153,8 @@ class GraspConsumer
    * @param ec_id target ExecutionContext Id
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
    virtual RTC::ReturnCode_t onExecute(RTC::UniqueId ec_id);
 
@@ -166,8 +166,8 @@ class GraspConsumer
    * @param ec_id target ExecutionContext Id
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
   // virtual RTC::ReturnCode_t onAborting(RTC::UniqueId ec_id);
 
@@ -179,8 +179,8 @@ class GraspConsumer
    * @param ec_id target ExecutionContext Id
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
   // virtual RTC::ReturnCode_t onError(RTC::UniqueId ec_id);
 
@@ -192,11 +192,11 @@ class GraspConsumer
    * @param ec_id target ExecutionContext Id
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
   // virtual RTC::ReturnCode_t onReset(RTC::UniqueId ec_id);
-  
+
   /***
    *
    * The state update action that is invoked after onExecute() action
@@ -205,8 +205,8 @@ class GraspConsumer
    * @param ec_id target ExecutionContext Id
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
   // virtual RTC::ReturnCode_t onStateUpdate(RTC::UniqueId ec_id);
 
@@ -218,19 +218,19 @@ class GraspConsumer
    * @param ec_id target ExecutionContext Id
    *
    * @return RTC::ReturnCode_t
-   * 
-   * 
+   *
+   *
    */
   // virtual RTC::ReturnCode_t onRateChanged(RTC::UniqueId ec_id);
 
 
  protected:
   // <rtc-template block="protected_attribute">
-  
+
   // </rtc-template>
 
   // <rtc-template block="protected_operation">
-  
+
   // </rtc-template>
 
   // Configuration variable declaration
@@ -240,13 +240,13 @@ class GraspConsumer
 
   // DataInPort declaration
   // <rtc-template block="inport_declare">
-  
+
   // </rtc-template>
 
 
   // DataOutPort declaration
   // <rtc-template block="outport_declare">
-  
+
   // </rtc-template>
 
   // CORBA Port declaration
@@ -257,7 +257,7 @@ class GraspConsumer
   /*!
    */
   RTC::CorbaPort m_ResultPortPort;
-  
+
   // </rtc-template>
 
   // Service declaration
@@ -265,7 +265,7 @@ class GraspConsumer
   /*!
    */
   GraspPlanResultSVC_impl m_Result;
-  
+
   // </rtc-template>
 
   // Consumer declaration
@@ -273,16 +273,16 @@ class GraspConsumer
   /*!
    */
   RTC::CorbaConsumer<GraspPlanStart> m_PlanStart;
-  
+
   // </rtc-template>
 
  private:
   // <rtc-template block="private_attribute">
-  
+
   // </rtc-template>
 
   // <rtc-template block="private_operation">
-  
+
   // </rtc-template>
 
 };
