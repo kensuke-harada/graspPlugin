@@ -44,7 +44,7 @@ jobs:
       run: |
         sudo apt-get update
         curl https://raw.githubusercontent.com/choreonoid/choreonoid/master/misc/script/install-requisites-ubuntu-20.04.sh | sh
-        sudo apt-get install -y libqhull-dev freeglut3-dev libglew-dev
+        sudo apt-get install -y libqhull-dev freeglut3-dev libglew-dev libboost-python-dev libboost-regex-dev libboost-thread-dev
 
     - name: Install depending packages for ubuntu 18.04
       if: matrix.os == 'ubuntu-18.04'
