@@ -3,17 +3,17 @@
 */
 
 #include "VisionTriggerBar.h"
-//#include <cnoid/ItemTreeView>	/* modified by qtconv.rb 0th rule*/  
-#include <cnoid/MessageView>	/* modified by qtconv.rb 0th rule*/  
-#include <cnoid/Archive>	/* modified by qtconv.rb 0th rule*/  
+//#include <cnoid/ItemTreeView>	/* modified by qtconv.rb 0th rule*/
+#include <cnoid/MessageView>	/* modified by qtconv.rb 0th rule*/
+#include <cnoid/Archive>	/* modified by qtconv.rb 0th rule*/
 #include <boost/bind.hpp>
 #include <boost/format.hpp>
-// #include <glibmm/i18n.h>	/* modified by qtconv.rb 5th rule*/  
+// #include <glibmm/i18n.h>	/* modified by qtconv.rb 5th rule*/
 
 //#include <ExcadePlugins/Grasp/GraspController.h>
 //#include <ExcadePlugins/Grasp/TrajectoryPlanner.h>
 
-#include <VisionTriggerRtcController.h>
+#include "VisionTriggerRtcController.h"
 
 #include "ObjectRecognitionResultManipulator.h"
 
@@ -33,13 +33,13 @@ VisionTriggerBar::VisionTriggerBar()
 	  mes(*MessageView::mainInstance()),
    	os (MessageView::mainInstance()->cout() )
 {
-	
+
 	addSeparator();
-	
+
 	addLabel(("=VisionRTC="));
 
 	addButton(("Start"), ("RTC start"))->
-		sigClicked().connect(bind(&VisionTriggerBar::onStartButtonClicked, this));	/* modified by qtconv.rb 6th rule*/  
+		sigClicked().connect(bind(&VisionTriggerBar::onStartButtonClicked, this));	/* modified by qtconv.rb 6th rule*/
 
 	addButton(("Stop"), ("RTC stop"))->
 		sigClicked().connect(bind(&VisionTriggerBar::onStopButtonClicked, this));	/* modified by qtconv.rb 6th rule*/
@@ -49,7 +49,7 @@ VisionTriggerBar::VisionTriggerBar()
 	addButton(("Ext ON/OFF"), ("switch extended mode"))->
 		sigClicked().connect(bind(&VisionTriggerBar::onExtStartButtonClicked, this));
 
-	// show_all_children();	/* modified by qtconv.rb 7th rule*/  
+	// show_all_children();	/* modified by qtconv.rb 7th rule*/
 
 }
 
@@ -70,7 +70,7 @@ void VisionTriggerBar::onStartButtonClicked()
 void VisionTriggerBar::onStopButtonClicked()
 {
 	VisionTriggerRtcController::instance()->stopFlag = true;
-	os <<  "VisionTriggerStopped" << endl;	
+	os <<  "VisionTriggerStopped" << endl;
 }
 
 void VisionTriggerBar::onExtStartButtonClicked()

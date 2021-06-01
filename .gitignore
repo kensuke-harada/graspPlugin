@@ -1,0 +1,3 @@
+# Shared objects
+*.so
+*.so.[0-9.]*

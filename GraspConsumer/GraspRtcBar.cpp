@@ -3,17 +3,17 @@
 */
 
 #include "GraspRtcBar.h"
-#include <cnoid/ItemTreeView>	/* modified by qtconv.rb 0th rule*/  
-#include <cnoid/MessageView>	/* modified by qtconv.rb 0th rule*/  
-#include <cnoid/Archive>	/* modified by qtconv.rb 0th rule*/  
+#include <cnoid/ItemTreeView>	/* modified by qtconv.rb 0th rule*/
+#include <cnoid/MessageView>	/* modified by qtconv.rb 0th rule*/
+#include <cnoid/Archive>	/* modified by qtconv.rb 0th rule*/
 #include <boost/bind.hpp>
 #include <boost/format.hpp>
-// #include <glibmm/i18n.h>	/* modified by qtconv.rb 5th rule*/  
+// #include <glibmm/i18n.h>	/* modified by qtconv.rb 5th rule*/
 
 //#include <ExcadePlugins/Grasp/GraspController.h>
 //#include <ExcadePlugins/Grasp/TrajectoryPlanner.h>
 
-#include <GraspRtcController.h>
+#include "GraspRtcController.h"
 #include "GraspRtcBar.h"
 
 using namespace std;
@@ -32,21 +32,21 @@ GraspRtcBar::GraspRtcBar()
 	  mes(*MessageView::mainInstance()),
    	os (MessageView::mainInstance()->cout() )
 {
-	
+
 	addSeparator();
-	
+
 	addLabel(("=GraspRTC="));
 
 	addButton(("Grasp"), ("RTC start"))->
-		sigClicked().connect(bind(&GraspRtcBar::onStartButtonClicked, this));	/* modified by qtconv.rb 6th rule*/  
+		sigClicked().connect(bind(&GraspRtcBar::onStartButtonClicked, this));	/* modified by qtconv.rb 6th rule*/
 
 	addButton(("Release"), ("RTC start"))->
-		sigClicked().connect(bind(&GraspRtcBar::onStartButtonClicked2, this));	/* modified by qtconv.rb 6th rule*/  
-	
-	addButton(("Stop"), ("RTC stop"))->
-		sigClicked().connect(bind(&GraspRtcBar::onStopButtonClicked, this));	/* modified by qtconv.rb 6th rule*/  
+		sigClicked().connect(bind(&GraspRtcBar::onStartButtonClicked2, this));	/* modified by qtconv.rb 6th rule*/
 
-	// show_all_children();	/* modified by qtconv.rb 7th rule*/  
+	addButton(("Stop"), ("RTC stop"))->
+		sigClicked().connect(bind(&GraspRtcBar::onStopButtonClicked, this));	/* modified by qtconv.rb 6th rule*/
+
+	// show_all_children();	/* modified by qtconv.rb 7th rule*/
 
 }
 
@@ -76,7 +76,7 @@ void GraspRtcBar::onStartButtonClicked2()
 void GraspRtcBar::onStopButtonClicked()
 {
 //	GraspController::instance()->stopFlag = true;
-	os <<  "NOT implemented" << endl;	
+	os <<  "NOT implemented" << endl;
 }
 
 

@@ -2,14 +2,14 @@
 # @author Shin'ichiro Nakaoka (AIST)
 
 if(UNIX)
-  set(rtc-dir ./ArmControllerRtc)
+  set(rtc-dir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc)
 else()
    find_package(OpenRTM)
    if(OPENRTM_VERSION VERSION_EQUAL 1.1.2)
-     set(rtc-dir ./ArmControllerRtc1_1_2)
+     set(rtc-dir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc1_1_2)
 	 add_definitions(-DOPENRTM112)
    else()
-     set(rtc-dir ./ArmControllerRtc)
+     set(rtc-dir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc)
    endif()
 endif()
 
@@ -50,15 +50,12 @@ set(headers
     ${rtc-dir}/ManipulatorCommonInterface_DataTypes.hh
 	../PickAndPlacePlanner/RobotLocalFunctions.h
   )
-  
-#find_package(OpenRTM)
+
 find_package(PythonLibs REQUIRED)
 
 if(UNIX)
-  include_directories(${rtc-dir} ${PYTHON_INCLUDE_PATH}
-  #    ${OPENRTM_INCLUDE_DIR} ${OPENRTM_INCLUDE_DIR}/rtm/idl ${COIL_INCLUDE_DIR} .
-       /usr/include /usr/include/openrtm-1.1 /usr/include/coil-1.1 /usr/include/rtm/idl /usr/include/openrtm-1.1/rtm/idl .
-  )
+  include_directories(${OPENRTM_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIR})
+  link_directories(${OPENRTM_LIBRARY_DIRS})
 else()
   include_directories(${PYTHON_INCLUDE_PATH} ${rtc-dir} . ${OPENRTM_INCLUDE_DIRS} ${OMNIORB_INCLUDE_DIRS})
   string(REPLACE ";" " " openrtm_flag "${OPENRTM_CFLAGS}")
@@ -76,12 +73,12 @@ set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 
 if(UNIX)
 
-  target_link_libraries(${libname} 
-  	CnoidBodyPlugin CnoidGraspPlugin  
-  	${PYTHON_LIBRARIES} uuid dl pthread 
+  target_link_libraries(${libname}
+  	CnoidBodyPlugin CnoidGraspPlugin
+  	${PYTHON_LIBRARIES} uuid dl pthread
   	omniORB4 omnithread omniDynamic4 RTC coil)
 
-  apply_common_setting_for_plugin(${libname})    
+  apply_common_setting_for_plugin(${libname})
 
 elseif(MSVC)
   add_definitions(-DEXCADE_ROBOTINTERFACE_MAKE_DLL)
@@ -100,7 +97,7 @@ if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
     LIBRARY DESTINATION lib CONFIGURATIONS Release Debug)
 elseif(CNOID_VERSION EQUAL 1.5)
   apply_common_setting_for_plugin(${libname})
-else()    
+else()
   set_target_properties(${libname} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR}
     ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR}

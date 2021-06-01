@@ -7,7 +7,7 @@
 
 #include "RecognitionServiceExtSVC_impl.h"
 
-#include "ObjectRecognitionResultManipulator.h"
+#include "../ObjectRecognitionResultManipulator.h"
 
 /*
  * Example implementational code for IDL interface RecognitionServiceExt
@@ -79,6 +79,3 @@ void RecognitionResultServiceExtSVC_impl::setEnvResults(const RecognitionResultS
 
 
 // End of example implementational code
-
-
-

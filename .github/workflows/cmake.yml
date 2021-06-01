@@ -9,18 +9,19 @@ env:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04]
-        choreonoid: [1.7, 1.6, 1.5]
+        choreonoid: [v1.7.0, v1.6.0, v1.5.0]
         exclude:
         - os: ubuntu-20.04
-          choreonoid: 1.6
+          choreonoid: v1.6.0
         - os: ubuntu-20.04
-          choreonoid: 1.5
+          choreonoid: v1.5.0
         - os: ubuntu-18.04
-          choreonoid: 1.6
+          choreonoid: v1.6.0
         - os: ubuntu-18.04
-          choreonoid: 1.5
+          choreonoid: v1.5.0
 
     # The CMake configure and build commands are platform agnostic and should work equally
     # well on Windows or Mac.  You can convert this to a matrix build if you need
@@ -29,26 +30,11 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - name: Checkout choreonoid 1.7
-      if: matrix.choreonoid == '1.7'
+    - name: Check out specific tag in Choreonoid repo
       uses: actions/checkout@v2
       with:
         repository: choreonoid/choreonoid
-        ref: release-1.7
-
-    - name: Checkout choreonoid 1.6
-      if: matrix.choreonoid == '1.6'
-      uses: actions/checkout@v2
-      with:
-        repository: s-nakaoka/choreonoid
-        ref: release-1.6
-
-    - name: Checkout choreonoid 1.5
-      if: matrix.choreonoid == '1.5'
-      uses: actions/checkout@v2
-      with:
-        repository: s-nakaoka/choreonoid
-        ref: release-1.5
+        ref: ${{ matrix.choreonoid }}
 
     - uses: actions/checkout@v2
       with:
@@ -59,7 +45,7 @@ jobs:
       run: |
         sudo apt-get update
         curl https://raw.githubusercontent.com/choreonoid/choreonoid/master/misc/script/install-requisites-ubuntu-20.04.sh | sh
-        sudo apt-get install -y libqhull-dev freeglut3-dev libglew-dev
+        sudo apt-get install -y libqhull-dev freeglut3-dev libglew-dev libboost-python-dev libboost-regex-dev libboost-thread-dev
 
     - name: Install depending packages for ubuntu 18.04
       if: matrix.os == 'ubuntu-18.04'
@@ -67,28 +53,55 @@ jobs:
         sudo apt-get update
         ./misc/script/install-requisites-ubuntu-18.04.sh
         sudo apt-get install -y libqhull-dev freeglut3-dev libglew-dev
-  
+
     - name: Install depending packages for ubuntu 16.04
       if: matrix.os == 'ubuntu-16.04'
       run: |
         sudo apt-get update
         ./misc/script/install-requisites-ubuntu-16.04.sh
-        sudo apt-get install -y libqhull-dev freeglut3-dev libglew-dev
-  
+        sudo apt-get install -y libqhull-dev freeglut3-dev libglew-dev libqt5x11extras5-dev libpcl-dev libomniorb4-dev=4.1.6-2ubuntu1 omniidl=4.1.6-2ubuntu1 omniorb-nameserver=4.1.6-2ubuntu1
+
+    - name: Create workspace to build and install OpenRTM on Ubuntu 16.04
+      if: matrix.os == 'ubuntu-16.04'
+      run: mkdir -p ${{ github.workspace }}/OpenRTM/usr
+
+    - name: Install OpenRTM-aist 1.1.2 on Ubuntu 16.04
+      if: matrix.os == 'ubuntu-16.04'
+      run: |
+        curl -sLO http://openrtm.org/pub/OpenRTM-aist/cxx/1.1.2/OpenRTM-aist-1.1.2.tar.gz
+        tar xzf OpenRTM-aist-1.1.2.tar.gz
+        cd OpenRTM-aist-1.1.2
+        ./configure --prefix=${{ github.workspace }}/OpenRTM/usr --without-doxygen
+        make
+        make install
+      working-directory: ${{ github.workspace }}/OpenRTM
+
     - name: Create Build Environment
       # Some projects don't allow in-source building, so create a separate build directory
       # We'll use this as our working directory for all subsequent commands
       run: cmake -E make_directory ${{github.workspace}}/build
 
     - name: Configure CMake
+      if: matrix.os != 'ubuntu-16.04'
       # Use a bash shell so we can use the same syntax for environment variable
       # access regardless of the host operating system
       shell: bash
       working-directory: ${{github.workspace}}/build
-      # Note the current convention is to use the -S and -B options here to specify source 
-      # and build directories, but this is only available with CMake 3.13 and higher.  
+      # Note the current convention is to use the -S and -B options here to specify source
+      # and build directories, but this is only available with CMake 3.13 and higher.
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DGRASP_PLUGINS="Grasp;PRM;MotionFile;GeometryHandler;PickAndPlacePlanner;ObjectPlacePlanner"
+
+    - name: Configure CMake on Ubuntu 16.04
+      if: matrix.os == 'ubuntu-16.04'
+      # Use a bash shell so we can use the same syntax for environment variable
+      # access regardless of the host operating system
+      shell: bash
+      working-directory: ${{github.workspace}}/build
+      # Note the current convention is to use the -S and -B options here to specify source
+      # and build directories, but this is only available with CMake 3.13 and higher.
+      # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DUSE_QT5:BOOL=ON -DBUILD_CORBA_PLUGIN:BOOL=TRUE -DBUILD_GRASP_PCL_PLUGIN:BOOL=ON -DBUILD_OPENRTM_PLUGIN:BOOL=TRUE -DENABLE_CORBA:BOOL=TRUE -DOPENRTM_DIR:PATH=${{ github.workspace }}/OpenRTM/usr -DOpenRTM_DIR:PATH=${{ github.workspace }}/OpenRTM/usr/lib/openrtm-1.1/cmake -DGRASP_PLUGINS="CnoidRos;ConstraintIK;GeometryHandler;Grasp;GraspConsumer;GraspDataGen;MotionFile;ObjectPlacePlanner;PCL;PRM;PickAndPlacePlanner;RobotInterface;RtcGraspPathPlan;SoftFingerStability;VisionTrigger;"
 
     - name: Get number of CPU cores
       id: cpu-cores
@@ -103,6 +116,6 @@ jobs:
     - name: Test
       working-directory: ${{github.workspace}}/build
       shell: bash
-      # Execute tests defined by the CMake configuration.  
+      # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C $BUILD_TYPE

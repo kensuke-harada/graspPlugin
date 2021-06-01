@@ -2,6 +2,7 @@
 #include "../Segmenter.h"
 
 #include <cnoid/PyBase>
+#include <boost/python.hpp>
 
 namespace {
 	bool capture(ObjectPoseEstimator& self) {

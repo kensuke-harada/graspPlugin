@@ -5,7 +5,7 @@
 #ifndef EXCADE_ROBOTICS_RTC_CONTROLLER_H_INCLUDED
 #define EXCADE_ROBOTICS_RTC_CONTROLLER_H_INCLUDED
 
-#include "VisionRecognitionTrigger.h"
+#include "rtc/VisionRecognitionTrigger.h"
 #include "../Grasp/GraspController.h"
 
 
@@ -22,17 +22,17 @@ class VisionTriggerRtcController{
 		bool VisionRecoginitionStart();
 
 		bool switchExtModeFlag();
-	
-	
+
+
 		static void VisionTriggerMyModuleInit(RTC::Manager* manager);
-	
+
 		bool stopFlag;
-	
+
 	private:
 		cnoid::Vector3 basePos;
 		cnoid::Matrix3 baseOri;
-	
-					
+
+
 };
 
 
