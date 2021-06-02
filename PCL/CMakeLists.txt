@@ -6,8 +6,8 @@ set(geometryhandler-dir ../GeometryHandler)
 option(BUILD_GRASP_PCL_PLUGIN "Building a Grasp-PCL plugin" OFF)
 
 if(BUILD_GRASP_PCL_PLUGIN)
-   set(target CnoidGraspPCLPlugin)
-   set(sources
+  set(target CnoidGraspPCLPlugin)
+  set(sources
     PCLPlugin.cpp PCLBar.cpp
     CalibrateDialog.cpp
     PointCloudHandler.cpp
@@ -23,7 +23,7 @@ if(BUILD_GRASP_PCL_PLUGIN)
     Registrator.cpp
     Segmenter.cpp
     ObjectPoseEstimatorInterface.cpp
-		ObjectPoseEstimatorImpl.cpp
+    ObjectPoseEstimatorImpl.cpp
     BoxRegistration.cpp
     BoxRegistrationInterface.cpp
     PointCloudUtility.cpp
@@ -31,10 +31,10 @@ if(BUILD_GRASP_PCL_PLUGIN)
     Calibration.cpp
     CalibrationDialog.cpp
     MergerResultDrawer.cpp
-		PoseEstimationResultMatcher.cpp
-		RecognizedObject.cpp
-		ObjectPoseEstimatorForDemoInterface.cpp
-		ObjectPoseEstimatorForDemoImpl.cpp
+    PoseEstimationResultMatcher.cpp
+    RecognizedObject.cpp
+    ObjectPoseEstimatorForDemoInterface.cpp
+    ObjectPoseEstimatorForDemoImpl.cpp
     ${grasp-dir}/VectorMath.cpp
     ${geometryhandler-dir}/Cluster.cpp
     ${geometryhandler-dir}/OverlapVolumeCalculator.cpp
@@ -42,14 +42,14 @@ if(BUILD_GRASP_PCL_PLUGIN)
     ${geometryhandler-dir}/ShapeElements.cpp
     ${geometryhandler-dir}/stl2vrml.cpp
     ${geometryhandler-dir}/ClusterParameter.cpp
-)
+    )
   set(sources2
     ObjectPoseEstimator.cpp
-		ObjectPoseEstimatorForDemo.cpp
+    ObjectPoseEstimatorForDemo.cpp
     poseestimatenodialog.cpp
     Fitting.cpp
     PointCloudDrawer.cpp
-  )
+    )
   set(headers
     PCLBar.h
     CalibrateDialog.h
@@ -64,9 +64,9 @@ if(BUILD_GRASP_PCL_PLUGIN)
     ICPsSolver.h
     Registrator.h
     Segmenter.h
-		ObjectPoseEstimateParams.h
+    ObjectPoseEstimateParams.h
     ObjectPoseEstimatorInterface.h
-		ObjectPoseEstimatorImpl.h
+    ObjectPoseEstimatorImpl.h
     BoxRegistration.h
     BoxRegistrationInterface.h
     PointCloudUtility.h
@@ -74,23 +74,23 @@ if(BUILD_GRASP_PCL_PLUGIN)
     Calibration.h
     CalibrationDialog.h
     MergerResultDrawer.h
-		PoseEstimationResultMatcher.h
-		RecognizedObject.h
-		ObjectPoseEstimatorForDemoInterface.h
-		ObjectPoseEstimatorForDemoImpl.h
+    PoseEstimationResultMatcher.h
+    RecognizedObject.h
+    ObjectPoseEstimatorForDemoInterface.h
+    ObjectPoseEstimatorForDemoImpl.h
     ${grasp-dir}/VectorMath.h
     ${geometryhandler-dir}/GeometryHandle.h
     ${geometryhandler-dir}/ClusterParameter.h
-  )
-set(headers2
-	  ObjectPoseEstimatorForDemo.h
+    )
+  set(headers2
+    ObjectPoseEstimatorForDemo.h
     PoseEstimateDialog.h
     Fitting.h
     PointCloudDrawer.h
     ${grasp-dir}/DrawUtility.h
-  )
+    )
   set(libs
-  )
+    )
   if(MSVC)
     list(REMOVE_ITEM sources
       "${grasp-dir}/VectorMath.cpp"
@@ -107,14 +107,14 @@ set(headers2
       "${geometryhandler-dir}/ClusterParameter.h")
   endif(MSVC)
 
-	if((CNOID_VERSION VERSION_EQUAL 1.5) OR (CNOID_VERSION VERSION_GREATER 1.5))
-		set(sources ${sources}
-			PointSetItemDrawer.cpp
-			)
-		set(headers ${headers}
-			PointSetItemDrawer.h
-			)
-	endif()
+  if((CNOID_VERSION VERSION_EQUAL 1.5) OR (CNOID_VERSION VERSION_GREATER 1.5))
+    set(sources ${sources}
+      PointSetItemDrawer.cpp
+      )
+    set(headers ${headers}
+      PointSetItemDrawer.h
+      )
+  endif()
 
   find_package(Boost 1.40 REQUIRED serialization atomic filesystem)
 
@@ -130,7 +130,7 @@ set(headers2
     endforeach(_component)
   endif()
 
-## find_package(OpenRTM 1)
+  ## find_package(OpenRTM 1)
   find_package(PCL 1.6 REQUIRED)
 
   if(MSVC)
@@ -140,18 +140,18 @@ set(headers2
       string(TOUPPER ${_component} UPPERCOMPONENT)
       set(boost_static_libs ${boost_static_libs} ${Boost_${UPPERCOMPONENT}_LIBRARY})
       set(Boost_${UPPERCOMPONENT}_LIBRARY "${_BOOST_${UPPERCOMPONENT}_LIBRARY}")
-	  list(FIND Boost_${UPPERCOMPONENT}_LIBRARY optimized index)
-	  if(${index} GREATER -1)
-	    math(EXPR index "${index}+1")
-	    list(GET Boost_${UPPERCOMPONENT}_LIBRARY ${index} _release_lib)
-		set(Boost_${UPPERCOMPONENT}_LIBRARY_RELEASE "${_release_lib}" CACHE PATH "" FORCE)
-	  endif()
-	  list(FIND Boost_${UPPERCOMPONENT}_LIBRARY debug index)
-	  if(${index} GREATER -1)
-	    math(EXPR index "${index}+1")
-	    list(GET Boost_${UPPERCOMPONENT}_LIBRARY ${index} _debug_lib)
-		set(Boost_${UPPERCOMPONENT}_LIBRARY_DEBUG "${_debug_lib}" CACHE PATH "" FORCE)
-	  endif()
+      list(FIND Boost_${UPPERCOMPONENT}_LIBRARY optimized index)
+      if(${index} GREATER -1)
+	math(EXPR index "${index}+1")
+	list(GET Boost_${UPPERCOMPONENT}_LIBRARY ${index} _release_lib)
+	set(Boost_${UPPERCOMPONENT}_LIBRARY_RELEASE "${_release_lib}" CACHE PATH "" FORCE)
+      endif()
+      list(FIND Boost_${UPPERCOMPONENT}_LIBRARY debug index)
+      if(${index} GREATER -1)
+	math(EXPR index "${index}+1")
+	list(GET Boost_${UPPERCOMPONENT}_LIBRARY ${index} _debug_lib)
+	set(Boost_${UPPERCOMPONENT}_LIBRARY_DEBUG "${_debug_lib}" CACHE PATH "" FORCE)
+      endif()
     endforeach(_component)
 
     #remove boost static libraries from PCL_LIBRARIES
@@ -170,28 +170,28 @@ set(headers2
     endforeach()
   endif()
 
-	if(UNIX)
-		# remove vtkporj4 from link libraries because libpcl1.7 on Ubunut 16.04 has bug.
-		# see https://bugs.launchpad.net/ubuntu/+source/vtk6/+bug/1573234
-		execute_process(COMMAND lsb_release -is
-			TIMEOUT 4
-			OUTPUT_VARIABLE LINUX_DISTRO
-			OUTPUT_STRIP_TRAILING_WHITESPACE
-			)
-		execute_process(COMMAND lsb_release -rs
-			TIMEOUT 4
-			OUTPUT_VARIABLE LINUX_RELEASE
-			OUTPUT_STRIP_TRAILING_WHITESPACE
-			)
-		if((${LINUX_DISTRO} STREQUAL "Ubuntu") AND (${LINUX_RELEASE} STREQUAL "16.04"))
-			list(REMOVE_ITEM PCL_LIBRARIES "vtkproj4")
+  if(UNIX)
+    # remove vtkporj4 from link libraries because libpcl1.7 on Ubunut 16.04 has bug.
+    # see https://bugs.launchpad.net/ubuntu/+source/vtk6/+bug/1573234
+    execute_process(COMMAND lsb_release -is
+      TIMEOUT 4
+      OUTPUT_VARIABLE LINUX_DISTRO
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+      )
+    execute_process(COMMAND lsb_release -rs
+      TIMEOUT 4
+      OUTPUT_VARIABLE LINUX_RELEASE
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+      )
+    if((${LINUX_DISTRO} STREQUAL "Ubuntu") AND (${LINUX_RELEASE} STREQUAL "16.04"))
+      list(REMOVE_ITEM PCL_LIBRARIES "vtkproj4")
 
-			# libpcl1.7 on Ubunut 16.04 requires Qt5
-			if(NOT USE_QT5)
-				message(WARNING "Please set USE_QT5 to ON.")
-			endif()
-		endif()
-	endif()
+      # libpcl1.7 on Ubunut 16.04 requires Qt5
+      if(NOT USE_QT5)
+	message(WARNING "Please set USE_QT5 to ON.")
+      endif()
+    endif()
+  endif()
 
   find_package(Boost 1.40 REQUIRED regex thread)
 
@@ -214,24 +214,24 @@ set(headers2
     add_definitions(-DREAD_PLY)
   endif()
 
-if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
-  add_library(${target} SHARED ${sources} ${headers})
-elseif((CNOID_VERSION VERSION_EQUAL 1.5) OR (CNOID_VERSION VERSION_GREATER 1.5))
-	add_cnoid_plugin(${target} SHARED ${sources} ${sources2}  ${headers} ${headers2})
-else()
-  if(ENABLE_OSG)
-   add_definitions(-DENABLE_OSG)
-   add_cnoid_plugin(${target} SHARED ${sources} ${sources2} ${grasp-dir}/DrawUtility.cpp ${headers} ${headers2})
+  if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
+    add_library(${target} SHARED ${sources} ${headers})
+  elseif((CNOID_VERSION VERSION_EQUAL 1.5) OR (CNOID_VERSION VERSION_GREATER 1.5))
+    add_cnoid_plugin(${target} SHARED ${sources} ${sources2}  ${headers} ${headers2})
   else()
-   add_cnoid_plugin(${target} SHARED ${sources} ${headers})
+    if(ENABLE_OSG)
+      add_definitions(-DENABLE_OSG)
+      add_cnoid_plugin(${target} SHARED ${sources} ${sources2} ${grasp-dir}/DrawUtility.cpp ${headers} ${headers2})
+    else()
+      add_cnoid_plugin(${target} SHARED ${sources} ${headers})
+    endif()
   endif()
-endif()
 
-if(MSVC)
-  add_definitions(-DEXCADE_PCL_MAKE_DLL)
-endif()
+  if(MSVC)
+    add_definitions(-DEXCADE_PCL_MAKE_DLL)
+  endif()
 
-   target_link_libraries(${target} CnoidBodyPlugin CnoidGraspPlugin CnoidGeometryHandlerPlugin ${libs} ${PCL_LIBRARIES} ${Boost_SYSTEM_LIBRARY} ${Boost_SIGNALS_LIBRARY} ${Boost_DATE_TIME_LIBRARY}
+  target_link_libraries(${target} CnoidBodyPlugin CnoidGraspPlugin CnoidGeometryHandlerPlugin ${libs} ${PCL_LIBRARIES} ${Boost_SYSTEM_LIBRARY} ${Boost_SIGNALS_LIBRARY} ${Boost_DATE_TIME_LIBRARY}
     ${Boost_FILESYSTEM_LIBRARY} ${Boost_THREAD_LIBRARY})
 
   apply_common_setting_for_plugin(${target})

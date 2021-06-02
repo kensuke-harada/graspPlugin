@@ -3,74 +3,74 @@ option(BUILD_GEOMETRY_EXE "Building geometry handling exes" OFF)
 
 if(BUILD_GEOMETRY_EXE)
 
-set(program3 stl2vrml)
+  set(program3 stl2vrml)
 
-set(sources3 
-  stl2vrml.cpp
-  Cluster.cpp
-  OverlapVolumeCalculator.cpp
-  ObjectShape.cpp
-  ShapeElements.cpp
-)
+  set(sources3
+    stl2vrml.cpp
+    Cluster.cpp
+    OverlapVolumeCalculator.cpp
+    ObjectShape.cpp
+    ShapeElements.cpp
+    )
 
-add_executable(${program3} ${sources3})
+  add_executable(${program3} ${sources3})
 
-if(UNIX)
-  target_link_libraries(
-    ${program3}
-	CnoidBodyPlugin CnoidGraspPlugin
-    boost_thread glut GLU GL Xmu Xi Xext X11)
-elseif(WIN32)
-  set_target_properties(${program3} PROPERTIES DEBUG_POSTFIX d )
-  target_link_libraries(${program3}
-	CnoidBodyPlugin CnoidChoreographyPlugin boost_thread
-    ${OMNIORB_LIBRARIES})
-endif()
+  if(UNIX)
+    target_link_libraries(
+      ${program3}
+      CnoidBodyPlugin CnoidGraspPlugin
+      boost_thread glut GLU GL Xmu Xi Xext X11)
+  elseif(WIN32)
+    set_target_properties(${program3} PROPERTIES DEBUG_POSTFIX d )
+    target_link_libraries(${program3}
+      CnoidBodyPlugin CnoidChoreographyPlugin boost_thread
+      ${OMNIORB_LIBRARIES})
+  endif()
 
-set(procsv2stl csv2stl)
+  set(procsv2stl csv2stl)
 
-set(srccsv2stl
-  csv2stl.cpp
-  Cluster.cpp
-  OverlapVolumeCalculator.cpp
-  ObjectShape.cpp  
-  ShapeElements.cpp
-)
+  set(srccsv2stl
+    csv2stl.cpp
+    Cluster.cpp
+    OverlapVolumeCalculator.cpp
+    ObjectShape.cpp
+    ShapeElements.cpp
+    )
 
-add_executable(${procsv2stl} ${srccsv2stl})
+  add_executable(${procsv2stl} ${srccsv2stl})
 
-if(UNIX)
-  target_link_libraries( ${procsv2stl}  CnoidBodyPlugin CnoidGraspPlugin boost_thread)
-elseif(WIN32)
-  set_target_properties(${procsv2stl} PROPERTIES DEBUG_POSTFIX d )
-  target_link_libraries(${procsv2stl}
-	CnoidBodyPlugin CnoidChoreographyPlugin boost_thread
-    ${OMNIORB_LIBRARIES})
-endif()
+  if(UNIX)
+    target_link_libraries( ${procsv2stl}  CnoidBodyPlugin CnoidGraspPlugin boost_thread)
+  elseif(WIN32)
+    set_target_properties(${procsv2stl} PROPERTIES DEBUG_POSTFIX d )
+    target_link_libraries(${procsv2stl}
+      CnoidBodyPlugin CnoidChoreographyPlugin boost_thread
+      ${OMNIORB_LIBRARIES})
+  endif()
 
 
-set(program4 matchTest)
+  set(program4 matchTest)
 
-set(sources4
-  matchTest.cpp
-  Cluster.cpp
-  OverlapVolumeCalculator.cpp
-  ObjectShape.cpp
-  ShapeElements.cpp
-)
+  set(sources4
+    matchTest.cpp
+    Cluster.cpp
+    OverlapVolumeCalculator.cpp
+    ObjectShape.cpp
+    ShapeElements.cpp
+    )
 
-add_executable(${program4} ${sources4})
+  add_executable(${program4} ${sources4})
 
-if(UNIX)
-  target_link_libraries(
-    ${program4}
-	CnoidBodyPlugin CnoidGraspPlugin boost_thread)
-elseif(WIN32)
-  set_target_properties(${program4} PROPERTIES DEBUG_POSTFIX d )
-  target_link_libraries(
-    ${program4}
-	CnoidBodyPlugin CnoidGraspPlugin)
-endif()
+  if(UNIX)
+    target_link_libraries(
+      ${program4}
+      CnoidBodyPlugin CnoidGraspPlugin boost_thread)
+  elseif(WIN32)
+    set_target_properties(${program4} PROPERTIES DEBUG_POSTFIX d )
+    target_link_libraries(
+      ${program4}
+      CnoidBodyPlugin CnoidGraspPlugin)
+  endif()
 
 endif()
 #BUILD_GEOMETRY_EXE
@@ -113,28 +113,28 @@ set(headers2
   )
 
 if((CNOID_VERSION VERSION_EQUAL 1.5) OR (CNOID_VERSION VERSION_GREATER 1.5))
-	set(sources2 ${sources2}
-			GeometryEventEater.cpp
-			GeometryExecutor.cpp
-			ShapeExtractor.cpp
-			)
-	set(headers2 ${headers2}
-		GeometryEventEater.h
-		GeometryExecutor.h
-		ShapeExtractor.h
-		)
+  set(sources2 ${sources2}
+    GeometryEventEater.cpp
+    GeometryExecutor.cpp
+    ShapeExtractor.cpp
+    )
+  set(headers2 ${headers2}
+    GeometryEventEater.h
+    GeometryExecutor.h
+    ShapeExtractor.h
+    )
 endif()
 
 if((CNOID_VERSION VERSION_EQUAL 1.6) OR (CNOID_VERSION VERSION_GREATER 1.6))
-	set(sources2 ${sources2}
-		SgVisitShapeGet.cpp
-		)
+  set(sources2 ${sources2}
+    SgVisitShapeGet.cpp
+    )
 endif()
 
 if(ENABLE_OSG)
- add_cnoid_plugin(${libname} SHARED ${sources2} OSGGeometrySceneBody.cpp ${headers2})
+  add_cnoid_plugin(${libname} SHARED ${sources2} OSGGeometrySceneBody.cpp ${headers2})
 else()
- add_cnoid_plugin(${libname} SHARED ${sources2} ${headers2})
+  add_cnoid_plugin(${libname} SHARED ${sources2} ${headers2})
 endif()
 
 set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
@@ -144,12 +144,12 @@ if(UNIX)
 
   target_link_libraries(${libname} CnoidBodyPlugin CnoidGraspPlugin boost_thread )
   apply_common_setting_for_plugin(${libname})
-#  add_definitions(-g)
+  #  add_definitions(-g)
   option(CENTER_SHIFT_ON "Define CENTER_SHIFT" OFF)
   if(CENTER_SHIFT_ON)
     add_definitions(-DCENTER_SHIFT)
   endif()
-  
+
 elseif(MSVC)
   add_definitions(-DEXCADE_GEOMETRYHANDLER_MAKE_DLL)
 
@@ -168,9 +168,8 @@ elseif(MSVC)
 
   find_package(Boost 1.36.0 REQUIRED COMPONENTS thread date_time)
   install_external_libraries(${Boost_LIBRARY_DIRS} ${Boost_LIBRARY_DIRS}
-  ${Boost_THREAD_LIBRARY}   ${Boost_DATE_TIME_LIBRARY} )
+    ${Boost_THREAD_LIBRARY}   ${Boost_DATE_TIME_LIBRARY} )
 
 endif(UNIX)
 
 #add_subdirectory(project)
-
