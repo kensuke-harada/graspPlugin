@@ -11,7 +11,7 @@ set(sources
   GraspPathPlugin.cpp
   GraspPathController.cpp
   GraspPathBar.cpp
-  GraspPathControllerSVC_impl.cpp
+  ${rtcdir}/GraspPathControllerSVC_impl.cpp
   ${rtcdir}/GraspPathControllerSkel.cpp
   ${rtcdir}/GraspPathPlanner.cpp
   )

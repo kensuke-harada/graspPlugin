@@ -11,13 +11,12 @@ set(sources
   GraspRtcPlugin.cpp
   GraspRtcController.cpp
   GraspRtcBar.cpp
-  GraspControllerSVC_impl.cpp
+  ${rtcdir}/GraspControllerSVC_impl.cpp
   ${rtcdir}/GraspControllerSkel.cpp
   ${rtcdir}/GraspConsumer.cpp
   )
 
 set(headers
-  GraspConsumer.h
   GraspRtcBar.h
   GraspRtcController.h
   )
