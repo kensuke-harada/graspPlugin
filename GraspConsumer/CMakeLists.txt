@@ -5,15 +5,15 @@
 
 set(target CnoidGraspRtcPlugin)
 
-set(rtc-dir ${CMAKE_CURRENT_SOURCE_DIR}/rtc/)
+set(rtcdir ${CMAKE_CURRENT_SOURCE_DIR}/rtc)
 
 set(sources
   GraspRtcPlugin.cpp
   GraspRtcController.cpp
   GraspRtcBar.cpp
   GraspControllerSVC_impl.cpp
-  ${rtc-dir}GraspControllerSkel.cpp
-  ${rtc-dir}GraspConsumer.cpp
+  ${rtcdir}/GraspControllerSkel.cpp
+  ${rtcdir}/GraspConsumer.cpp
   )
 
 set(headers

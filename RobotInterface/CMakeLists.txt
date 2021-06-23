@@ -2,14 +2,14 @@
 # @author Shin'ichiro Nakaoka (AIST)
 
 if(UNIX)
-  set(rtc-dir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc)
+  set(rtcdir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc)
 else()
   find_package(OpenRTM)
   if(OPENRTM_VERSION VERSION_EQUAL 1.1.2)
-    set(rtc-dir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc1_1_2)
+    set(rtcdir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc1_1_2)
     add_definitions(-DOPENRTM112)
   else()
-    set(rtc-dir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc)
+    set(rtcdir ${CMAKE_CURRENT_SOURCE_DIR}/ArmControllerRtc)
   endif()
 endif()
 
@@ -22,12 +22,12 @@ set(sources
   ArmControllerRtc.cpp
   HistoricMotionState.cpp
 
-  ${rtc-dir}/ArmController.cpp
-  ${rtc-dir}/HIROControllerStub.cpp
-  ${rtc-dir}/HiroNXStub.cpp
-  ${rtc-dir}/ManipulatorCommonInterface_CommonStub.cpp
-  ${rtc-dir}/ManipulatorCommonInterface_MiddleLevelStub.cpp
-  ${rtc-dir}/ManipulatorCommonInterface_DataTypesSK.cc
+  ${rtcdir}/ArmController.cpp
+  ${rtcdir}/HIROControllerStub.cpp
+  ${rtcdir}/HiroNXStub.cpp
+  ${rtcdir}/ManipulatorCommonInterface_CommonStub.cpp
+  ${rtcdir}/ManipulatorCommonInterface_MiddleLevelStub.cpp
+  ${rtcdir}/ManipulatorCommonInterface_DataTypesSK.cc
 
   ../PickAndPlacePlanner/RobotLocalFunctions.cpp
   )
@@ -38,16 +38,16 @@ set(headers
   RobotInterfaceBar.h
   HistoricMotionState.h
 
-  ${rtc-dir}/ArmController.h
-  ${rtc-dir}/HIROController.hh
-  ${rtc-dir}/HIROControllerStub.h
-  ${rtc-dir}/HiroNX.hh
-  ${rtc-dir}/HiroNXStub.h
-  ${rtc-dir}/ManipulatorCommonInterface_Common.hh
-  ${rtc-dir}/ManipulatorCommonInterface_CommonStub.h
-  ${rtc-dir}/ManipulatorCommonInterface_MiddleLevel.hh
-  ${rtc-dir}/ManipulatorCommonInterface_MiddleLevelStub.h
-  ${rtc-dir}/ManipulatorCommonInterface_DataTypes.hh
+  ${rtcdir}/ArmController.h
+  ${rtcdir}/HIROController.hh
+  ${rtcdir}/HIROControllerStub.h
+  ${rtcdir}/HiroNX.hh
+  ${rtcdir}/HiroNXStub.h
+  ${rtcdir}/ManipulatorCommonInterface_Common.hh
+  ${rtcdir}/ManipulatorCommonInterface_CommonStub.h
+  ${rtcdir}/ManipulatorCommonInterface_MiddleLevel.hh
+  ${rtcdir}/ManipulatorCommonInterface_MiddleLevelStub.h
+  ${rtcdir}/ManipulatorCommonInterface_DataTypes.hh
   ../PickAndPlacePlanner/RobotLocalFunctions.h
   )
 
@@ -57,7 +57,7 @@ if(UNIX)
   include_directories(${OPENRTM_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIR})
   link_directories(${OPENRTM_LIBRARY_DIRS})
 else()
-  include_directories(${PYTHON_INCLUDE_PATH} ${rtc-dir} . ${OPENRTM_INCLUDE_DIRS} ${OMNIORB_INCLUDE_DIRS})
+  include_directories(${PYTHON_INCLUDE_PATH} ${rtcdir} . ${OPENRTM_INCLUDE_DIRS} ${OMNIORB_INCLUDE_DIRS})
   string(REPLACE ";" " " openrtm_flag "${OPENRTM_CFLAGS}")
   set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLABS} "${openrtm_flag}")
   link_directories(${OPENRTM_LIBRARY_DIRS})
