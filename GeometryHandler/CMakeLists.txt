@@ -83,7 +83,7 @@ endif()
 #)
 
 
-set(libname CnoidGeometryHandlerPlugin)
+set(target CnoidGeometryHandlerPlugin)
 
 set(sources2
   GeometryHandlerPlugin.cpp
@@ -132,18 +132,18 @@ if((CNOID_VERSION VERSION_EQUAL 1.6) OR (CNOID_VERSION VERSION_GREATER 1.6))
 endif()
 
 if(ENABLE_OSG)
-  add_cnoid_plugin(${libname} SHARED ${sources2} OSGGeometrySceneBody.cpp ${headers2})
+  add_cnoid_plugin(${target} SHARED ${sources2} OSGGeometrySceneBody.cpp ${headers2})
 else()
-  add_cnoid_plugin(${libname} SHARED ${sources2} ${headers2})
+  add_cnoid_plugin(${target} SHARED ${sources2} ${headers2})
 endif()
 
-set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
-#set_target_properties(${libname} PROPERTIES DEFINE_SYMBOL "EXCADE_SAMPLE1_MAKE_DLL")
+set_target_properties(${target} PROPERTIES VERSION 0.0.0 SOVERSION 0)
+#set_target_properties(${target} PROPERTIES DEFINE_SYMBOL "EXCADE_SAMPLE1_MAKE_DLL")
 
 if(UNIX)
 
-  target_link_libraries(${libname} CnoidBodyPlugin CnoidGraspPlugin boost_thread )
-  apply_common_setting_for_plugin(${libname})
+  target_link_libraries(${target} CnoidBodyPlugin CnoidGraspPlugin boost_thread )
+  apply_common_setting_for_plugin(${target})
   #  add_definitions(-g)
   option(CENTER_SHIFT_ON "Define CENTER_SHIFT" OFF)
   if(CENTER_SHIFT_ON)
@@ -155,16 +155,16 @@ elseif(MSVC)
 
   source_group("Header Files" FILES ${headers})
 
-  #target_link_libraries(${libname} Excade${EXCADE_VERSION_SUFFIX} ExcadeRobotics${EXCADE_VERSION_SUFFIX} )
-  target_link_libraries(${libname} CnoidBodyPlugin CnoidGraspPlugin)
+  #target_link_libraries(${target} Excade${EXCADE_VERSION_SUFFIX} ExcadeRobotics${EXCADE_VERSION_SUFFIX} )
+  target_link_libraries(${target} CnoidBodyPlugin CnoidGraspPlugin)
 
-  set_target_properties(${libname} PROPERTIES COMPILE_FLAGS "/wd4250 /wd4275")
+  set_target_properties(${target} PROPERTIES COMPILE_FLAGS "/wd4250 /wd4275")
 
-  install(TARGETS ${libname}
+  install(TARGETS ${target}
     RUNTIME DESTINATION bin CONFIGURATIONS Release Debug
     LIBRARY DESTINATION lib CONFIGURATIONS Release Debug)
 
-  apply_common_setting_for_plugin(${libname})
+  apply_common_setting_for_plugin(${target})
 
   find_package(Boost 1.36.0 REQUIRED COMPONENTS thread date_time)
   install_external_libraries(${Boost_LIBRARY_DIRS} ${Boost_LIBRARY_DIRS}

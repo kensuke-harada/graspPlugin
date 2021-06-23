@@ -13,7 +13,7 @@ else()
   endif()
 endif()
 
-set(libname CnoidRobotInterfacePlugin)
+set(target CnoidRobotInterfacePlugin)
 
 set(sources
   RobotInterfacePlugin.cpp
@@ -64,41 +64,41 @@ else()
 endif()
 
 if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
-  add_library(${libname} SHARED ${sources} ${headers})
+  add_library(${target} SHARED ${sources} ${headers})
 else()
-  add_cnoid_plugin(${libname} SHARED ${sources} ${headers})
+  add_cnoid_plugin(${target} SHARED ${sources} ${headers})
 endif()
 
-set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
+set_target_properties(${target} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 
 if(UNIX)
 
-  target_link_libraries(${libname}
+  target_link_libraries(${target}
     CnoidBodyPlugin CnoidGraspPlugin
     ${PYTHON_LIBRARIES} uuid dl pthread
     omniORB4 omnithread omniDynamic4 RTC coil)
 
-  apply_common_setting_for_plugin(${libname})
+  apply_common_setting_for_plugin(${target})
 
 elseif(MSVC)
   add_definitions(-DEXCADE_ROBOTINTERFACE_MAKE_DLL)
   source_group("Header Files" FILES ${headers})
-  target_link_libraries(${libname} #Excade${EXCADE_VERSION_SUFFIX}
+  target_link_libraries(${target} #Excade${EXCADE_VERSION_SUFFIX}
     CnoidBodyPlugin CnoidGraspPlugin
     ${PYTHON_LIBRARIES}
     ${OPENRTM_LIBRARIES}
     )
 
-  set_target_properties(${libname} PROPERTIES COMPILE_FLAGS "/wd4250 /wd4275")
+  set_target_properties(${target} PROPERTIES COMPILE_FLAGS "/wd4250 /wd4275")
 
   if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
-    install(TARGETS ${libname}
+    install(TARGETS ${target}
       RUNTIME DESTINATION bin CONFIGURATIONS Release Debug
       LIBRARY DESTINATION lib CONFIGURATIONS Release Debug)
   elseif(CNOID_VERSION EQUAL 1.5)
-    apply_common_setting_for_plugin(${libname})
+    apply_common_setting_for_plugin(${target})
   else()
-    set_target_properties(${libname} PROPERTIES
+    set_target_properties(${target} PROPERTIES
       LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR}
       ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR}
       RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR})

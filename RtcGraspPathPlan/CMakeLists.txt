@@ -3,7 +3,7 @@
 
 
 
-set(libname CnoidRtcGraspPathPlugin)
+set(target CnoidRtcGraspPathPlugin)
 
 set(rtc-dir ${CMAKE_CURRENT_SOURCE_DIR}/rtc/)
 
@@ -39,21 +39,21 @@ elseif(MSVC)
   include_directories(./rtc)
 endif(UNIX)
 if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
-  add_library(${libname} SHARED ${sources} ${headers})
+  add_library(${target} SHARED ${sources} ${headers})
 else()
-  add_cnoid_plugin(${libname} SHARED ${sources} ${headers})
+  add_cnoid_plugin(${target} SHARED ${sources} ${headers})
 endif()
 
-set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
+set_target_properties(${target} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 
 if(UNIX)
-  target_link_libraries(${libname} CnoidBodyPlugin CnoidGraspPlugin CnoidPRMPlugin uuid dl pthread omniORB4 omnithread omniDynamic4 RTC coil  )
+  target_link_libraries(${target} CnoidBodyPlugin CnoidGraspPlugin CnoidPRMPlugin uuid dl pthread omniORB4 omnithread omniDynamic4 RTC coil  )
 elseif(MSVC)
-  target_link_libraries(${libname}
+  target_link_libraries(${target}
     general CnoidBodyPlugin CnoidGraspPlugin CnoidPRMPlugin uuid ws2_32 ${OMNIORB_LIBRARIES}
     optimized RTC110 optimized coil110
     debug  RTC110d debug coil110d
     )
 endif(UNIX)
 
-apply_common_setting_for_plugin(${libname})
+apply_common_setting_for_plugin(${target})

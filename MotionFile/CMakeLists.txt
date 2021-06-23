@@ -1,4 +1,4 @@
-set(libname CnoidMotionFilePlugin)
+set(target CnoidMotionFilePlugin)
 
 set(sources
   MotionFilePlugin.cpp
@@ -56,12 +56,12 @@ if(USE_QT5)
   include_directories(${Qt5PrintSupport_INCLUDE_DIRS})
 endif()
 
-add_cnoid_plugin(${libname} SHARED ${sources} ${headers})
+add_cnoid_plugin(${target} SHARED ${sources} ${headers})
 
 add_definitions(-g)
 
-set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
+set_target_properties(${target} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 
-target_link_libraries(${libname} CnoidBodyPlugin CnoidGraspPlugin CnoidPRMPlugin)
+target_link_libraries(${target} CnoidBodyPlugin CnoidGraspPlugin CnoidPRMPlugin)
 
-apply_common_setting_for_plugin(${libname})
+apply_common_setting_for_plugin(${target})

@@ -1,6 +1,6 @@
 # c) Tokuo Tsuji (Kyushu univ./AIST) and Kensuke Harada (AIST)
 
-set(libname CnoidGraspPlugin)
+set(target CnoidGraspPlugin)
 
 set(sources
   GraspPlugin.cpp
@@ -124,18 +124,18 @@ if(ADD_TEST_FUNCTION)
 endif()
 
 if(ENABLE_OSG)
-  add_cnoid_plugin(${libname} SHARED ${sources} DrawUtility.cpp ${headers})
+  add_cnoid_plugin(${target} SHARED ${sources} DrawUtility.cpp ${headers})
 elseif((CNOID_VERSION VERSION_EQUAL 1.5) OR (CNOID_VERSION VERSION_GREATER 1.5))
-  add_cnoid_plugin(${libname} SHARED ${sources} DrawUtility15.cpp ${headers})
+  add_cnoid_plugin(${target} SHARED ${sources} DrawUtility15.cpp ${headers})
 else()
-  add_cnoid_plugin(${libname} SHARED ${sources} ${headers})
+  add_cnoid_plugin(${target} SHARED ${sources} ${headers})
 endif(ENABLE_OSG)
 
 if(UNIX)
   add_definitions(-g)
 endif()
-set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
-#set_target_properties(${libname} PROPERTIES DEFINE_SYMBOL "EXCADE_OPENHRP_MAKE_DLL")
+set_target_properties(${target} PROPERTIES VERSION 0.0.0 SOVERSION 0)
+#set_target_properties(${target} PROPERTIES DEFINE_SYMBOL "EXCADE_OPENHRP_MAKE_DLL")
 include_directories(${PYTHON_INCLUDE_PATH})
 
 if(UNIX)
@@ -150,15 +150,15 @@ if(UNIX)
     find_package(Boost COMPONENTS regex python thread REQUIRED)
   endif()
 
-  target_link_libraries(${libname} CnoidBodyPlugin qhull ${PYTHON_LIBRARIES} ${Boost_LIBRARIES} glut)
-  apply_common_setting_for_plugin(${libname})
+  target_link_libraries(${target} CnoidBodyPlugin qhull ${PYTHON_LIBRARIES} ${Boost_LIBRARIES} glut)
+  apply_common_setting_for_plugin(${target})
 
 elseif(MSVC)
   source_group("Header Files" FILES ${headers})
 
   add_definitions(-DEXCADE_GRASPLOT_MAKE_DLL -Dqh_QHpointer_dllimport -Dqh_QHpointer)
 
-  target_link_libraries(${libname}
+  target_link_libraries(${target}
     general CnoidBodyPlugin
     #    Excade${EXCADE_VERSION_SUFFIX}
     #    optimized hrpUtil-${OPENHRP_VERSION} debug hrpUtil-${OPENHRP_VERSION}d
@@ -171,19 +171,19 @@ elseif(MSVC)
     #	ExcadeRobotics${EXCADE_VERSION_SUFFIX}
     )
 
-  set_target_properties(${libname} PROPERTIES LINK_FLAGS /NODEFAULTLIB:LIBCMT )
-  set_target_properties(${libname} PROPERTIES DEBUG_POSTFIX d )
-  set_target_properties(${libname} PROPERTIES COMPILE_FLAGS "/wd4250 /wd4275")
+  set_target_properties(${target} PROPERTIES LINK_FLAGS /NODEFAULTLIB:LIBCMT )
+  set_target_properties(${target} PROPERTIES DEBUG_POSTFIX d )
+  set_target_properties(${target} PROPERTIES COMPILE_FLAGS "/wd4250 /wd4275")
 
-  apply_common_setting_for_plugin(${libname})
+  apply_common_setting_for_plugin(${target})
 
   if(INSTALL_SDK)
-    install(TARGETS ${libname}
+    install(TARGETS ${target}
       RUNTIME DESTINATION bin CONFIGURATIONS Release Debug
       LIBRARY DESTINATION lib CONFIGURATIONS Release Debug
       ARCHIVE DESTINATION lib CONFIGURATIONS Release Debug)
   else()
-    #install(TARGETS ${libname}
+    #install(TARGETS ${target}
     #  RUNTIME DESTINATION bin CONFIGURATIONS Release Debug
     #  LIBRARY DESTINATION lib CONFIGURATIONS Release Debug)
   endif()

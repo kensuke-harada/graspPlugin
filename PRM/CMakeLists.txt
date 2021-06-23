@@ -1,6 +1,6 @@
 # c) Tokuo Tsuji (Kyushu univ./AIST) and Kensuke Harada (AIST)
 
-set(libname CnoidPRMPlugin)
+set(target CnoidPRMPlugin)
 
 set(sources
   mpkInterface.cpp
@@ -50,38 +50,38 @@ endif()
 #add_definitions(-DTOLERANCE_SMOOTHER)
 
 if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
-  add_library(${libname} SHARED ${sources} ${headers})
+  add_library(${target} SHARED ${sources} ${headers})
 else()
-  add_cnoid_plugin(${libname} SHARED ${sources} ${headers})
+  add_cnoid_plugin(${target} SHARED ${sources} ${headers})
 endif()
 
-set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
+set_target_properties(${target} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 
 if(UNIX)
 
-  target_link_libraries(${libname} CnoidBodyPlugin CnoidPoseSeqPlugin CnoidGraspPlugin)
-  apply_common_setting_for_plugin(${libname})
+  target_link_libraries(${target} CnoidBodyPlugin CnoidPoseSeqPlugin CnoidGraspPlugin)
+  apply_common_setting_for_plugin(${target})
 
 elseif(MSVC)
   add_definitions(-DEXCADE_OPENHRP_MAKE_DLL)
-  target_link_libraries(${libname} CnoidBodyPlugin CnoidPoseSeqPlugin CnoidGraspPlugin)
+  target_link_libraries(${target} CnoidBodyPlugin CnoidPoseSeqPlugin CnoidGraspPlugin)
 
   source_group("Header Files" FILES ${headers})
 
-  set_target_properties(${libname} PROPERTIES LINK_FLAGS /NODEFAULTLIB:LIBCMT )
-  set_target_properties(${libname} PROPERTIES DEBUG_POSTFIX d )
-  set_target_properties(${libname} PROPERTIES COMPILE_FLAGS "/wd4250 /wd4275")
+  set_target_properties(${target} PROPERTIES LINK_FLAGS /NODEFAULTLIB:LIBCMT )
+  set_target_properties(${target} PROPERTIES DEBUG_POSTFIX d )
+  set_target_properties(${target} PROPERTIES COMPILE_FLAGS "/wd4250 /wd4275")
 
   if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
-    install(TARGETS ${libname}
+    install(TARGETS ${target}
       RUNTIME DESTINATION bin CONFIGURATIONS Release Debug
       LIBRARY DESTINATION lib CONFIGURATIONS Release Debug)
   else()
-    set_target_properties(${libname} PROPERTIES
+    set_target_properties(${target} PROPERTIES
       LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR}
       ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR}
       RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CNOID_PLUGIN_SUBDIR})
   endif()
 
-  apply_common_setting_for_plugin(${libname})
+  apply_common_setting_for_plugin(${target})
 endif(UNIX)
