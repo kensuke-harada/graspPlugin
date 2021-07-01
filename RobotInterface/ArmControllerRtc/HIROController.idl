@@ -47,6 +47,5 @@ interface MotionCommands {
   RETURN_ID setSpeedCartesian(in ULONG spdRatio);//実装せず
   RETURN_ID setSpeedJoint(in ULONG spdRatio);
   RETURN_ID setMotionTime(in double motionTime);
-	
+
 };
-	  
