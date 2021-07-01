@@ -99,6 +99,8 @@ if(USE_QT5)
   unset(QT_QMAKE_EXECUTABLE CACHE)
 endif()
 
+include(cmake/openrtm.cmake)
+
 foreach(subdirectory ${GRASP_PLUGINS})
   add_subdirectory(${subdirectory})
 endforeach()
