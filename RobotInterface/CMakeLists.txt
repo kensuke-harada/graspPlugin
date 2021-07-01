@@ -27,7 +27,6 @@ set(sources
   ${rtcdir}/HiroNXStub.cpp
   ${rtcdir}/ManipulatorCommonInterface_CommonStub.cpp
   ${rtcdir}/ManipulatorCommonInterface_MiddleLevelStub.cpp
-  ${rtcdir}/ManipulatorCommonInterface_DataTypesSK.cc
 
   ../PickAndPlacePlanner/RobotLocalFunctions.cpp
   )
@@ -39,22 +38,64 @@ set(headers
   HistoricMotionState.h
 
   ${rtcdir}/ArmController.h
-  ${rtcdir}/HIROController.hh
   ${rtcdir}/HIROControllerStub.h
-  ${rtcdir}/HiroNX.hh
   ${rtcdir}/HiroNXStub.h
-  ${rtcdir}/ManipulatorCommonInterface_Common.hh
   ${rtcdir}/ManipulatorCommonInterface_CommonStub.h
-  ${rtcdir}/ManipulatorCommonInterface_MiddleLevel.hh
   ${rtcdir}/ManipulatorCommonInterface_MiddleLevelStub.h
-  ${rtcdir}/ManipulatorCommonInterface_DataTypes.hh
   ../PickAndPlacePlanner/RobotLocalFunctions.h
   )
 
 find_package(PythonLibs REQUIRED)
 
 if(UNIX)
-  include_directories(${OPENRTM_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIR})
+  generate_idl_cpp(
+    IDLFILE ${rtcdir}/BasicDataType.idl
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/ArmControllerRtc
+    GENERATED_FILES_VARIABLE BasicDataType_idl_cpp_stubs
+    DISABLE_Wba
+    )
+  add_custom_target(BasicDataType_idl_cpp DEPENDS ${BasicDataType_idl_cpp_stubs})
+
+  generate_idl_cpp(
+    IDLFILE ${rtcdir}/HIROController.idl
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/ArmControllerRtc
+    GENERATED_FILES_VARIABLE HIROController_idl_cpp_stubs
+    )
+  add_custom_target(HIROController_idl_cpp DEPENDS ${HIROController_idl_cpp_stubs})
+
+  generate_idl_cpp(
+    IDLFILE ${rtcdir}/HiroNX.idl
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/ArmControllerRtc
+    GENERATED_FILES_VARIABLE HiroNX_idl_cpp_stubs
+    )
+  add_custom_target(HiroNX_idl_cpp DEPENDS ${HiroNX_idl_cpp_stubs})
+
+  generate_idl_cpp(
+    IDLFILE ${rtcdir}/ManipulatorCommonInterface_Common.idl
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/ArmControllerRtc
+    GENERATED_FILES_VARIABLE ManipulatorCommonInterface_Common_idl_cpp_stubs
+    )
+  add_custom_target(ManipulatorCommonInterface_Common_idl_cpp
+    DEPENDS ${ManipulatorCommonInterface_Common_idl_cpp_stubs})
+
+  generate_idl_cpp(
+    IDLFILE ${rtcdir}/ManipulatorCommonInterface_DataTypes.idl
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/ArmControllerRtc
+    GENERATED_FILES_VARIABLE ManipulatorCommonInterface_DataTypes_idl_cpp_stubs
+    DISABLE_Wba
+    )
+  add_custom_target(ManipulatorCommonInterface_DataTypes_idl_cpp
+    DEPENDS ${ManipulatorCommonInterface_DataTypes_idl_cpp_stubs})
+
+  generate_idl_cpp(
+    IDLFILE ${rtcdir}/ManipulatorCommonInterface_MiddleLevel.idl
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/ArmControllerRtc
+    GENERATED_FILES_VARIABLE ManipulatorCommonInterface_MiddleLevel_idl_cpp_stubs
+    )
+  add_custom_target(ManipulatorCommonInterface_MiddleLevel_idl_cpp
+    DEPENDS ${ManipulatorCommonInterface_MiddleLevel_idl_cpp_stubs})
+
+  include_directories(${OPENRTM_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/ArmControllerRtc)
   link_directories(${OPENRTM_LIBRARY_DIRS})
 else()
   include_directories(${PYTHON_INCLUDE_PATH} ${rtcdir} . ${OPENRTM_INCLUDE_DIRS} ${OMNIORB_INCLUDE_DIRS})
@@ -68,6 +109,13 @@ if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
 else()
   add_cnoid_plugin(${target} SHARED ${sources} ${headers})
 endif()
+
+add_dependencies(${target} BasicDataType_idl_cpp)
+add_dependencies(${target} HIROController_idl_cpp)
+add_dependencies(${target} HiroNX_idl_cpp)
+add_dependencies(${target} ManipulatorCommonInterface_Common_idl_cpp)
+add_dependencies(${target} ManipulatorCommonInterface_DataTypes_idl_cpp)
+add_dependencies(${target} ManipulatorCommonInterface_MiddleLevel_idl_cpp)
 
 set_target_properties(${target} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 

@@ -17,6 +17,7 @@ set(sources
   )
 
 set(headers
+  GraspPathBar.h
   GraspPathController.h
   )
 
@@ -29,7 +30,15 @@ if(MSVC)
 endif()
 
 if(UNIX)
-  include_directories(${OPENRTM_INCLUDE_DIRS})
+  generate_idl_cpp(
+    IDLFILE ${rtcdir}/GraspPathController.idl
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/rtc
+    GENERATED_FILES_VARIABLE idl_cpp_stubs
+    )
+
+  add_custom_target(GraspPathController_idl_cpp DEPENDS ${idl_cpp_stubs})
+
+  include_directories(${OPENRTM_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR}/rtc)
   link_directories(${OPENRTM_LIBRARY_DIRS})
 elseif(MSVC)
   add_definitions(-DEXCADE_GRASPLOT_MAKE_DLL -DRTC_CORBA_CXXMAPPING11 -D_WIN32_WINNT=0x0500)
@@ -43,6 +52,8 @@ if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)
 else()
   add_cnoid_plugin(${target} SHARED ${sources} ${headers})
 endif()
+
+add_dependencies(${target} GraspPathController_idl_cpp)
 
 set_target_properties(${target} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 
