@@ -29,7 +29,7 @@ generate_idl_cpp(
 
 add_custom_target(GraspController_idl_cpp DEPENDS ${idl_cpp_stubs})
 
-include_directories(${OPENRTM_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR}/rtc)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/rtc ${OPENRTM_INCLUDE_DIRS})
 link_directories(${OPENRTM_LIBRARY_DIRS})
 
 if(CNOID_VERSION EQUAL 1.0 OR CNOID_VERSION EQUAL 1.1)

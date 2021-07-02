@@ -38,7 +38,7 @@ if(UNIX)
 
   add_custom_target(GraspPathController_idl_cpp DEPENDS ${idl_cpp_stubs})
 
-  include_directories(${OPENRTM_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR}/rtc)
+  include_directories(${CMAKE_CURRENT_BINARY_DIR}/rtc ${OPENRTM_INCLUDE_DIRS})
   link_directories(${OPENRTM_LIBRARY_DIRS})
 elseif(MSVC)
   add_definitions(-DEXCADE_GRASPLOT_MAKE_DLL -DRTC_CORBA_CXXMAPPING11 -D_WIN32_WINNT=0x0500)

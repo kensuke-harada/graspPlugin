@@ -95,7 +95,10 @@ if(UNIX)
   add_custom_target(ManipulatorCommonInterface_MiddleLevel_idl_cpp
     DEPENDS ${ManipulatorCommonInterface_MiddleLevel_idl_cpp_stubs})
 
-  include_directories(${OPENRTM_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/ArmControllerRtc)
+  include_directories(
+    ${CMAKE_CURRENT_BINARY_DIR}/ArmControllerRtc
+    ${OPENRTM_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIR}
+    )
   link_directories(${OPENRTM_LIBRARY_DIRS})
 else()
   include_directories(${PYTHON_INCLUDE_PATH} ${rtcdir} . ${OPENRTM_INCLUDE_DIRS} ${OMNIORB_INCLUDE_DIRS})
