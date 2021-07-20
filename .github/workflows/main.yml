@@ -1,0 +1,173 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+      - "*-ci"
+      - "ci/**"
+
+  workflow_dispatch:
+
+jobs:
+  build-on-xenial:
+    strategy:
+      fail-fast: false
+      matrix:
+        choreonoid: [v1.7.0, v1.6.0, v1.5.0]
+
+    runs-on: ubuntu-16.04
+
+    steps:
+      - name: Check out specific tag of Choreonoid repo
+        uses: actions/checkout@v2
+        with:
+          repository: choreonoid/choreonoid
+          ref: ${{ matrix.choreonoid }}
+
+      - name: Check out master into ext/ directory in Choreonoid
+        uses: actions/checkout@v2
+        with:
+          path: ext/graspPlugin
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          ./misc/script/install-requisites-ubuntu-16.04.sh
+          sudo apt-get install --no-install-recommends -y freeglut3-dev lsb-release libglew-dev libqhull-dev python-yaml libpcl-dev
+
+      - name: Install missing dependencies
+        if: matrix.choreonoid == 'v1.5.0'
+        run: |
+          sudo apt-get install libqt5x11extras5-dev
+
+      - name: Create workspaces to build and install OpenRTM manually
+        shell: bash
+        run: |
+          mkdir -p $HOME/usr
+
+      - name: Build and install OpenRTM-aist 1.1.2
+        run: |
+          curl -s http://openrtm.org/pub/OpenRTM-aist/cxx/1.1.2/OpenRTM-aist-1.1.2.tar.gz | tar xz
+          cd OpenRTM-aist-1.1.2
+          ./configure --prefix=$HOME/usr --without-doxygen
+          make
+          make install
+
+      - name: Configure PATH environmet for OpenRTM
+        run: |
+          echo "$HOME/usr/bin" >> $GITHUB_PATH
+
+      - name: Create build environment for Choreonoid
+        run: |
+          mkdir -p ${{ github.workspace }}/build
+
+      - name: Configure CMake
+        shell: bash
+        working-directory: ${{ github.workspace }}/build
+        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Release -DBUILD_CORBA_PLUGIN:BOOL=ON -DBUILD_GRASP_PCL_PLUGIN:BOOL=ON -DBUILD_GROBOT_PLUGIN:BOOL=ON -DBUILD_OPENRTM_PLUGIN:BOOL=ON -DBUILD_PYTHON_PLUGIN:BOOL=ON -DCNOID_ENABLE_GETTEXT:BOOL=ON -DENABLE_CORBA:BOOL=ON -DOPENRTM_DIR:PATH=$HOME/usr -DOpenRTM_DIR:PATH=$HOME/usr/lib/openrtm-1.1/cmake -DUSE_QT5:BOOL=ON -DGRASP_PLUGINS="CnoidRos;ConstraintIK;GeometryHandler;Grasp;GraspConsumer;GraspDataGen;MotionFile;ObjectPlacePlanner;PCL;PRM;PickAndPlacePlanner;RobotInterface;RtcGraspPathPlan;SoftFingerStability;VisionTrigger;"
+
+      - name: Get number of CPU cores
+        id: cpu-cores
+        uses: SimenB/github-actions-cpu-cores@v1
+
+      - name: Build Choreonoid
+        working-directory: ${{ github.workspace }}/build
+        shell: bash
+        run: cmake --build . --config Release -- -j ${{ steps.cpu-cores.outputs.count }}
+
+  build-on-bionic:
+    strategy:
+      fail-fast: false
+      matrix:
+        choreonoid: [v1.7.0]
+
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Check out specific tag of Choreonoid repo
+        uses: actions/checkout@v2
+        with:
+          repository: choreonoid/choreonoid
+          ref: ${{ matrix.choreonoid }}
+
+      - name: Check out master into ext/ directory in Choreonoid
+        uses: actions/checkout@v2
+        with:
+          path: ext/graspPlugin
+
+      - name: Add debian repository
+        uses: myci-actions/add-deb-repo@8
+        with:
+          repo: deb http://openrtm.org/pub/Linux/ubuntu bionic main
+          repo-name: openrtm-aist
+          keys: CC8761DEBFB5DC87CC07DC964BCE106E087AFAC0
+          key-server: keyserver.ubuntu.com
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          ./misc/script/install-requisites-ubuntu-18.04.sh
+          sudo apt-get install --no-install-recommends -y freeglut3-dev lsb-release libglew-dev libqhull-dev openrtm-aist-dev python-yaml libpcl-dev
+
+      - name: Create build environment for Choreonoid
+        run: |
+          mkdir -p ${{ github.workspace }}/build
+
+      - name: Configure CMake
+        shell: bash
+        working-directory: ${{ github.workspace }}/build
+        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Release -DBUILD_CORBA_PLUGIN:BOOL=ON -DBUILD_GRASP_PCL_PLUGIN:BOOL=ON -DBUILD_GROBOT_PLUGIN:BOOL=ON -DBUILD_OPENRTM_PLUGIN:BOOL=ON -DBUILD_PYTHON_PLUGIN:BOOL=ON -DCNOID_ENABLE_GETTEXT:BOOL=ON -DENABLE_CORBA:BOOL=ON -DUSE_QT5:BOOL=ON -DGRASP_PLUGINS="CnoidRos;ConstraintIK;GeometryHandler;Grasp;GraspConsumer;GraspDataGen;MotionFile;ObjectPlacePlanner;PCL;PRM;PickAndPlacePlanner;RobotInterface;RtcGraspPathPlan;SoftFingerStability;VisionTrigger;"
+
+      - name: Get number of CPU cores
+        id: cpu-cores
+        uses: SimenB/github-actions-cpu-cores@v1
+
+      - name: Build Choreonoid
+        working-directory: ${{ github.workspace }}/build
+        shell: bash
+        run: cmake --build . --config Release -- -j ${{ steps.cpu-cores.outputs.count }}
+
+  build-on-focal:
+    strategy:
+      fail-fast: false
+      matrix:
+        choreonoid: [v1.7.0]
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Check out specific tag of Choreonoid repo
+        uses: actions/checkout@v2
+        with:
+          repository: choreonoid/choreonoid
+          ref: ${{ matrix.choreonoid }}
+
+      - name: Check out master into ext/ directory in Choreonoid
+        uses: actions/checkout@v2
+        with:
+          path: ext/graspPlugin
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          curl https://raw.githubusercontent.com/choreonoid/choreonoid/master/misc/script/install-requisites-ubuntu-20.04.sh | sh
+          sudo apt-get install --no-install-recommends -y freeglut3-dev libboost-python-dev libboost-regex-dev libboost-thread-dev libglew-dev libqhull-dev
+
+      - name: Create build environment for Choreonoid
+        run: |
+          mkdir -p ${{ github.workspace }}/build
+
+      - name: Configure CMake
+        shell: bash
+        working-directory: ${{ github.workspace }}/build
+        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Release -DGRASP_PLUGINS="Grasp;PRM;MotionFile;GeometryHandler;PickAndPlacePlanner;ObjectPlacePlanner"
+
+      - name: Get number of CPU cores
+        id: cpu-cores
+        uses: SimenB/github-actions-cpu-cores@v1
+
+      - name: Build Choreonoid
+        working-directory: ${{ github.workspace }}/build
+        shell: bash
+        run: cmake --build . --config Release -- -j ${{ steps.cpu-cores.outputs.count }}
