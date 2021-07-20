@@ -1,4 +1,4 @@
-#include "GraspConsumer.h"
+#include "rtc/GraspConsumer.h"
 #include "GraspRtcController.h"
 
 #include <cnoid/JointPath>	/* modified by qtconv.rb 0th rule*/  

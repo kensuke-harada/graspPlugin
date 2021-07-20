@@ -9,39 +9,39 @@ if(UNIX)
   endif()
 endif()
 
-set(libname GrasplotHIRO)
+set(target GrasplotHIRO)
 
 set(sources
-GrasplotPluginHIRO.cpp
-)
+  GrasplotPluginHIRO.cpp
+  )
 
 set(headers
-GrasplotPluginHIRO.h
-OpenRAVE/OpenRAVE_IK.h
+  GrasplotPluginHIRO.h
+  OpenRAVE/OpenRAVE_IK.h
   )
 
 include_directories(${Choreonoid_SOURCE_DIR})
 
-add_library(${libname} SHARED ${sources} ${headers} )
+add_library(${target} SHARED ${sources} ${headers} )
 
-set_target_properties(${libname} PROPERTIES VERSION 0.0.0 SOVERSION 0)
+set_target_properties(${target} PROPERTIES VERSION 0.0.0 SOVERSION 0)
 
-#target_link_libraries(${libname} Excade${EXCADE_VERSION_SUFFIX} ExcadeGrasplot${EXCADE_VERSION_SUFFIX})
-#target_link_libraries(${libname} lapack ikfast41.HIRONX_RARM.${CMAKE_SYSTEM_PROCESSOR} ikfast41.HIRONX_LARM.${CMAKE_SYSTEM_PROCESSOR})
-target_link_libraries(${libname} CnoidGraspPlugin)
+#target_link_libraries(${target} Excade${EXCADE_VERSION_SUFFIX} ExcadeGrasplot${EXCADE_VERSION_SUFFIX})
+#target_link_libraries(${target} lapack ikfast41.HIRONX_RARM.${CMAKE_SYSTEM_PROCESSOR} ikfast41.HIRONX_LARM.${CMAKE_SYSTEM_PROCESSOR})
+target_link_libraries(${target} CnoidGraspPlugin)
 
-  install(TARGETS ${libname}
-    RUNTIME DESTINATION bin CONFIGURATIONS Release Debug
-    LIBRARY DESTINATION ${CMAKE_CURRENT_SOURCE_DIR} CONFIGURATIONS Release Debug
-    LIBRARY DESTINATION ${CNOID_PLUGIN_SUBDIR} CONFIGURATIONS Release Debug)
+install(TARGETS ${target}
+  RUNTIME DESTINATION bin CONFIGURATIONS Release Debug
+  LIBRARY DESTINATION ${CMAKE_CURRENT_SOURCE_DIR} CONFIGURATIONS Release Debug
+  LIBRARY DESTINATION ${CNOID_PLUGIN_SUBDIR} CONFIGURATIONS Release Debug)
 
 if(INSTALL_SDK)
   install(FILES ${headers} DESTINATION ${CNOID_HEADER_SUBDIR}/extplugin/graspPlugin/Grasp)
 endif()
 
-if(NOT EXISTS ${PROJECT_SOURCE_DIR}/extplugin/graspPlugin/RobotModels/HIRO/Plugin/hironx-distribution-vrml/main.wrl) 
+if(NOT EXISTS ${PROJECT_SOURCE_DIR}/extplugin/graspPlugin/RobotModels/HIRO/Plugin/hironx-distribution-vrml/main.wrl)
   ADD_CUSTOM_COMMAND(
-    TARGET ${libname}
+    TARGET ${target}
     POST_BUILD
     COMMAND wget http://openhrp-aist-grx.googlecode.com/files/hironx-distribution-vrml.zip
     COMMAND unzip hironx-distribution-vrml.zip

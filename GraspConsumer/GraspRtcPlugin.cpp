@@ -12,7 +12,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
-#include "GraspConsumer.h"
+#include "rtc/GraspConsumer.h"
 
 #include "GraspRtcBar.h"
 #include "GraspRtcController.h"

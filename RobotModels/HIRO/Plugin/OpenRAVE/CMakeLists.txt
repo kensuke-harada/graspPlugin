@@ -13,14 +13,14 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 set(right_shared
-  ikfast.HIRONX_RARM.${CMAKE_SYSTEM_PROCESSOR} 
-  )
-  
-set(left_shared
-  ikfast.HIRONX_LARM.${CMAKE_SYSTEM_PROCESSOR} 
+  ikfast.HIRONX_RARM.${CMAKE_SYSTEM_PROCESSOR}
   )
 
-set(target 
+set(left_shared
+  ikfast.HIRONX_LARM.${CMAKE_SYSTEM_PROCESSOR}
+  )
+
+set(target
   right_shared left_shared
   )
 
@@ -48,4 +48,4 @@ target_link_libraries(${right_shared} lapack)
 
 install(TARGETS ${left_shared} ${right_shared}
   LIBRARY DESTINATION ${ROBOT}/lib CONFIGURATIONS Release Debug
-)
+  )

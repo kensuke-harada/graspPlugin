@@ -13,7 +13,6 @@
 #include "ArmControllerRtc1_1_2/HIROController.hh"
 #include "ArmControllerRtc1_1_2/ArmController.h"
 #else
-#include "ArmControllerRtc/HIROController.hh"
 #include "ArmControllerRtc/ArmController.h"
 #endif
 

@@ -6,11 +6,11 @@ interface CommonCommands {
   };
 
 
-  RETURN_ID servoOFF();//¶¦ÄÌ¥¤¥ó¥¿¥Õ¥§¡¼¥¹¤È¤·¤Æ¡¢²¼µ­servoOffArm¤ÈservoOFFHand¤òÆ±»ş¤Ë¼Â¹Ô
+  RETURN_ID servoOFF();//å…±é€šã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã¨ã—ã¦ã€ä¸‹è¨˜servoOffArmã¨servoOFFHandã‚’åŒæ™‚ã«å®Ÿè¡Œ
   RETURN_ID servoON();
 
-  //²¼µ­¤Ï¼ÂÁõ¤¹¤ëºİ¤ËÉ¬Í×¤Ë¤Ê¤ë¤È»×¤¤¤Ş¤¹¡£
-  RETURN_ID servoOFFArm();//ÊÖ¤êÃÍ¤Ï¾ï¤Ë0¥³¥á¥ó¥È¤ÏÌµ
+  //ä¸‹è¨˜ã¯å®Ÿè£…ã™ã‚‹éš›ã«å¿…è¦ã«ãªã‚‹ã¨æ€ã„ã¾ã™ã€‚
+  RETURN_ID servoOFFArm();//è¿”ã‚Šå€¤ã¯å¸¸ã«0ã‚³ãƒ¡ãƒ³ãƒˆã¯ç„¡
   RETURN_ID servoOFFHand();
   RETURN_ID servoONArm();
   RETURN_ID servoONHand();
@@ -19,16 +19,16 @@ interface CommonCommands {
 
 interface MotionCommands {
 
-  typedef double HgMatrix [3][4]; // 3x3 ¤Î²óÅ¾¹ÔÎó+1Îó¤ÎºÂÉ¸
+  typedef double HgMatrix [3][4]; // 3x3 ã®å›è»¢è¡Œåˆ—+1åˆ—ã®åº§æ¨™
   typedef sequence<double> DoubleSeq;
   typedef sequence<double> JointPos;
   typedef sequence<JointPos> JointPosSeq;
   typedef unsigned long ULONG;
 
   struct CarPosWithElbow {
-    HgMatrix carPos; //¤³¤³¤Ë¼êÀè¤Î°ÌÃÖ¡¿»ÑÀª¤òÂåÆş
-    double elbow; //HIRO¤Î¾ì¹ç¤ÏÉ¬Í×Ìµ¤¤
-    ULONG structFlag;//É¬Í×Ìµ¤·
+    HgMatrix carPos; //ã“ã“ã«æ‰‹å…ˆã®ä½ç½®ï¼å§¿å‹¢ã‚’ä»£å…¥
+    double elbow; //HIROã®å ´åˆã¯å¿…è¦ç„¡ã„
+    ULONG structFlag;//å¿…è¦ç„¡ã—
   };
 
   struct RETURN_ID {
@@ -37,15 +37,14 @@ interface MotionCommands {
   };
 
   RETURN_ID closeGripper();
-  RETURN_ID moveGripper(in DoubleSeq r_angle, in DoubleSeq l_angle);// HIRO¤Î¾ì¹ç¤Ïlength(4), ÊÖ¤êÃÍ¤Îid¤Ï¾ï¤Ë0¡¢comment¤ÏÌµ¤·
+  RETURN_ID moveGripper(in DoubleSeq r_angle, in DoubleSeq l_angle);// HIROã®å ´åˆã¯length(4), è¿”ã‚Šå€¤ã®idã¯å¸¸ã«0ã€commentã¯ç„¡ã—
   RETURN_ID moveLinearCartesianAbs(in CarPosWithElbow rArm, in CarPosWithElbow lArm);
   RETURN_ID moveLinearCartesianRel(in CarPosWithElbow rArm, in CarPosWithElbow lArm);
-  RETURN_ID movePTPJointAbs(in JointPos jointPoints); // HIRO¤Î¾ì¹ç¤Ïlength(29)´ØÀáÄêµÁ¤Î½çÈÖ¤Ïbodyinfo.py¤ÈÆ±¤¸¡£degÃ±°Ì
-  RETURN_ID movePTPJointRel(in JointPos jointPoints); // ´ØÀáÄêµÁ¤Î½çÈÖ¤Ïbodyinfo.py¤ÈÆ±¤¸¡£degÃ±°Ì
-  RETURN_ID movePTPJointAbsSeq(in JointPosSeq jointPointsSeq, in DoubleSeq timeSeq); // ´ØÀáÄêµÁ¤Î½çÈÖ¤Ïbodyinfo.py¤ÈÆ±¤¸¡£degÃ±°Ì
+  RETURN_ID movePTPJointAbs(in JointPos jointPoints); // HIROã®å ´åˆã¯length(29)é–¢ç¯€å®šç¾©ã®é †ç•ªã¯bodyinfo.pyã¨åŒã˜ã€‚degå˜ä½
+  RETURN_ID movePTPJointRel(in JointPos jointPoints); // é–¢ç¯€å®šç¾©ã®é †ç•ªã¯bodyinfo.pyã¨åŒã˜ã€‚degå˜ä½
+  RETURN_ID movePTPJointAbsSeq(in JointPosSeq jointPointsSeq, in DoubleSeq timeSeq); // é–¢ç¯€å®šç¾©ã®é †ç•ªã¯bodyinfo.pyã¨åŒã˜ã€‚degå˜ä½
   RETURN_ID openGripper();
-  RETURN_ID setSpeedCartesian(in ULONG spdRatio);//¼ÂÁõ¤»¤º
+  RETURN_ID setSpeedCartesian(in ULONG spdRatio);//å®Ÿè£…ã›ãš
   RETURN_ID setSpeedJoint(in ULONG spdRatio);
-	
+
 };
-	  

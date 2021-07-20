@@ -7,10 +7,10 @@ if(ENABLE_INSTALL_RPATH)
 endif()
 
 add_cnoid_python_module(${target}
-	PyGraspPluginModule.cpp
-	PyPlanBase.cpp
-	PyGrasp.cpp
-	PyAssemblyObject.cpp
-	)
+  PyGraspPluginModule.cpp
+  PyPlanBase.cpp
+  PyGrasp.cpp
+  PyAssemblyObject.cpp
+  )
 
 target_link_libraries(${target} CnoidGraspPlugin CnoidPyBase PyBody PyBodyPlugin)

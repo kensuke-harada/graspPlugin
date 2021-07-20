@@ -7,8 +7,8 @@ if(ENABLE_INSTALL_RPATH)
 endif()
 
 add_cnoid_python_module(${target}
-	PyPickAndPlacePlannerPluginModule.cpp
-	PyLearningDataManipulator.cpp
-	)
+  PyPickAndPlacePlannerPluginModule.cpp
+  PyLearningDataManipulator.cpp
+  )
 
 target_link_libraries(${target} CnoidPickAndPlacePlannerPlugin CnoidPyBase)

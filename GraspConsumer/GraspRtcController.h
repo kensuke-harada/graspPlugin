@@ -1,7 +1,7 @@
 #ifndef EXCADE_ROBOTICS_RTC_CONTROLLER_H_INCLUDED
 #define EXCADE_ROBOTICS_RTC_CONTROLLER_H_INCLUDED
 
-#include "GraspConsumer.h"
+#include "rtc/GraspConsumer.h"
 #include "../Grasp/GraspController.h"
 
 namespace grasp {

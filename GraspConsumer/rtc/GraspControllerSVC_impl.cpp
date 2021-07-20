@@ -7,8 +7,10 @@
 #include <iostream>
 
 #include "GraspControllerSVC_impl.h"
+#include "../GraspRtcController.h"
 
 using namespace std;
+using namespace grasp;
 
 /*
  * Example implementational code for IDL interface GraspPlanStart
@@ -65,12 +67,14 @@ void GraspPlanResultSVC_impl::GraspPlanningResult(const GraspPlanResult::DblSequ
   // Please insert your code here and remove the following warning pragma
 	if(state > 0){
 		isContinue=0;
-		std::cout << "Grasp Plan failed" << std::endl;	
+		std::cout << "Grasp Plan failed" << std::endl;
 		return;
 	}
-	cout << GraspPos[0] << GraspPos[1] << GraspPos[2] << endl;
-	
-	bool flag=true;
+	cout << GraspPos[0] << endl;
+
+	bool flag;
+	flag= grasp::GraspRtcController::instance()->graspPlanResult(GraspPos, GraspOri, ApproachPos, ApproachOri, angle);
+	//flag= RtcController::graspPlanResult(GraspPos, GraspOri, ApproachPos, ApproachOri, angle);
 	if(flag){
 		isContinue=0;
 		std::cout << "success" << endl;

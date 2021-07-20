@@ -43,17 +43,15 @@ using namespace RTC;
  *
  */
 
-namespace Excade{
-	namespace  Grasplot {
-		class GraspRtcController;
-	}
+namespace  grasp {
+	class GraspRtcController;
 }
- 
+
 class GraspConsumer
   : public RTC::DataFlowComponentBase
 {
  public:
-	 friend class Excade::Grasplot::GraspRtcController;
+	 friend class grasp::GraspRtcController;
   /*!
    * @brief constructor
    * @param manager Maneger Object
