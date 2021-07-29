@@ -33,11 +33,11 @@
 
 #include <cnoid/ExecutablePath>
 #include <cnoid/ItemTreeView>
-/* #ifdef ENABLE_OSG */
-/* #include "../Grasp/DrawUtility.h" */
-/* #else */
+/* #ifdef ENABLE_OSG */
+/* #include "../Grasp/DrawUtility.h" */
+/* #else */
 #include "PCLBar.h"
-/* #endif */
+/* #endif */
 #include "../Grasp/VectorMath.h"
 #include "../Grasp/PlanBase.h"
 #include "PointCloudHandler.h"
