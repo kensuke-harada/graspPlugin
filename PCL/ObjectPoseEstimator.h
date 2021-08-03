@@ -25,9 +25,7 @@
 // We use modified crh_alignment.h because computeRobllAngle
 // function in orignal crh_alignment.h has memory leaks.
 #include "crh_alignment.h"
-#if PCL_VERSION_COMPARE(<, 1, 8, 0)
 #include <flann/flann.h>
-#endif
 #include "CVFHDescriptorManipulator.h"
 #endif
 
