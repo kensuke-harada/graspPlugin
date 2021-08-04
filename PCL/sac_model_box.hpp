@@ -48,7 +48,7 @@ void pcl::SampleConsensusModelBox<PointT, PointNT>::getSamples(int &iterations,
 
 template<typename PointT, typename PointNT>
 bool pcl::SampleConsensusModelBox<PointT, PointNT>::computeModelCoefficients(
-    const std::vector<int> &samples, Eigen::VectorXf &model_coefficients) {
+    const std::vector<int> &samples, Eigen::VectorXf &model_coefficients) const {
   // Need 3 samples
   if (samples.size() != 3) {
     PCL_ERROR("[pcl::SampleConsensusModelBox::computeModelCoefficients] Invalid set of samples given (%zu)!\n", samples.size());
@@ -138,19 +138,19 @@ bool pcl::SampleConsensusModelBox<PointT, PointNT>::computeModelCoefficients(
 template<typename PointT, typename PointNT>
 void pcl::SampleConsensusModelBox<PointT, PointNT>::optimizeModelCoefficients(
     const std::vector<int> &inliers, const Eigen::VectorXf &model_coefficients,
-    Eigen::VectorXf &optimized_coefficients) {
+    Eigen::VectorXf &optimized_coefficients) const {
   PCL_ERROR("[pcl::SampleConsensusModelBox::optimizeModelCoefficients] Not implemented!\n");
 }
 
 template<typename PointT, typename PointNT>
 void pcl::SampleConsensusModelBox<PointT, PointNT>::getDistancesToModel(
-    const Eigen::VectorXf &model_coefficients, std::vector<double> &distances) {
+    const Eigen::VectorXf &model_coefficients, std::vector<double> &distances) const {
   PCL_ERROR("[pcl::SampleConsensusModelBox::getDistancesToModel] Not implemented!\n");
 }
 
 template<typename PointT, typename PointNT>
 void pcl::SampleConsensusModelBox<PointT, PointNT>::selectWithinDistance(
-    const Eigen::VectorXf &model_coefficients, const double threshold, std::vector<int> &inliers) {
+    const Eigen::VectorXf &model_coefficients, const double threshold, std::vector<int> &inliers) const {
   int nr_p = 0;
 
   inliers.resize(indices_->size());
@@ -196,9 +196,15 @@ void pcl::SampleConsensusModelBox<PointT, PointNT>::selectWithinDistance(
   inliers.resize(nr_p);
 }
 
+#if PCL_VERSION_COMPARE(<, 1, 10, 0)
 template<typename PointT, typename PointNT>
 int pcl::SampleConsensusModelBox<PointT, PointNT>::countWithinDistance(
-    const Eigen::VectorXf &model_coefficients, const double threshold) {
+    const Eigen::VectorXf &model_coefficients, const double threshold) const {
+#else
+template<typename PointT, typename PointNT>
+std::size_t pcl::SampleConsensusModelBox<PointT, PointNT>::countWithinDistance(
+    const Eigen::VectorXf &model_coefficients, const double threshold) const {
+#endif
   int nr_p = 0;
   std::vector<Eigen::Vector3f> plane_n;
   std::vector<Eigen::Vector3f> plane_p;
@@ -249,14 +255,14 @@ int pcl::SampleConsensusModelBox<PointT, PointNT>::countWithinDistance(
 template<typename PointT, typename PointNT>
 void pcl::SampleConsensusModelBox<PointT, PointNT>::projectPoints(
     const std::vector<int> &inliers, const Eigen::VectorXf &model_coefficients,
-    PointCloud &projected_points, bool copy_data_fields) {
+    PointCloud &projected_points, bool copy_data_fields) const {
   PCL_ERROR("[pcl::SampleConsensusModelBox::projectPoints] Not implemented!\n");
 }
 
 template<typename PointT, typename PointNT>
 bool pcl::SampleConsensusModelBox<PointT, PointNT>::doSamplesVerifyModel(
     const std::set<int> &indices, const Eigen::VectorXf &model_coefficients,
-    const double threshold) {
+    const double threshold) const {
   PCL_ERROR("[pcl::SampleConsensusModelBox::doSamplesVerifyModel] Not implemented!\n");
   return true;
 }
@@ -281,7 +287,7 @@ bool pcl::SampleConsensusModelBox<PointT, PointNT>::isSampleGood(const std::vect
 }
 
 template<typename PointT, typename PointNT>
-void pcl::SampleConsensusModelBox<PointT, PointNT>::reComputeModelCoefficients(Eigen::VectorXf &model_coefficients) {
+void pcl::SampleConsensusModelBox<PointT, PointNT>::reComputeModelCoefficients(Eigen::VectorXf &model_coefficients) const {
   std::vector<Eigen::Vector3f> n(3);
   for (int i = 0; i < 3; i++) {
     n[i] << model_coefficients[3*i], model_coefficients[3*i+1], model_coefficients[3*i+2];

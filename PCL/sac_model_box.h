@@ -6,6 +6,7 @@
 #ifndef _PCL_SAC_MODEL_BOX_H_
 #define _PCL_SAC_MODEL_BOX_H_
 
+#include <cstddef>
 #include <vector>
 #include <set>
 
@@ -75,30 +76,81 @@ class SampleConsensusModelBox :
   void getSamples(int &iterations, std::vector<int> &samples);
 
   bool computeModelCoefficients(const std::vector<int> &samples,
-                                Eigen::VectorXf &model_coefficients);
+                                Eigen::VectorXf &model_coefficients) const;
+
+  bool computeModelCoefficients(const std::vector<int> &samples,
+                                Eigen::VectorXf &model_coefficients) {
+    return static_cast<const SampleConsensusModelBox<PointT, PointNT> &>(*this).computeModelCoefficients(samples, model_coefficients);
+  }
 
   void optimizeModelCoefficients(const std::vector<int> &inliers,
                                  const Eigen::VectorXf &model_coefficients,
-                                 Eigen::VectorXf &optimized_coefficients);
+                                 Eigen::VectorXf &optimized_coefficients) const;
+
+  void optimizeModelCoefficients(const std::vector<int> &inliers,
+                                 const Eigen::VectorXf &model_coefficients,
+                                 Eigen::VectorXf &optimized_coefficients) {
+    return static_cast<const SampleConsensusModelBox<PointT, PointNT> &>(*this).optimizeModelCoefficients(inliers, model_coefficients, optimized_coefficients);
+  }
 
   void getDistancesToModel(const Eigen::VectorXf &model_coefficients,
-                           std::vector<double> &distances);
+                           std::vector<double> &distances) const;
+
+  void getDistancesToModel(const Eigen::VectorXf &model_coefficients,
+                           std::vector<double> &distances) {
+    static_cast<const SampleConsensusModelBox<PointT, PointNT> &>(*this).getDistancesToModel(model_coefficients, distances);
+  }
 
   void selectWithinDistance(const Eigen::VectorXf &model_coefficients,
                             const double threshold,
-                            std::vector<int> &inliers);
+                            std::vector<int> &inliers) const;
+
+  void selectWithinDistance(const Eigen::VectorXf &model_coefficients,
+                            const double threshold,
+                            std::vector<int> &inliers) {
+    return static_cast<const SampleConsensusModelBox<PointT, PointNT> &>(*this).selectWithinDistance(model_coefficients, threshold, inliers);
+  }
+
+#if PCL_VERSION_COMPARE(<, 1, 10, 0)
+  int countWithinDistance(const Eigen::VectorXf &model_coefficients,
+                          const double threshold) const;
 
   int countWithinDistance(const Eigen::VectorXf &model_coefficients,
-                          const double threshold);
+                          const double threshold) {
+    return static_cast<const SampleConsensusModelBox<PointT, PointNT> &>(*this).countWithinDistance(model_coefficients, threshold);
+  }
+#else
+  std::size_t countWithinDistance(const Eigen::VectorXf &model_coefficients,
+                          const double threshold) const;
+
+  std::size_t countWithinDistance(const Eigen::VectorXf &model_coefficients,
+                          const double threshold) {
+    return static_cast<const SampleConsensusModelBox<PointT, PointNT> &>(*this).countWithinDistance(model_coefficients, threshold);
+  }
+#endif
 
   void projectPoints(const std::vector<int> &inliers,
                      const Eigen::VectorXf &model_coefficients,
                      PointCloud &projected_points,
-                     bool copy_data_fields = true);
+                     bool copy_data_fields = true) const;
+
+  void projectPoints(const std::vector<int> &inliers,
+                     const Eigen::VectorXf &model_coefficients,
+                     PointCloud &projected_points,
+                     bool copy_data_fields = true) {
+    return static_cast<const SampleConsensusModelBox<PointT, PointNT> &>(*this).projectPoints(inliers, model_coefficients, projected_points, copy_data_fields);
+  }
 
   bool doSamplesVerifyModel(const std::set<int> &indices,
                             const Eigen::VectorXf &model_coefficients,
-                            const double threshold);
+                            const double threshold) const;
+
+  bool doSamplesVerifyModel(const std::set<int> &indices,
+                            const Eigen::VectorXf &model_coefficients,
+                            const double threshold) {
+    return static_cast<const SampleConsensusModelBox<PointT, PointNT> &>(*this).doSamplesVerifyModel(indices, model_coefficients, threshold);
+  }
+
   void setOrthoEps(double eps) {ortho_eps_ = eps;}
   void setVoxelSize(double size) {voxel_size_ = size;}
   void setAcceptPointRatio(double ratio) {accept_point_ratio_ = ratio;}
@@ -109,7 +161,7 @@ class SampleConsensusModelBox :
 
   bool isSampleGood(const std::vector<int> &samples) const;
 
-  void reComputeModelCoefficients(Eigen::VectorXf &model_coefficients);
+  void reComputeModelCoefficients(Eigen::VectorXf &model_coefficients) const;
  private:
   double ortho_eps_;
   double voxel_size_;
