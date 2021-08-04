@@ -148,11 +148,19 @@ jobs:
         with:
           path: ext/graspPlugin
 
+      - name: Add debian repository
+        uses: myci-actions/add-deb-repo@8
+        with:
+          repo: deb http://openrtm.org/pub/Linux/ubuntu focal main
+          repo-name: openrtm-aist
+          keys: CC8761DEBFB5DC87CC07DC964BCE106E087AFAC0
+          key-server: keyserver.ubuntu.com
+
       - name: Install dependencies
         run: |
           sudo apt-get update
-          curl https://raw.githubusercontent.com/choreonoid/choreonoid/master/misc/script/install-requisites-ubuntu-20.04.sh | sh
-          sudo apt-get install --no-install-recommends -y freeglut3-dev libboost-python-dev libboost-regex-dev libboost-thread-dev libglew-dev libqhull-dev
+          curl https://raw.githubusercontent.com/choreonoid/choreonoid/2cc3478ee397eb2c485dcb9fab0e7166c7ebed1a/misc/script/install-requisites-ubuntu-20.04.sh | sh
+          sudo apt-get install --no-install-recommends -y freeglut3-dev libboost-python-dev libboost-regex-dev libboost-thread-dev libcos4-dev libglew-dev libomniorb4-dev libpcl-dev libqhull-dev libusb-1.0-0-dev lsb-release omniidl omniidl-python omniorb-nameserver openrtm-aist-dev python-omniorb python-yaml
 
       - name: Create build environment for Choreonoid
         run: |
@@ -161,7 +169,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: ${{ github.workspace }}/build
-        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Release -DGRASP_PLUGINS="Grasp;PRM;MotionFile;GeometryHandler;PickAndPlacePlanner;ObjectPlacePlanner"
+        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Release -DBUILD_CORBA_PLUGIN:BOOL=ON -DBUILD_GRASP_PCL_PLUGIN:BOOL=ON -DBUILD_GROBOT_PLUGIN:BOOL=ON -DBUILD_OPENRTM_PLUGIN:BOOL=ON -DBUILD_PYTHON_PLUGIN:BOOL=ON -DCNOID_ENABLE_GETTEXT:BOOL=ON -DENABLE_CORBA:BOOL=ON -DUSE_QT5:BOOL=ON -DGRASP_PLUGINS="CnoidRos;ConstraintIK;GeometryHandler;Grasp;GraspConsumer;GraspDataGen;MotionFile;ObjectPlacePlanner;PCL;PRM;PickAndPlacePlanner;RobotInterface;RtcGraspPathPlan;SoftFingerStability;VisionTrigger;"
 
       - name: Get number of CPU cores
         id: cpu-cores
