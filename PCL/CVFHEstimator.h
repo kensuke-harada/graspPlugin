@@ -7,8 +7,7 @@
 #include <pcl/features/normal_3d.h>
 #include <pcl/features/cvfh.h>
 #include <pcl/filters/filter_indices.h>
-//#include <pcl/features/crh.h>
-#include "crh.h"
+#include <pcl/features/crh.h>
 #include "cvfhext.h"
 #include "crhext.h"
 #include "PointCloudTypes.h"
