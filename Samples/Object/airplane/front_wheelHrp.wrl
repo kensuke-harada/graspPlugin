@@ -88,7 +88,7 @@ PROTO Humanoid [
   }
 }
 
-DEF cockpit Humanoid {
+DEF front_wheel Humanoid {
   humanoidBody [
     DEF WAIST Joint {
       jointType "free"
@@ -101,7 +101,7 @@ DEF cockpit Humanoid {
 	        momentsOfInertia [1 0 0 0 1 0 0 0 1]
           children [
      		    Inline {
-       			  url "cockpit.wrl"
+       			  url "front_wheel.wrl"
 	        	}
           ]
         }
@@ -114,7 +114,7 @@ DEF cockpit Humanoid {
   segments [
     USE BODY
   ]
-  name "cokpit"
+  name "front_wheel"
   version "1.1"
 }
 
